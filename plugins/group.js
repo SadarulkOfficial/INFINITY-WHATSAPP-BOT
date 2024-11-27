@@ -15,8 +15,7 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
         
         if(!isOwner) return reply(`*_This is an owner cmd._*`)
-        if(!isGroup) return
-
+        
 if(!q.startsWith('https://chat.whatsapp.com/')) return reply(`*_Invalid group link._*`)
         
         const result = q.split('https://chat.whatsapp.com/')[1]
@@ -69,6 +68,7 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
         
         if(!isGroup) return
+        if(!isBotAdmins) return reply("*_Please give me a admin first._*")
         
         const code = await conn.groupInviteCode(from)
                                         
