@@ -33,7 +33,6 @@ let desc = `
 
 ┌───────────────────
 ├ ℹ️ *Title:* ${data.title}
-├ 👤 *Author:* ${data.author.name}
 ├ 👁️‍🗨️ *Views:* ${data.views}
 ├ 🕘 *Duration:* ${data.timestamp}
 ├ 📌 *Upload on:* ${data.ago}
