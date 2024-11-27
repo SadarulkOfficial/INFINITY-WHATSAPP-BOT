@@ -5,7 +5,7 @@ const {readEnv} = require('../lib/database');
 const apilink = 'https://www.dark-yasiya-api.site';
 
 cmd({
-    pattern: "moviesend",
+    pattern: "mvsend",
     desc: "movie send to grp jid",
     filename: __filename
 },
