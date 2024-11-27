@@ -20,7 +20,7 @@ let mvNo = await SinhalaSub.get_list.by_recent_movies(1)
 
 let arrays = mvNo.results;
                 
-let resultNo = arrays.map((movie, index) => `${index + 1}. *Movie Name :* ${arrays[index].title}\n*Type :* ${arrays[index].type}\n*Country :* ${arrays[index].country}\n*Link :* ${arrays[index].link}`).join("\n\n");
+let resultNo = arrays.map((movie, index) => `${index + 1}. *Movie Name :* ${arrays[index].title}\n*Type :* ${arrays[index].type}\n*Link :* ${arrays[index].link}`).join("\n\n");
 
 let dtNo = `*_INFINITY WA BOT MOVIE SEARCH 🔎_*\n\n`
 let capNo = `\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
@@ -37,7 +37,7 @@ let array = mv.results;
 return reply(`*_Can't find this movie !_*`);
         }       
 
-let result = array.map((movie, index) => `${index + 1}. *Movie Name :* ${arrays[index].title}\n*Type :* ${arrays[index].type}\n*Country :* ${arrays[index].country}\n*Link :* ${arrays[index].link}`).join("\n\n");
+let result = array.map((movie, index) => `${index + 1}. *Movie Name :* ${array[index].title}\n*Type :* ${array[index].type}\n*Link :* ${array[index].link}`).join("\n\n");
 
 let dt = `*_INFINITY WA BOT MOVIE SEARCH 🔎_*\n\n`
 let cap = `\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
