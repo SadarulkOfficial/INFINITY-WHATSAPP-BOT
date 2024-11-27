@@ -3,9 +3,9 @@ const {readEnv} = require('../lib/database')
 const { cmd, commands } = require('../command')
 
 cmd({
-    pattern: "search",
-    desc: "search movie",
-    category: "movie",
+    pattern: "mvsearch",
+    desc: "search movies",
+    category: "search",
     filename: __filename
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
@@ -37,7 +37,7 @@ let array = mv.results;
 return reply(`*_Can't find this movie !_*`);
         }       
 
-let result = arrays.map((movie, index) => `${index + 1}. *Movie Name :* ${arrays[index].title}\n*Type :* ${arrays[index].type}\n*Country :* ${arrays[index].country}\n*Link :* ${arrays[index].link}`).join("\n\n");
+let result = array.map((movie, index) => `${index + 1}. *Movie Name :* ${arrays[index].title}\n*Type :* ${arrays[index].type}\n*Country :* ${arrays[index].country}\n*Link :* ${arrays[index].link}`).join("\n\n");
 
 let dt = `*_INFINITY WA BOT MOVIE SEARCH 🔎_*\n\n`
 let cap = `\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
