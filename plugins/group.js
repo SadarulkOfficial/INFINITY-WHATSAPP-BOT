@@ -5,7 +5,7 @@ const {readEnv} = require('../lib/database')
 cmd({
     pattern: "join",
     desc: "join groups",
-    category: "group",
+    category: "owner",
     filename: __filename
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
@@ -36,7 +36,7 @@ reply(`${e}`)
 cmd({
     pattern: "left",
     desc: "left groups",
-    category: "group",
+    category: "owner",
     filename: __filename
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
@@ -57,8 +57,8 @@ reply(`${e}`)
 
 cmd({
     pattern: "link",
-    desc: "close groups",
-    category: "group",
+    desc: "get group link",
+    category: "other",
     filename: __filename
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
@@ -68,7 +68,7 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
         
         if(!isGroup) return
-        if(!isBotAdmins) return reply("*_Please give me a admin first._*")
+        if(!isBotAdmins) return reply("*_Please give bot admin._*")
         
         const code = await conn.groupInviteCode(from)
                                         
