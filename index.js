@@ -88,11 +88,8 @@ console.log('Infinity wa bot connected to whatsapp ✅')
 
 let up = `*_Infinity whatsapp bot connected successful ✅_*\n\n_Prefix:_ ${prefix}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`;
 
-conn.sendMessage(botNumber + "@s.whatsapp.net", { image: { url: `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true` }, caption: up })
-
-if(botNumber === '94771709545'){
 conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true` }, caption: up })
-}
+
 
 }
 })
