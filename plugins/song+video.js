@@ -21,17 +21,35 @@ if(config.BLOCK_JID.includes(from)) return
     
 if(!q) return reply ("*_Please give me a title or url._*")
 
+    if(q.startsWith("https://") && q.includes("watch?v=")) {
 
-if(q.startsWith("https://")) {
+const data = await ytmp3(q)
 
-    if(q.includes("?si=")){
+let desc = `
+*_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
+
+┌───────────────────
+├ ℹ️ *Title:* ${data.result.title}
+├ 👤 *Author:* ${data.result.author.name}
+├ 👁️‍🗨️ *Views:* ${data.result.views}
+├ 🕘 *Duration:* ${data.result.timestamp}
+├ 📌 *Upload on:* ${data.result.ago}
+├ 🖇️ *Link:* ${data.result.url}
+└───────────────────
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+await conn.sendMessage(from, { image : { url : data.result.image } , caption : desc } , { quoted : mek })
+
+//send audio+document
+    
+await conn.sendMessage(from,{audio: {url: data.download.url },mimetype:"audio/mpeg"},{quoted:mek})
+await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
+    
+        
+} else if(q.startsWith("https://") && q.includes("?si=")) {
 
 let a = q.split("?")[0]
-        
-    } else {
-
-        let a = q
-    }
 
 const data = await ytmp3(a)
 
@@ -60,13 +78,12 @@ await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio
 } else if(!q.startsWith("https://")){
 
 const yt = await ytsearch(q)
+        
     if(yt.results.length < 1) return reply("*_Can't find anything._*")
     
 const yts = yt.results[0]
 const ytdl = await ytmp3(yts.url)
     
-
-
 let desc = `
 *_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
 
