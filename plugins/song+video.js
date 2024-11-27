@@ -5,8 +5,6 @@ const { ytmp3, ytmp4 } = require('@dark-yasiya/yt-dl.js')
 const yts = require('yt-search')
 
 
-const config = await readEnv();
-if(config.BLOCK_JID.includes(from)) return
 
 //=====audio-dl=====
 
@@ -19,6 +17,10 @@ cmd({
 },
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
+
+    const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+    
 if(!q) return reply ("*_Please give me a title or url._*")
 
 
@@ -103,6 +105,10 @@ cmd({
 },
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
+
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+    
 if(!q) return reply ("*_Please give me a title or url._*")
 
 
