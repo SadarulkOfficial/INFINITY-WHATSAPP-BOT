@@ -20,7 +20,7 @@ if(config.AUTO_AI === 'true') {
     
 let data = await fetchJson(`https://www.dark-yasiya-api.site/ai/chatgpt?q=${body}`)
     
-    await conn.sendPresenceUpdate('typing', from);
+    await conn.sendPresenceUpdate('composing', from);
     return reply(`${data.result}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
 
 } 
