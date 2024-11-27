@@ -32,17 +32,17 @@ let desc = `
 *_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
 
 ┌───────────────────
-├ ℹ️ *Title:* ${data.result.title}
-├ 👤 *Author:* ${data.result.author.name}
-├ 👁️‍🗨️ *Views:* ${data.result.views}
-├ 🕘 *Duration:* ${data.result.timestamp}
-├ 📌 *Upload on:* ${data.result.ago}
-├ 🖇️ *Link:* ${data.result.url}
+├ ℹ️ *Title:* ${data.title}
+├ 👤 *Author:* ${data.author.name}
+├ 👁️‍🗨️ *Views:* ${data.views}
+├ 🕘 *Duration:* ${data.timestamp}
+├ 📌 *Upload on:* ${data.ago}
+├ 🖇️ *Link:* ${data.url}
 └───────────────────
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: data.result.image},caption:desc},{quoted:mek});
+await conn.sendMessage(from,{image:{url: data.image},caption:desc},{quoted:mek});
 
 //send audio+document
     
