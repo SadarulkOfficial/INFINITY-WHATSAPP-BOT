@@ -1,7 +1,7 @@
 const {cmd , commands} = require('../command')
 const { fetchJson } = require('../lib/functions')
 const {readEnv} = require('../lib/database')
-const { ytmp3, ytmp4 } = require('@dark-yasiya/yt-dl.js')
+const { ytsearch, ytmp3, ytmp4 } = require('@dark-yasiya/yt-dl.js')
 
 
 //=====audio-dl=====
