@@ -80,3 +80,57 @@ reply(`${e}`)
 
 }
 })
+
+
+
+cmd({
+    pattern: "mute",
+    desc: "Group mute",
+    category: "owner",
+    filename: __filename
+},
+async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        
+        if(!isOwner) return reply(`*_This is an owner cmd._*`)
+        if(!isGroup) return
+        if(!isBotAdmins) return reply("*_Please give bot admin._*")
+          
+        await conn.groupSettingUpdate(from, 'announcement') {
+
+reply("*Group chat muted 🔒*")
+
+}
+  
+}catch(e){
+console.log(e)
+reply(`${e}`)
+
+}
+})
+
+cmd({
+    pattern: "unmute",
+    desc: "Group unmute",
+    category: "owner",
+    filename: __filename
+},
+async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        
+        if(!isOwner) return reply(`*_This is an owner cmd._*`)
+        if(!isGroup) return
+        if(!isBotAdmins) return reply("*_Please give bot admin._*")
+          
+        await conn.groupSettingUpdate(from, 'not_announcement') {
+
+reply("*Group chat unmuted 🔓*")
+
+}
+  
+}catch(e){
+console.log(e)
+reply(`${e}`)
+
+}
+})
