@@ -130,8 +130,7 @@ if(config.BLOCK_JID.includes(from)) return
     
 if(!q) return reply ("*_Please give me a title or url._*")
 
-
-if(q.startsWith("https://")) {
+if(q.startsWith("https://") && q.includes("watch?v=")) {
 
 const quality = "360p";
 const data = await ytmp4(q, quality);
@@ -152,17 +151,43 @@ let desc = `
 
 await conn.sendMessage(from,{image:{url: data.result.image},caption:desc},{quoted:mek})
 
+//send video+document
+    
+await conn.sendMessage(from,{video: {url: data.download.url },mimetype:"video/mp4"},{quoted:mek})
+await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"video/mp4",fileName:data.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
+
+} else if(q.startsWith("https://") && q.includes("?si=")) {
+
+let a = q.split("?")[0]
+
+    const quality = "360p";
+const data = await ytmp4(a, quality);
+
+let desc = `
+*_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
+
+┌───────────────────
+├ ℹ️ *Title:* ${data.result.title}
+├ 👤 *Author:* ${data.result.author.name}
+├ 👁️‍🗨️ *Views:* ${data.result.views}
+├ 🕘 *Duration:* ${data.result.timestamp}
+├ 📌 *Upload on:* ${data.result.ago}
+├ 🖇️ *Link:* ${data.result.url}
+└───────────────────
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+await conn.sendMessage(from,{image:{url: data.result.image},caption:desc},{quoted:mek})
 
 //send video+document
     
 await conn.sendMessage(from,{video: {url: data.download.url },mimetype:"video/mp4"},{quoted:mek})
 await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"video/mp4",fileName:data.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
 
-
 } else if(!q.startsWith("https://")){
 
 const yt = await ytsearch(q)
-    if(yt.results.length < 1) return reply("*_Can't find anything._*")
+if(yt.results.length < 1) return reply("*_Can't find anything._*")
     
 const yts = yt.results[0]
 const quality = "360p"
