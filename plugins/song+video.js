@@ -2,8 +2,6 @@ const {cmd , commands} = require('../command')
 const { fetchJson } = require('../lib/functions')
 const {readEnv} = require('../lib/database')
 const { ytmp3, ytmp4 } = require('@dark-yasiya/yt-dl.js')
-const yts = require('yt-search')
-
 
 
 //=====audio-dl=====
@@ -50,41 +48,36 @@ await conn.sendMessage(from,{audio: {url: data.download.url },mimetype:"audio/mp
 await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
     
 
-} else {
+} else if(!q.startsWith("https://")){
 
-const search = await yts(q)
-const data = search.videos[0];
-
-    if (!data || data.length === 0) {
-            return reply("*_Can't find anything._*");
-        }
+const yt = await ytsearch(q)
+    if(yt.results.length < 1) return reply("*_Can't find anything._*")
+    
+const yts = yt.results[0]
+const ytdl = await ytmp3(yts.url)
+    
 
 
 let desc = `
 *_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
 
 ┌───────────────────
-├ ℹ️ *Title:* ${data.title}
-├ 👤 *Author:* ${data.author.name}
-├ 👁️‍🗨️ *Views:* ${data.views}
-├ 🕘 *Duration:* ${data.timestamp}
-├ 📌 *Upload on:* ${data.ago}
-├ 🖇️ *Link:* ${data.url}
+├ ℹ️ *Title:* ${yts.title}
+├ 👤 *Author:* ${yts.author.name}
+├ 👁️‍🗨️ *Views:* ${yts.views}
+├ 🕘 *Duration:* ${yts.timestamp}
+├ 📌 *Upload on:* ${yts.ago}
+├ 🖇️ *Link:* ${yts.url}
 └───────────────────
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek})
-    
-//download audio
-
-const yturl = data.url
-const audio = ytmp3(yturl)
+await conn.sendMessage(from,{image:{url: yts.image },caption:desc},{quoted:mek})
 
 //send audio+document
     
-await conn.sendMessage(from,{audio: {url: audio.download.url },mimetype:"audio/mpeg"},{quoted:mek})
-await conn.sendMessage(from,{document: {url: audio.download.url },mimetype:"audio/mpeg",fileName:data.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
+await conn.sendMessage(from,{audio: {url: ytdl.download.url },mimetype:"audio/mpeg"},{quoted:mek})
+await conn.sendMessage(from,{document: {url: ytdl.download.url },mimetype:"audio/mpeg",fileName:yts.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
     
 }
 
@@ -115,7 +108,7 @@ if(!q) return reply ("*_Please give me a title or url._*")
 if(q.startsWith("https://")) {
 
 const quality = "360p";
-const data = ytmp4(q, quality);
+const data = await ytmp4(q, quality);
 
 let desc = `
 *_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
@@ -140,39 +133,34 @@ await conn.sendMessage(from,{video: {url: data.download.url },mimetype:"video/mp
 await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"video/mp4",fileName:data.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
 
 
-} else {
+} else if(!q.startsWith("https://")){
 
-const search = await yts(q)
-const data = search.videos[0];
-
-     if (!data || data.length === 0) {
-            return reply("*_Can't find anything._*");
-        }
+const yt = await ytsearch(q)
+    if(yt.results.length < 1) return reply("*_Can't find anything._*")
+    
+const yts = yt.results[0]
+const ytdl = await ytmp4(yts.url)
 
 let desc = `
 *_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
 
 ┌───────────────────
-├ ℹ️ *Title:* ${data.title}
-├ 👤 *Author:* ${data.author.name}
-├ 👁️‍🗨️ *Views:* ${data.views}
-├ 🕘 *Duration:* ${data.timestamp}
-├ 📌 *Upload on:* ${data.ago}
-├ 🖇️ *Link:* ${data.url}
+├ ℹ️ *Title:* ${yts.title}
+├ 👤 *Author:* ${yts.author.name}
+├ 👁️‍🗨️ *Views:* ${yts.views}
+├ 🕘 *Duration:* ${yts.timestamp}
+├ 📌 *Upload on:* ${yts.ago}
+├ 🖇️ *Link:* ${yts.url}
 └───────────────────
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek})
-
-const yturl = data.url
-const quality = "360p";
-const video = ytmp4(yturl, quality);
+await conn.sendMessage(from,{image:{url: yts.image },caption:desc},{quoted:mek})
 
 //send video+document
     
-await conn.sendMessage(from,{video: {url: video.download.url },mimetype:"video/mp4"},{quoted:mek})
-await conn.sendMessage(from,{document: {url: video.download.url },mimetype:"video/mp4",fileName:data.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
+await conn.sendMessage(from,{video: {url: ytdl.download.url },mimetype:"video/mp4"},{quoted:mek})
+await conn.sendMessage(from,{document: {url: ytdl.download.url },mimetype:"video/mp4",fileName:yts.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
 
 }
     
