@@ -25,7 +25,7 @@ var nameJpg = `infinitywabot`
       isQuotedViewOnce ? await m.quoted.download(nameJpg) : await m.download(nameJpg)
 
 await conn.sendMessage(from,{image: nameJpg + ".jpg" },{quoted: mek})
-
+}
 }catch(e){
 console.log(e)
 reply(`${e}`)
