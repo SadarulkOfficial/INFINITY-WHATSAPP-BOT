@@ -54,15 +54,6 @@ connectDB();
 const {readEnv} = require('./lib/database')
 const config = await readEnv();
 const prefix = config.PREFIX
-const ars = config.AUTO_READ_STATUS
-const mode = config.MODE
-const aai = config.AUTO_AI
-const aaijid = config.AUTO_AI_JID
-const as = config.AUTO_STICKER
-const av = config.AUTO_VOICE
-const ar = config.AUTO_REPLY
-const mvsjid = config.MV_SEND_JID
-const bjid = config.BLOCK_JID
 //==============================================
         
 console.log("Infinity wa bot connecting 🧬...");
@@ -95,7 +86,7 @@ require("./plugins/" + plugin);
 console.log('Plugins installed successful ✅')
 console.log('Infinity wa bot connected to whatsapp ✅')
 
-let up = `*_Infinity whatsapp bot connected successful ✅_*\n\n_Your settings ⚙️_\n\nPREFIX : ${prefix}\nMODE : ${mode}\nAUTO READ STATUS : ${ars}\nAUTO REPLY : ${ar}\nAUTO VOICE : ${av}\nAUTO STICKER : ${as}\nAUTO AI : ${aai}\nAUTO AI JID : ${aaijid}\nMOVIE SEND JID : ${mvsjid}\nBLOCK JID : ${bjid}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`;
+let up = `*_Infinity whatsapp bot connected successful ✅_*\n\n_Prefix :_ ${prefix}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`;
 
 conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true` }, caption: up })
 
