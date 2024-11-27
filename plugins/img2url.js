@@ -29,7 +29,7 @@ let msg = `*Url :* ${data.result.url}
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
 reply(`${msg}`)
-
+     }
 }catch(e){
 console.log(e)
 reply(`${e}`)
