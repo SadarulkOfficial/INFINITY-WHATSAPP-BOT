@@ -1,6 +1,7 @@
 const { SinhalaSub }  = require('@sl-code-lords/movie-api')
 const {readEnv} = require('../lib/database')
 const { cmd, commands } = require('../command')
+const { fetchJson } = require('../lib/functions')
 
 const apilink = 'https://www.dark-yasiya-api.site';
 
@@ -71,7 +72,7 @@ await conn.sendMessage(from, {document: { url: downloadUrl }, mimetype: "video/m
 
 let mvs = await SinhalaSub.get_list.by_search(q)
 
-let mv_info2 = await SinhalaSub.movie(mv.results[0].link)
+let mv_info2 = await SinhalaSub.movie(mvs.results[0].link)
 
 let msg2 = `*_INFINITY WA BOT MOVIE DOWNLOADER 📥_*
 
