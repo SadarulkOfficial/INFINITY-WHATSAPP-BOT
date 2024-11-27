@@ -15,7 +15,11 @@ async (conn, mek, m, { from, body, isOwner }) => {
             const config = await readEnv();
             if (config.AUTO_VOICE === 'true') {
                 //if (isOwner) return;        
-                await conn.sendPresenceUpdate('recording', from);
+                await conn.sendPresenceUpdate('recording', from)
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+await delay(2000)
+              
                 await conn.sendMessage(from, { audio: { url: data[text] }, mimetype: 'audio/mpeg', ptt: true }, { quoted: mek });
             }
         }
@@ -53,7 +57,11 @@ async (conn, mek, m, { from, body, isOwner }) => {
             const config = await readEnv();
             if (config.AUTO_REPLY === 'true') {
                 //if (isOwner) return;
-                await conn.sendPresenceUpdate('typing', from);        
+                await conn.sendPresenceUpdate('composing', from)
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+await delay(2000)
+              
                 await m.reply(data[text])
             
             }
