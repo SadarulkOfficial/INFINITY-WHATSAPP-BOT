@@ -24,7 +24,16 @@ if(!q) return reply ("*_Please give me a title or url._*")
 
 if(q.startsWith("https://")) {
 
-const data = await ytmp3(q)
+    if(q.includes("?si=")){
+
+let a = q.split("?")[0]
+        
+    } else {
+
+        let a = q
+    }
+
+const data = await ytmp3(a)
 
 let desc = `
 *_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
