@@ -41,7 +41,7 @@ let desc = `
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: data.image},caption:desc},{quoted:mek});
+await conn.sendMessage(from,{image:{url: data.image},caption:desc},{quoted:mek})
 
 //send audio+document
     
@@ -73,7 +73,7 @@ let desc = `
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
+await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek})
     
 //download audio
 
@@ -130,7 +130,7 @@ let desc = `
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: data.result.image},caption:desc},{quoted:mek});
+await conn.sendMessage(from,{image:{url: data.result.image},caption:desc},{quoted:mek})
 
 
 //send video+document
@@ -162,7 +162,7 @@ let desc = `
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
+await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek})
 
 const yturl = data.url
 const quality = "360p";
