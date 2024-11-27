@@ -26,27 +26,28 @@ if(!q) return reply ("*_Please give me a title or url._*")
 
 if(q.startsWith("https://")) {
 
-const data = ytmp3(q)
+const data = await ytmp3(q)
 
 let desc = `
 *_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
 
 ┌───────────────────
-├ ℹ️ *Title:* ${data.title}
-├ 👁️‍🗨️ *Views:* ${data.views}
-├ 🕘 *Duration:* ${data.timestamp}
-├ 📌 *Upload on:* ${data.ago}
-├ 🖇️ *Link:* ${data.url}
+├ ℹ️ *Title:* ${data.result.title}
+├ 👤 *Author:* ${data.result.author.name}
+├ 👁️‍🗨️ *Views:* ${data.result.views}
+├ 🕘 *Duration:* ${data.result.timestamp}
+├ 📌 *Upload on:* ${data.result.ago}
+├ 🖇️ *Link:* ${data.result.url}
 └───────────────────
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: data.image},caption:desc},{quoted:mek})
+await conn.sendMessage(from, { image : { url : data.result.image } , caption : ${desc} } , { quoted : mek })
 
 //send audio+document
     
 await conn.sendMessage(from,{audio: {url: data.download.url },mimetype:"audio/mpeg"},{quoted:mek})
-await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio/mpeg",fileName:data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
+await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
     
 
 } else {
