@@ -17,9 +17,7 @@ if(!isOwner) return reply("*_This is an owner cmd._*")
 
 const isQuotedViewOnce = m.quoted ? (m.quoted.type === 'viewOnceMessage') : false
 
-if(!isQuotedViewOnce) return reply("*_Please reply a viewonce image._*")
-
-if((m.type === 'viewOnceMessage') || isQuotedViewOnce) {
+if(m.quoted.type === 'viewOnceMessage') {
 
 var nameJpg = `infinitywabot`
       isQuotedViewOnce ? await m.quoted.download(nameJpg) : await m.download(nameJpg)
