@@ -20,7 +20,7 @@ download: '',
 ai: '',
 owner: '',
 other: '',
-group: ''
+convert: ''
 };
 
  for (let i = 0; i < commands.length; i++) {
@@ -31,7 +31,7 @@ menu[commands[i].category] += `│► ${config.PREFIX}${commands[i].pattern}\n`;
 
 let madeMenu = `*👋 HELLO _${pushname}_*
 
-「 ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴍᴇɴᴜ 」
+「 ɪɴꜰɪɴɪᴛʏ ᴡᴀ ʙᴏᴛ ᴍᴇɴᴜ 」
 
 ╭──────────●
 │❯ MAIN COMMANDS ❮
