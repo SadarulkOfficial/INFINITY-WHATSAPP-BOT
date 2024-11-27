@@ -3,8 +3,6 @@ const { cmd, commands } = require('../command');
 const {readEnv} = require('../lib/database');
 
 const apilink = 'https://www.dark-yasiya-api.site';
-const config = await readEnv();
-const id = config.MV_SEND_JID
 
 cmd({
     pattern: "moviesend",
@@ -14,6 +12,9 @@ cmd({
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
 
+const config = await readEnv();
+const id = config.MV_SEND_JID
+        
       if(config.BLOCK_JID.includes(from)) return
         
         if (!isOwner) {
