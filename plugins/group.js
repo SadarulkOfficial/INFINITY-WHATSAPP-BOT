@@ -96,12 +96,10 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         if(!isGroup) return
         if(!isBotAdmins) return reply("*_Please give bot admin._*")
           
-        await conn.groupSettingUpdate(from, 'announcement') {
+        await conn.groupSettingUpdate(from, 'announcement')
 
 reply("*Group chat muted 🔒*")
 
-}
-  
 }catch(e){
 console.log(e)
 reply(`${e}`)
@@ -122,12 +120,10 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         if(!isGroup) return
         if(!isBotAdmins) return reply("*_Please give bot admin._*")
           
-        await conn.groupSettingUpdate(from, 'not_announcement') {
+        await conn.groupSettingUpdate(from, 'not_announcement')
 
 reply("*Group chat unmuted 🔓*")
 
-}
-  
 }catch(e){
 console.log(e)
 reply(`${e}`)
