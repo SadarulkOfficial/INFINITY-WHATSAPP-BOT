@@ -139,7 +139,7 @@ const yt = await ytsearch(q)
     if(yt.results.length < 1) return reply("*_Can't find anything._*")
     
 const yts = yt.results[0]
-const ytdl = await ytmp4(yts.url)
+const ytdl = await ytmp4(yts.url, 360p)
 
 let desc = `
 *_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
