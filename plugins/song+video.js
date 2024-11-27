@@ -42,7 +42,7 @@ let desc = `
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from, { image : { url : data.result.image } , caption : ${desc} } , { quoted : mek })
+await conn.sendMessage(from, { image : { url : data.result.image } , caption : desc } , { quoted : mek })
 
 //send audio+document
     
