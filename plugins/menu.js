@@ -54,9 +54,9 @@ ${menu.search}╰───────────●
 │   ───────
 ${menu.download}╰───────────●
 ╭───────────●
-│❯ GROUP COMMANDS ❮
+│❯ CONVERT COMMANDS ❮
 │   ───────
-${menu.group}╰───────────●
+${menu.convert}╰───────────●
 ╭───────────●
 │❯ OTHER COMMANDS ❮
 │   ───────
