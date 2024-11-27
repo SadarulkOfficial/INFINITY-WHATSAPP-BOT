@@ -1,0 +1,26 @@
+{
+  "name": "Infinity WhatsApp Bot",
+  "description": "A simple whatsapp bot created by Sadaru",
+  "logo": "https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true",
+  "keywords": ["bot"],
+  "success_url": "/",
+
+  "env": {
+    "SESSION_ID": {
+      "description": "Put the session-id here.",
+      "required": true
+    },
+    
+    "MONGODB": {
+      "description": "Put your mongodb url here.",
+      "required": true
+    }   
+},
+
+     "buildpacks": [
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+        }
+     ],
+  "stack": "heroku-24"
+}
