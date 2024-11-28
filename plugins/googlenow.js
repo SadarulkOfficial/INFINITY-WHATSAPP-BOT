@@ -19,7 +19,9 @@ let cap = `\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀ
 
 if(!q) return reply ("*_Please give me a text._*")
 
-    googleSearch(q).then((res) => {console.log(res)})
+   googleTranslate(q,'si').then((res) => {
+console.log(res)
+})
     
 }catch(e){
 console.log(e)
