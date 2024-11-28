@@ -31,7 +31,7 @@ let aliveImg = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/inf
 
 let alive = await conn.sendMessage(from,{image: {url: aliveImg },caption: aliveMsg },{quoted: mek})
 
-    if(quoted.alive === '1') {
+    if(reply.alive === '1') {
 
         reply("This is test.")
         
