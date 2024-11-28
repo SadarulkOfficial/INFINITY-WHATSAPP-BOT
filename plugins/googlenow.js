@@ -1,6 +1,6 @@
 const {cmd , commands} = require('../command')
 const {readEnv} = require('../lib/database')
-const { googleSearch , googleImage , googleTranslate } = require('nima-google-now')
+const google = require('google')
 
 cmd({
     pattern: "google",
@@ -19,8 +19,22 @@ let cap = `\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀ
 
 if(!q) return reply ("*_Please give me a text._*")
 
-   googleTranslate(q,'si').then((res) => {
-console.log(res)
+   google.resultsPerPage = 25
+var nextCounter = 0
+ 
+google(q, function (err, res){
+  if (err) console.error(err)
+ 
+  for (var i = 0; i < res.links.length; ++i) {
+    var link = res.links[i];
+    console.log(link.title + ' - ' + link.href)
+    console.log(link.description + "\n")
+  }
+ 
+  if (nextCounter < 4) {
+    nextCounter += 1
+    if (res.next) res.next()
+  }
 })
     
 }catch(e){
