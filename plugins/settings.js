@@ -24,6 +24,7 @@ const av = config.AUTO_VOICE
 const ar = config.AUTO_REPLY
 const mvsjid = config.MV_SEND_JID
 const bjid = config.BLOCK_JID
+const xvjid = config.XVDL_JID
 
 let msg = `*_Infinity whatsapp bot settings ⚙️_*
 
@@ -46,6 +47,8 @@ let msg = `*_Infinity whatsapp bot settings ⚙️_*
 9. *MOVIE SEND JID :* ${mvsjid}
 
 10. *BLOCK JID :* ${bjid}
+
+11. *XVDL JID :* ${xvjid}
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
