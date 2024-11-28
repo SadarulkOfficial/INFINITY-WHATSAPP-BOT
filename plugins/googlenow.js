@@ -21,16 +21,6 @@ if(!q) return reply ("*_Please give me a text._*")
 
     googleSearch(q).then((res) => {
 console.log(res)
-
-const array = search.result;
-        
- if (!array || array.length === 0) {
-            return reply("*_Can't find anything._*");
-        }
-
-const result = array.map((movie, index) => `${index + 1}. *Title :* ${array[index].title}\n*Description :* ${array[index].description}\n*Link :* ${array[index].url}`).join("\n\n");
-            
-await conn.sendMessage(from, { text: `${dt} ${result} ${cap}` }, {quoted: mek})
     
 }catch(e){
 console.log(e)
