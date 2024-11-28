@@ -17,12 +17,10 @@ if(config.BLOCK_JID.includes(from)) return
 let dt = `*_INFINITY WA BOT GOOGLE SEARCH 🔎_*\n\n`
 let cap = `\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-if(!q) return reply ("*_Please give me a text._*")
-
    google.resultsPerPage = 25
 var nextCounter = 0
  
-google(q, function (err, res){
+google('node.js best practices', function (err, res){
   if (err) console.error(err)
  
   for (var i = 0; i < res.links.length; ++i) {
