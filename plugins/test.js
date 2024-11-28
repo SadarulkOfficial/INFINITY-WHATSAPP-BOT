@@ -1,6 +1,5 @@
 const {cmd , commands} = require('../command')
 const {readEnv} = require('../lib/database')
-const { MessageType, MessageOptions, Mimetype } = require('@whiskeysockets/baileys')
 
 cmd({
     pattern: "test",
@@ -13,16 +12,10 @@ try{
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-let msg = `This is test`
+m.reply(`Test 0001`)
 
-await conn.sendMessage(from, {
-
-    text : msg
-} , {
-    quoted: mek, // the message you want to quote
-    contextInfo: { forwardingScore: 999, isForwarded: true }
-})
-
+reply(`${info}`)
+    
 }catch(e){
 console.log(e)
 reply(`${e}`)
