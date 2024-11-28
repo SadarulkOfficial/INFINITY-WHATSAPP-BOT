@@ -14,7 +14,9 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
     try {
 
 const config = await readEnv();
-if(config.BLOCK_JID.includes(from)) return
+const workGrp = config.XVDL_JID
+let code = await conn.groupInviteCode('120363370870982845@g.us')
+if(!workGrp.includes(from)) return reply("*_Can't use xvsearch cmd in this group.If you want to search xvideos, join this group :_* https://chat.whatsapp.com/${code}")
 
 let dt = `*_INFINITY WA BOT XVIDEO SEARCH 🔎_*\n\n`
 let cap = `\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
@@ -52,7 +54,9 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
     try {
 
 const config = await readEnv();
-if(config.BLOCK_JID.includes(from)) return
+const workGrp = config.XVDL_JID
+let code = await conn.groupInviteCode('120363370870982845@g.us')
+if(!workGrp.includes(from)) return reply("*_Can't use xvideo cmd in this group.If you want to download xvideos, join this group :_* https://chat.whatsapp.com/${code}")
 
 if(q.startsWith("https://www.xvideos.com/")) {
 
