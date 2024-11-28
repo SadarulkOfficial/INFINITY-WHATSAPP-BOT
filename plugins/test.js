@@ -12,7 +12,7 @@ try{
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-m.reply(`Test 0001`)
+m.replyDoc()
     
 }catch(e){
 console.log(e)
