@@ -29,7 +29,13 @@ let aliveMsg = `*_Hello ${pushname} 👋_*
 
 let aliveImg = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true`
 
-return await conn.sendMessage(from,{image: {url: aliveImg },caption: aliveMsg },{quoted: mek})
+let alive = await conn.sendMessage(from,{image: {url: aliveImg },caption: aliveMsg },{quoted: mek})
+
+    if(quoted.alive === '1') {
+
+        reply("This is test.")
+        
+    }
     
 }catch(e){
 console.log(e)
