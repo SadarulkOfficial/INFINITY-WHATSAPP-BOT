@@ -21,12 +21,8 @@ if(!q) return reply ("*_Please give me a text._*")
 
     googleSearch(q).then((res) => {
 console.log(res)
-    
-}catch(e){
-console.log(e)
-reply(`${e}`)
-}
+}) .catch((err) => {
+console.log(err)
 })
-
 
 
