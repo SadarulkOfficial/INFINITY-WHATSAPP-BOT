@@ -13,8 +13,6 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
 m.reply(`Test 0001`)
-
-reply(`${info}`)
     
 }catch(e){
 console.log(e)
