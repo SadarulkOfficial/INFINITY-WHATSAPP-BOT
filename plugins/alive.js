@@ -33,7 +33,7 @@ let alive = await conn.sendMessage(from,{image: {url: aliveImg },caption: aliveM
 
     if(alive.quoted === '1') {
 
-        reply("This is test.")
+        await conn.sendMessage(from,{ text : `this is test` }
         
     }
     
