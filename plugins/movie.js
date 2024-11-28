@@ -63,8 +63,8 @@ if (filteredLinks.length === 0) {
 
 const caption = `${mv.result.data.title} ( SD 480p )\n\n> ɪɴꜰɪɴɪᴛʏ ᴡᴀ ʙᴏᴛ`
 
-await conn.sendMessage(from,{image:{url: mv_info.result.images[0]},caption:msg},{quoted:mek})
-await conn.sendMessage(from, {document: { url: downloadUrl }, mimetype: "video/mp4", fileName: mv.result.data.title + ".mp4", caption: caption}, { quoted: mek })
+let movieinfo = await conn.sendMessage(from,{image:{url: mv_info.result.images[0]},caption:msg},{quoted:mek})
+await conn.sendMessage(from, {document: { url: downloadUrl }, mimetype: "video/mp4", fileName: mv.result.data.title + ".mp4", caption: caption}, { quoted: movieinfo })
 
 //====================================
 
@@ -112,8 +112,8 @@ if (filteredLinks2.length === 0) {
 
 const caption2 = `${mvsd.result.data.title} ( SD 480p )\n\n> ɪɴꜰɪɴɪᴛʏ ᴡᴀ ʙᴏᴛ`
 
-await conn.sendMessage(from,{image:{url: mv_info2.result.images[0]},caption:msg2},{quoted:mek})
-await conn.sendMessage(from, {document: { url: downloadUrl2 }, mimetype: "video/mp4", fileName: mvsd.result.data.title + ".mp4", caption: caption2}, { quoted: mek })
+let movieinfo2 = await conn.sendMessage(from,{image:{url: mv_info2.result.images[0]},caption:msg2},{quoted:mek})
+await conn.sendMessage(from, {document: { url: downloadUrl2 }, mimetype: "video/mp4", fileName: mvsd.result.data.title + ".mp4", caption: caption2}, { quoted: movieinfo2 })
 
 //====================================
 
