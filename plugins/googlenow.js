@@ -18,7 +18,9 @@ let dt = `*_INFINITY WA BOT GOOGLE SEARCH 🔎_*\n\n`
 let cap = `\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
 if(!q) return reply ("*_Please give me a text._*")
-const search = await googleSearch(q)
+
+    googleSearch(q).then((res) => {
+console.log(res)
 
 const array = search.result;
         
