@@ -49,9 +49,10 @@ await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio
         
 } else if(q.startsWith("https://") && q.includes("?si=")) {
 
-let a = q.split("?")[0]
+let a = q.split("?si=")
+let b = a[0]
 
-const data = await ytmp3(a)
+const data = await ytmp3(b)
 
 let desc = `
 *_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
