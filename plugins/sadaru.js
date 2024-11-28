@@ -19,9 +19,10 @@ const msg = `*Sadaru is my developer and owner.He is a smart boy.Below is a desc
 *Name :* Sadaru
 *Age :* 17+ 🎉
 *Lives in :* Kurunegala 🌍
+*Contact :* +94701814946 ☎️
 
 *Skills:*
-- JavaScript Developer(beginner) 💻
+- JavaScript Developer (Beginner) 💻
 - Problem Solver 🧩
 - Creative Thinker 💡
 
