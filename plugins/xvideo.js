@@ -1,7 +1,6 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
 const { fetchJson } = require('../lib/functions')
-const {readEnv} = require('../lib/database')
 
 const apilink = 'https://www.dark-yasiya-api.site'
 
