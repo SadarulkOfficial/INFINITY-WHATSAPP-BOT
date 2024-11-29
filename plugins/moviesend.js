@@ -177,7 +177,6 @@ if(!isOwner) return reply("*_This is an owner cmd._*")
 
 await conn.sendMessage(from ,{document: {url: q },mimetype:"video/mp4",fileName: "🎬 INFINITY WA BOT 🎬" + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"})
   
-}
 }catch(e){
 console.log(e)
 reply(`${e}`)
