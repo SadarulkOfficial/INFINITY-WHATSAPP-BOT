@@ -17,13 +17,8 @@ if(config.BLOCK_JID.includes(from)) return
 let api = new Esana()
 let latest = await api.latest_id()
 let id = latest.results.news_id
-await api.news(id)
 
-let callback = async (full_news) => {
-  console.log(full_news)
-}
-let ms = 30*1000
-await api.news_loop(callback,ms)
+console.log(id)
     
 }catch(e){
 console.log(e)
