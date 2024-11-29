@@ -1,9 +1,10 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
-const NetworkSpeed = require('network-speed')
+const LanguageDetect = require('languagedetect');
+const lngDetector = new LanguageDetect();
 
 cmd({
-    pattern: "netspeed",
+    pattern: "test",
     desc: "Check network speed",
     category: "other",
     filename: __filename
@@ -14,14 +15,7 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-const testNetworkSpeed = new NetworkSpeed()
-
-async function getNetworkDownloadSpeed() {
-  const baseUrl = 'https://eu.httpbin.org/stream-bytes/500000';
-  const fileSizeInBytes = 500000;
-  const speed = await testNetworkSpeed.checkDownloadSpeed(baseUrl, fileSizeInBytes);
-  console.log(speed);
-}
+console.log(lngDetector.detect('පෙම් සිහිනේ', 5));
        
 }catch(e){
 console.log(e)
