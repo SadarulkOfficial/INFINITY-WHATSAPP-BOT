@@ -3,9 +3,9 @@ const {cmd , commands} = require('../command')
 const google = require('googlethis')
 
 cmd({
-    pattern: "google",
-    desc: "search in google",
-    category: "search",
+    pattern: "img",
+    desc: "Get images in google",
+    category: "download",
     filename: __filename
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
@@ -14,8 +14,12 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-const images = await google.image('The Wolf Among Us', { safe: false });
-console.log(images)
+if(!q) return reply("*_Please give me a text._*")
+
+const images = await google.image(q, { safe: false })
+let cap = `> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+await conn.sendMessage(from,{image:{url: images[0].url},caption: cap },{quoted:mek})
         
 }catch(e){
 console.log(e)
