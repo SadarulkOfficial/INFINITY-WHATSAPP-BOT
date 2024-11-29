@@ -19,8 +19,12 @@ if(!q) return reply("*_Please give me a text._*")
 const images = await google.image(q, { safe: false })
 let cap = `> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: images[0].url},caption: cap },{quoted:mek})
-        
+ await conn.sendMessage(from,{image:{url: images[0].url},caption: cap },{quoted:mek})
+ await conn.sendMessage(from,{image:{url: images[1].url},caption: cap },{quoted:mek})
+ await conn.sendMessage(from,{image:{url: images[2].url},caption: cap },{quoted:mek})
+ await conn.sendMessage(from,{image:{url: images[3].url},caption: cap },{quoted:mek})
+ await conn.sendMessage(from,{image:{url: images[4].url},caption: cap },{quoted:mek})
+       
 }catch(e){
 console.log(e)
 reply(`${e}`)
