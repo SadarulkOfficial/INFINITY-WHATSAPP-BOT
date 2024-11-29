@@ -11,7 +11,7 @@ try{
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-const bioUrl = `https://media.tenor.com/rePDfDWO3XoAAAAd/hacking.gif`
+const bioUrl = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/sadarubiovideo.mp4?raw=true`
 
 const msg = `*Sadaru is my developer and owner.He is a smart boy.Below is a description of him.*
 
@@ -40,8 +40,7 @@ await conn.sendMessage(
     from, 
     { 
         video: {url: bioUrl}, 
-        caption: msg,
-        gifPlayback: true
+        caption: msg
     },{quoted: mek}
 )
 
@@ -51,8 +50,7 @@ await conn.sendMessage(
     from, 
     { 
         video: {url: bioUrl}, 
-        caption: msg,
-        gifPlayback: true
+        caption: msg
     },{quoted: mek}
 )
 }
