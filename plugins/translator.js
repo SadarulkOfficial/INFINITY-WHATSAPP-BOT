@@ -19,15 +19,16 @@ let b = a[0]
 let c = a[1]
 let d = a[2]
 
-if(!m.quoted && q) {
+if(!m.quoted && b && c && d) {
         
 translatte(d, {from: b ,to: c}).then(res => {
     reply(res.text);
 })
 
-} else if(m.quoted && b && c) {
+} else if(m.quoted && b && c && !d) {
 
-translatte(m.quoted, {from: b ,to: c}).then(res => {
+    let text = m.quoted.msg
+translatte(text, {from: b ,to: c}).then(res => {
     reply(res.text);
 })
     
