@@ -33,6 +33,7 @@
     "link-preview-js": "3.0.12",
     "getscreenshot.js": "4.0.0",
     "google-tts-api": "2.0.2",
-    "googlethis": "1.8.0"
+    "googlethis": "1.8.0",
+    "network-speed": "2.1.1"
   }
 }
