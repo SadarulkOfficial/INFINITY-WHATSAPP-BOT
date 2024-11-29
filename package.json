@@ -27,9 +27,11 @@
     "api-dylux": "1.8.5",
     "mongoose": "8.6.2",
     "@sl-code-lords/movie-api": "1.0.0",
-    "@dark-yasiya/yt-dl.js": "1.0.3",
+    "@sl-code-lords/text-pro-me": "1.0.0",
+    "@sl-code-lords/esana-news": "1.1.0",
+    "@dark-yasiya/yt-dl.js": "1.0.4",
     "@dark-yasiya/imgbb.js": "0.0.1",
     "link-preview-js": "3.0.12",
-    "google": "2.1.0"
+    "getscreenshot.js": "4.0.0"
   }
 }
