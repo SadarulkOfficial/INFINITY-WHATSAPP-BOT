@@ -14,13 +14,17 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-let a = q.split(" & ")
+if(!q) return reply('*_Please give me a text._*')
+
+let a = q.split("&")
 let b = a[0]
 let c = a[1]
+let d = a[2]
         
-let data = translatte(c, {to: b})
-
-reply(`${data.text}`)
+translatte(d, {from: b ,to: c}).then(res => {
+    console.log(res.text);
+    reply(res.text);
+})
         
 }catch(e){
 console.log(e)
