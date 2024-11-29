@@ -14,7 +14,7 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-let a = q.split(" ")
+let a = q.split(" # ")
 let b = a[0]
 let c = a[1]
 let d = a[2]
@@ -34,7 +34,7 @@ translatte(text, {from: b ,to: c}).then(res => {
     
 } else {
 
-reply('*_Please give me a text._*\n\n*Ex:-* .tr <current language> <translate language> <text>') 
+reply('*_Please give me a text._*\n\n*Ex:-* .tr <current language> # <translate language> # <text>') 
     
 }
 }catch(e){
