@@ -22,7 +22,7 @@ const url = googleTTS.getAudioUrl(q, {
   host: 'https://translate.google.com',
 });
 
-await conn.sendMessage(from,{audio:{url: url}},{quoted:mek})
+await conn.sendMessage(from, { audio: { url: url }, mimetype: 'audio/mp3' },{quoted:mek})
         
 }catch(e){
 console.log(e)
