@@ -39,7 +39,7 @@ let msg = `*_INFINITY WA BOT APK DOWNLOADER_* 📥
 
 let send = await conn.sendMessage(from,{image:{url: data.result.image},caption:msg},{quoted:mek})
         
-await conn.sendMessage(from,{document: {url: appdlink },mimetype:"application/vnd.android.package-archive",fileName: data.result.name + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: send})
+await conn.sendMessage(from,{document: {url: appdlink },mimetype:"application/vnd.android.package-archive",fileName: data.result.name + ".apk",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: send})
 
 }catch(e){
 console.log(e)
