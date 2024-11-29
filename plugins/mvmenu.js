@@ -27,6 +27,7 @@ let msg = `*👋 HELLO _${pushname}_*
 │► .mvsend
 │► .infosend
 │► .dirsend
+│► .dirdl
 ╰───────────●
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
