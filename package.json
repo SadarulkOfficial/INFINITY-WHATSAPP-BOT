@@ -33,6 +33,7 @@
     "getscreenshot.js": "4.0.0",
     "google-tts-api": "2.0.2",
     "googlethis": "1.8.0",
-    "translatte": "3.0.1"
+    "translatte": "3.0.1",
+    "figlet": "1.8.0"
   }
 }
