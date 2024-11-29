@@ -1,6 +1,5 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
-const { MessageType, MessageOptions, Mimetype } = require('@whiskeysockets/baileys')
 
 cmd({
     on: "body"
@@ -13,7 +12,7 @@ if(config.BLOCK_JID.includes(from)) return
 
 const bioUrl = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/sadarubiovideo.mp4?raw=true`
 
-const msg = `*Sadaru is my developer and owner.He is a smart boy.Below is a description of him.*
+const msg = `*Sadaru is developer and owner of INFINITY WhatsApp Bot.He is a smart boy.Below is a description of him.*
 
 *🌟 A short about of Sadaru ⤵*
 
@@ -40,7 +39,8 @@ await conn.sendMessage(
     from, 
     { 
         video: {url: bioUrl}, 
-        caption: msg
+        caption: msg,
+        gifPlayback: true
     },{quoted: mek}
 )
 
@@ -50,7 +50,8 @@ await conn.sendMessage(
     from, 
     { 
         video: {url: bioUrl}, 
-        caption: msg
+        caption: msg,
+        gifPlayback: true
     },{quoted: mek}
 )
 }
