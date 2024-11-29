@@ -24,7 +24,7 @@ const options = {
   }
 }
   
-const response = await google.search('Whatsapp', options);
+const response = await google.search('Transport translate to sinhala', options);
 console.log(response)
         
 }catch(e){
