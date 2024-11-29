@@ -1,12 +1,11 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
-const LanguageDetect = require('languagedetect');
-const lngDetector = new LanguageDetect();
+const translatte = require('translatte')
 
 cmd({
-    pattern: "test",
-    desc: "Check network speed",
-    category: "other",
+    pattern: "tr",
+    desc: "Translator",
+    category: "convert",
     filename: __filename
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
@@ -15,8 +14,12 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-console.log(lngDetector.detect('පෙම් සිහිනේ', 5));
-       
+translatte('Do you speak Russian?', {from: 'en' ,to: 'si'}).then(res => {
+    console.log(res.text);
+}).catch(err => {
+    console.error(err);
+});
+
 }catch(e){
 console.log(e)
 reply(`${e}`)
