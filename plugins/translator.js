@@ -14,12 +14,14 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-translatte('Do you speak Russian?', {from: 'en' ,to: 'si'}).then(res => {
-    console.log(res.text);
-}).catch(err => {
-    console.error(err);
-});
+let a = q.split(" ")
+let b = a[0]
+let c = a[1]
+        
+let data = translatte(c, {to: b})
 
+reply(`${data.text}`)
+        
 }catch(e){
 console.log(e)
 reply(`${e}`)
