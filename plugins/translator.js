@@ -12,7 +12,6 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
     try {
 
 const config = await readEnv();
-if(config.BLOCK_JID.includes(from)) return
 
 let a = q.split(" # ")
 let b = a[0]
