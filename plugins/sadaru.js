@@ -1,5 +1,6 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
+const { MessageType, MessageOptions, Mimetype } = require('@whiskeysockets/baileys')
 
 cmd({
     on: "body"
@@ -35,12 +36,25 @@ const msg = `*Sadaru is my developer and owner.He is a smart boy.Below is a desc
   
 if(body === 'Sadaru') {
 
-await conn.sendMessage(from,{video: {url: bioUrl},caption: msg},{quoted: mek})
+await conn.sendMessage(
+    from, 
+    { 
+        video: {url: bioUrl}, 
+        caption: msg,
+        gifPlayback: true
+    },{quoted: mek}
+)
 
 } else if(body === 'sadaru') {
 
-await conn.sendMessage(from,{video: {url: bioUrl},caption: msg},{quoted: mek})
-
+await conn.sendMessage(
+    from, 
+    { 
+        video: {url: bioUrl}, 
+        caption: msg,
+        gifPlayback: true
+    },{quoted: mek}
+)
 }
     
 }catch(e){
