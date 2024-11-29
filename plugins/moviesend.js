@@ -160,3 +160,26 @@ console.log(e)
 reply(`${e}`)
 }
 })
+
+cmd({
+    pattern: "dirdl",
+    desc: "download direct url",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+if(!isOwner) return reply("*_This is an owner cmd._*")
+    
+  if(!q) return reply(`*_Please give me a direct link._*`)
+
+await conn.sendMessage(from ,{document: {url: q },mimetype:"video/mp4",fileName: "🎬 INFINITY WA BOT 🎬" + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"})
+  
+}
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
