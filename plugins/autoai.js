@@ -15,6 +15,8 @@ if(isCmd) return
 if(senderNumber === botNumber) return      
 if(!workGrp.includes(from)) return
 if(body.startsWith("/")) return
+if(body === 'sadaru') return
+if(body === 'Sadaru') return
 
 if(config.AUTO_AI === 'true') {
     
