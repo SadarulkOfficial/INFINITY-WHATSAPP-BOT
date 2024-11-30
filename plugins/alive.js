@@ -29,13 +29,25 @@ let aliveMsg = `*_Hello ${pushname} 👋_*
 
 let aliveImg = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true`
 
-let alive = await conn.sendMessage(from,{image: {url: aliveImg },caption: aliveMsg },{quoted: mek})
-
-    if(alive.quoted === '1') {
-
-        await conn.sendMessage(from,{ text : `this is test` })
-        
-    }
+const msg = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const test1 = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: msg
+          };
+          const test2 = {
+            image: aliveImg,
+            caption: aliveMsg,
+            contextInfo: test1
+          };
+         await conn.sendMessage(from, test2, {
+            'quoted': mek
+          })
     
 }catch(e){
 console.log(e)
