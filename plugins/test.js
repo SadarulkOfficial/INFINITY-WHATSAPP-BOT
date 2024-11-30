@@ -14,8 +14,42 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
 
-q
-  
+let test5 = `Test footer`;
+    
+const test = [{
+      'title': '',
+      'rows': [{
+        'title': '1',
+        'rowId': "." + "song " + "https://youtube.com/watch?v=FCbdpvexz4Q",
+        'description': "Audio file"
+      }, {
+        'title': '2',
+        'rowId': "." + "video " + "https://youtube.com/watch?v=FCbdpvexz4Q",
+        'description': "Video file"
+      }]
+    }];
+
+let test3 = "Hello there, This is test.";
+
+const test4 = {
+      url: "https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true"
+    };
+    
+const test1 = {
+      caption: test3,
+      image: test4,
+      footer: test5,
+      title: '',
+      buttonText: "*🔢 Reply below number*",
+      sections: test
+    };
+
+    const test2 = {
+      quoted: mek
+    };
+
+await conn.sendMessage(from, test1, test2);
+    
 }catch(e){
 console.log(e)
 reply(`${e}`)
