@@ -146,7 +146,7 @@ let a = q.split(" & ")
 let b = a[0]
 let c = a[1]
 
-const mvInfo = await fetchJson(`${apilink}download/cinesubz-dl?q=${movieUrl}`)
+const mvInfo = await fetchJson(`${apilink}download/cinesubz-dl?q=${b}`)
 
 if(b && !c && b.startsWith('https://cinesubz.co/')) {
 
