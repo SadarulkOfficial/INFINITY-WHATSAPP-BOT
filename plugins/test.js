@@ -35,20 +35,16 @@ const test4 = {
       url: "https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true"
     };
     
-const test1 = {
+await conn.sendMessage(from, {
       caption: test3,
       image: test4,
       footer: test5,
       title: '',
       buttonText: "*🔢 Reply below number*",
       sections: test
-    };
-
-    const test2 = {
+    }, {
       quoted: mek
-    };
-
-await conn.sendMessage(from, test1, test2);
+    });
     
 }catch(e){
 console.log(e)
