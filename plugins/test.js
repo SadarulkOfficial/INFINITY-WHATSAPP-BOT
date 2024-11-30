@@ -14,16 +14,10 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
 
-let test = await conn.sendMessage(from, {text : 'Hello World !' },{quoted : mek})
-
-if(test.quoted.body === '1') {
-
-reply(`This is test`)
-  
-}
+q
   
 }catch(e){
-l(e)
+console.log(e)
 reply(`${e}`)
 }
 })
