@@ -41,8 +41,7 @@ const msg = {
             forwardedNewsletterMessageInfo: msg
           };
           const test2 = {
-            image: aliveImg,
-            caption: aliveMsg,
+            text: aliveMsg,
             contextInfo: test1
           };
          await conn.sendMessage(from, test2, {
