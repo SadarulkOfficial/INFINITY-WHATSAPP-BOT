@@ -3,7 +3,6 @@ const {readEnv} = require('../lib/database')
 const { cmd, commands } = require('../command')
 
 const apilink = 'https://rest-api-dark-shan.vercel.app/'
-const id = config.MV_SEND_JID
 
 cmd({
     pattern: "mvsend2",
@@ -13,8 +12,10 @@ cmd({
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
 
-const config = await readEnv();
+const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
+
+        const id = config.MV_SEND_JID
 
         if (!isOwner) {
             return reply(
