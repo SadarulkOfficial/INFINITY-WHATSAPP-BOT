@@ -16,7 +16,7 @@ if(!isOwner) return reply("*_This is an owner cmd._*")
 if(!m.quoted) return reply("*_Please reply a text msg._*")
 if(!q) return reply("*_Please give me a jid to send this text._*")
 
-await conn.sendMessage(q, { text : m.quoted })
+await conn.sendMessage(q, { text : m.quoted.msg })
     
 }catch(e){
 console.log(e)
