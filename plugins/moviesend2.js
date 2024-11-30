@@ -47,9 +47,13 @@ if(config.BLOCK_JID.includes(from)) return
             (link) => link.quality.includes(qualityInput)
         )
 
+if (filteredLinks.length === 0) {
+            return reply(`*Can't download your movie in this quality.*`)
+        }
 
-       console.log(filteredLinks)
+        const downloadUrl = filteredLinks.downloadDetails.DIRECT_LINK
 
+        console.log(downloadUrl)
         
 }catch(e){
 console.log(e)
