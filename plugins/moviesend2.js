@@ -47,41 +47,7 @@ if(config.BLOCK_JID.includes(from)) return
             (link) => link.quality.includes(qualityInput)
         )
 
-        if (filteredLinks.length === 0) {
-            return reply(`*Can't send your movie in this quality.*`)
-        }
 
-        const downloadUrl = filteredLinks.downloadDetails.DIRECT_LINK
+       console.log(filteredLinks)
 
-        const caption = `${mv.data.title} ( ${filteredLinks.quality} )\n\n> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
-
-if(!sendJid) {
-
-        await conn.sendMessage(
-            id,
-            {
-                document: { url: downloadUrl },
-                mimetype: "video/mp4",
-                fileName: mv.data.title + ".mp4",
-                caption: caption
-            }
-        )
-
-} else {
-
-await conn.sendMessage(
-            sendJid,
-            {
-                document: { url: downloadUrl },
-                mimetype: "video/mp4",
-                fileName: mv.data.title + ".mp4",
-                caption: caption
-            }
-                      )
-       }
-
-    } catch (e) {
-        console.error(e)
-        reply(`${e}`)
-    }
-})
+        
