@@ -57,28 +57,11 @@ if (filteredLinks.length === 0) {
 
 if(!sendJid) {
 
-        await conn.sendMessage(
-            id,
-            {
-                document: { url: downloadUrl },
-                mimetype: "video/mp4",
-                fileName: mv.data.title + ".mp4",
-                caption: caption
-            }
-        )
-
+await conn.sendMessage(id,{document: { url: downloadUrl },mimetype: "video/mp4",fileName: mv.data.title + ".mp4",caption: caption})
+    
 } else {
 
-await conn.sendMessage(
-            sendJid,
-            {
-                document: { url: downloadUrl },
-                mimetype: "video/mp4",
-                fileName: mv.data.title + ".mp4",
-                caption: caption
-            }
-                      )
-       }
+await conn.sendMessage(sendJid,{document: { url: downloadUrl },mimetype: "video/mp4",fileName: mv.data.title + ".mp4",caption: caption})
         
 }catch(e){
 console.log(e)
