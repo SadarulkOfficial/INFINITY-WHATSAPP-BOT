@@ -67,7 +67,26 @@ ${menu.other}╰───────────●
       let menuImg = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true`
 
 
-await conn.sendMessage(from,{image:{url: menuImg },caption:madeMenu},{quoted:mek})
+const msg = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const test1 = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: msg
+          };
+
+const test2 = {
+              image: {url: menuImg },
+              caption: madeMenu,
+              contextInfo: test1
+            };
+           await conn.sendMessage(from, test2, {
+              'quoted': mek
+            });
     
 }catch(e){
 console.log(e)
