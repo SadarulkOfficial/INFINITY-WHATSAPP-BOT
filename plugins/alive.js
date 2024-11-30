@@ -40,13 +40,15 @@ const msg = {
             isForwarded: true,
             forwardedNewsletterMessageInfo: msg
           };
-          const test2 = {
-            text: aliveMsg,
-            contextInfo: test1
-          };
-         await conn.sendMessage(from, test2, {
-            'quoted': mek
-          })
+
+const test2 = {
+              image: {url: aliveImg },
+              caption: aliveMsg,
+              contextInfo: test1
+            };
+           await conn.sendMessage(from, test2, {
+              'quoted': mek
+            });
     
 }catch(e){
 console.log(e)
