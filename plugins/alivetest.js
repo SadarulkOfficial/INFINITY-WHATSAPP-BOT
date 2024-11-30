@@ -88,7 +88,6 @@ if(!isOwner) return reply('*_This is an owner cmd._*')
       return await _0x2e4d84.buttonMessage2(_0xe3bd1d, _0x215078);
    
   } catch (e) {
-    reply(`${e}`)
-    console.log(e)
+  console.log(e)
   }
 })
