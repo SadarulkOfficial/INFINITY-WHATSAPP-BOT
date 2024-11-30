@@ -14,9 +14,9 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
 
-await conn.sendMessage(from, {text : 'Hello World !' },{quoted : mek})
+let test = await conn.sendMessage(from, {text : 'Hello World !' },{quoted : mek})
 
-if(mek.body === '1') {
+if(test.quoted.body === '1') {
 
 reply(`This is test`)
   
