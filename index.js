@@ -8,9 +8,6 @@ fetchLatestBaileysVersion,
 Browsers
 } = require('@whiskeysockets/baileys')
 
-
-
-
 const l = console.log
 const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson } = require('./lib/functions')
 const fs = require('fs')
@@ -21,8 +18,6 @@ const util = require('util')
 const { sms,downloadMediaMessage } = require('./lib/msg')
 const axios = require('axios')
 const { File } = require('megajs')
-
-
 
 const ownerNumber = ['94701814946']
 
@@ -63,6 +58,7 @@ var { version } = await fetchLatestBaileysVersion()
 const conn = makeWASocket({
         logger: P({ level: 'silent' }),
         printQRInTerminal: false,
+        generateHighQualityLinkPreview: true,
         browser: Browsers.macOS("Firefox"),
         syncFullHistory: true,
         auth: state,
