@@ -60,8 +60,6 @@ cmd({
         }
       }
     }
-
-if(!isOwner) return reply('*_This is an owner cmd._*')
     
       const _0x229759 = [{
         'buttonId': _0x40d520 + "menu",
