@@ -56,8 +56,8 @@ if (filteredLinks.length === 0) {
                const caption = `${mv.data.title} ( ${filteredLinks[0].quality} )\n\n> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
 if(!sendJid) {
-console.log(downloadUrl)
 
+await conn.sendMessage(id,{document: { url: downloadUrl },mimetype: "video/mp4",fileName: mv.data.title + ".mp4",caption: caption})
     
 } else {
 
