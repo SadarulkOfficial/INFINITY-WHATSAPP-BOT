@@ -15,8 +15,8 @@ if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
 
 const msg = {
-            newsletterJid: "120363314182963253@newsletter",
-            newsletterName: "乡𝔸𝕊𝕀𝕋ℍ𝔸 𝕞𝕕 ࿐",
+            newsletterJid: "120363355439809658@g.us",
+            newsletterName: "INFINITY WA BOT",
             serverMessageId: 999
           };
           const test1 = {
