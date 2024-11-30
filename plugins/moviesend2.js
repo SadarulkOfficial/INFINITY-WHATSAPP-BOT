@@ -51,3 +51,8 @@ if(config.BLOCK_JID.includes(from)) return
        console.log(filteredLinks)
 
         
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
