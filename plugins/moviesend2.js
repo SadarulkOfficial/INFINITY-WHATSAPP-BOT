@@ -51,7 +51,7 @@ if (filteredLinks.length === 0) {
             return reply(`*Can't download your movie in this quality.*`)
         }
 
-        const downloadUrl = filteredLinks.downloadDetails.DIRECT_LINK
+        const downloadUrl = filteredLinks.DIRECT_LINK
 
         console.log(downloadUrl)
         
