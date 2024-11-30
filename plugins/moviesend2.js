@@ -53,7 +53,32 @@ if (filteredLinks.length === 0) {
 
         const downloadUrl = filteredLinks[0].downloadDetails.DIRECT_LINK
 
-        console.log(downloadUrl)
+               const caption = `${mv.data.title} ( ${filteredLinks.quality} )\n\n> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
+
+if(!sendJid) {
+
+        await conn.sendMessage(
+            id,
+            {
+                document: { url: downloadUrl },
+                mimetype: "video/mp4",
+                fileName: mv.data.title + ".mp4",
+                caption: caption
+            }
+        )
+
+} else {
+
+await conn.sendMessage(
+            sendJid,
+            {
+                document: { url: downloadUrl },
+                mimetype: "video/mp4",
+                fileName: mv.data.title + ".mp4",
+                caption: caption
+            }
+                      )
+       }
         
 }catch(e){
 console.log(e)
