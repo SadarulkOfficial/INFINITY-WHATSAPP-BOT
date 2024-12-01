@@ -1,6 +1,5 @@
 const {cmd , commands} = require('../command')
 const {readEnv} = require('../lib/database')
-const { downloadMediaMessage, MessageType, MessageOptions, Mimetype, getMessage } = require('@whiskeysockets/baileys')
 
 cmd({
     pattern: "fd",
@@ -15,8 +14,13 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply('*_This is an owner cmd._*')
 
-const msg = await getMessage(from, m.quoted.id)
-await conn.sendMessage(q, { forward: msg })
+getMessage: async (key) => {
+                if (store) {
+                    const msg = await store.loadMessage(from, m.quoted.id)
+                    console.log(msg)
+                }
+}
+
 
 let inf = `Message forward to ${q}`
     
