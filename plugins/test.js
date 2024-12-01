@@ -43,7 +43,7 @@ const msg = {
 		    		title: 'INFINITY WHATSAPP BOT',
 				body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
 				mediaType: 1,
-				sourceUrl: "https://wa.me/94701814946" ,
+				sourceUrl: `https://chat.whatsapp.com/${code}` ,
                 		thumbnailUrl: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' ,
 				renderLargerThumbnail: true,
           			showAdAttribution: true
@@ -51,7 +51,7 @@ const msg = {
           };
 
 const msg3 = {
-	      image: { url : `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true` },
+	      image: ,
               caption: aliveMsg,
               contextInfo: msg2
             };
