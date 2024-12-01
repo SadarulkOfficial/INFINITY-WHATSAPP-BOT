@@ -20,17 +20,8 @@ if(m.quoted.viewOnceMessageV2 || m.quoted.viewOnceMessage || m.quoted.viewOnceMe
 
         const buffer = await downloadMediaMessage(m.quoted, 'buffer')
 
-const mContent = extractMessageContent(m.quoted)
-const contentType = getContentType(mContent)
-const media = (mContent[contentType])
-const mimetype = media['mimetype']
 
-console.log('mimetype'. mimetype)
-
-const extension = mime.extension(mimetype)
-
-console.log('extension', extension)
-console.log('buffer', buffer)
+console.log(buffer.data.id)
 
 }
     
