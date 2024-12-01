@@ -10,11 +10,30 @@ cmd({
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        if (!isOwner) return reply("*_This is an owner cmd._*")
+        
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+if(!isOwner) return reply("*_This is an owner cmd._*")
 
-        const config = await readEnv();
+const prefix = config.PREFIX
+const ars = config.AUTO_READ_STATUS
+const mode = config.MODE
+const aai = config.AUTO_AI
+const as = config.AUTO_STICKER
+const av = config.AUTO_VOICE
+const ar = config.AUTO_REPLY
 
-let settingMsg = `Infinity whatsapp bot settings ⚙
+let settingMsg = "*_Infinity whatsapp bot settings ⚙_*
+
+◤ *PREFIX :* ${prefix} ◢
+◤ *MODE :* ${mode} ◢
+◤ *AUTO READ STATUS :* ${ars} ◢
+◤ *AUTO REPLY :* ${ar} ◢
+◤ *AUTO VOICE :* ${av} ◢
+◤ *AUTO STICKER :* ${as} ◢
+◤ *AUTO AI :* ${aai} ◢
+
+`If you want to update your settings, Reply a below number.`
 
 *➤ BOT WORK TYPE*
 
@@ -60,8 +79,8 @@ let settingMsg = `Infinity whatsapp bot settings ⚙
 ├ 6.2 || _OFF_
 └───────────────────
 
-> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
-
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ"
+        
         const msg2 = await conn.sendMessage(from, {image: { url: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' },caption: settingMsg}, { quoted: mek })
 
         conn.ev.on('messages.upsert', async (msgUpdate) => {
