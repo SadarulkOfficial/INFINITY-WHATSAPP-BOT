@@ -22,6 +22,5 @@ if(m.quoted.viewOnceMessageV2 || m.quoted.viewOnceMessage || m.quoted.viewOnceMe
 
 console.log(buffer.id)
 
-}  
 }
 })
