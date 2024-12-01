@@ -16,10 +16,10 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply('*_This is an owner cmd._*')
   
-if(msg.message!.viewOnceMessageV2 || msg.message!.viewOnceMessage || msg.message!.viewOnceMessageV2Extension ) {
+if(m.quoted.viewOnceMessageV2 || m.quoted.viewOnceMessage || m.quoted.viewOnceMessageV2Extension ) {
 
         const buffer = await downloadMediaMessage(
-            m,
+            m.quoted,
             'buffer',
             { },
             { 
