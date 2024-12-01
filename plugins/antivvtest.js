@@ -23,8 +23,10 @@ if(m.quoted.viewOnceMessageV2 || m.quoted.viewOnceMessage || m.quoted.viewOnceMe
             'buffer',
             { },
             { 
-                logger
-               
+                logger,
+                // pass this so that baileys can request a reupload of media
+                // that has been deleted
+                reuploadRequest: conn.updateMediaMessage
             }
         )
 
