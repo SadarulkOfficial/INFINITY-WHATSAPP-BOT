@@ -15,17 +15,11 @@ try{
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply('*_This is an owner cmd._*')
-  
-if(m.quoted.viewOnceMessageV2 || m.quoted.viewOnceMessage || m.quoted.viewOnceMessageV2Extension ) {
 
-        const buffer = m.quoted.download
-        console.log(buffer)
-
-} else {
-
-    reply('*_Please reply a viewonce msg._*')
-    console.log("This is not viewonce msg.")
-}
+console.log(m.quoted.sender)    
+console.log(m.quoted.id)
+console.log(m.quoted.sender)
+    
 }catch(e){
 reply(`${e}`)
 }
