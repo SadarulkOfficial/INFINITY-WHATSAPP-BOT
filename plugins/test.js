@@ -23,7 +23,7 @@ let aliveMsg = `*_Hello ${pushname} 👋_*
 
 📞 *Owner Number :* +94 70 181 4946
 
-🔗 *Main Movie Group :* https://chat.whatsapp.com/${code}
+
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
