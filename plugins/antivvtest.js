@@ -15,7 +15,7 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply('*_This is an owner cmd._*')
 
-const msg = getMessageFromStore(from, m.quoted.id) // implement this on your end
+const msg = async getMessageFromStore(from, m.quoted.id) // implement this on your end
 await conn.sendMessage(q, { forward: msg }) // WA forward the message!
 
 let inf = `Message forward to ${q}`
