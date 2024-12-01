@@ -1,6 +1,6 @@
 const {cmd , commands} = require('../command')
 const {readEnv} = require('../lib/database')
-const { downloadContentFromMessage } = require('@whiskeysockets/baileys')
+const { downloadMediaMessage } = require('@whiskeysockets/baileys')
 const mime = require('mime-types')
 
 cmd({
