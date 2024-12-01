@@ -1,7 +1,6 @@
 const {cmd , commands} = require('../command')
 const {readEnv} = require('../lib/database')
 const { downloadMediaMessage } = require('@whiskeysockets/baileys')
-const mime = require('mime-types')
 
 cmd({
     pattern: "vv",
@@ -16,7 +15,7 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply('*_This is an owner cmd._*')
 
-console.log(m.quoted.sender)    
+console.log(m.quoted.type)    
 console.log(m.quoted.id)
 console.log(m.quoted.sender)
     
