@@ -20,7 +20,7 @@ if(m.quoted.viewOnceMessageV2 || m.quoted.viewOnceMessage || m.quoted.viewOnceMe
 
         const buffer = await downloadMediaMessage(m.quoted)
 
-console.log(buffer.id)
+console.log(buffer)
 
 }
 }catch(e){
