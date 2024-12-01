@@ -14,9 +14,9 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply('*_This is an owner cmd._*')
 
-let number = m.quoted.sender.replace('@whatsapp.net', '')
+let number = m.quoted.sender.replace('@s.whatsapp.net', '')
     
-let inf = `*_INFINITY MESSAGE INFORMATION_*
+let inf = `*_INFINITY WA BOT MESSAGE INFORMATION ℹ️_*
 
 *➤ Message ID :* ${m.quoted.id}
 
