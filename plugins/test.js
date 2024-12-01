@@ -51,7 +51,8 @@ const msg = {
           };
 
 const msg3 = {
-              text: aliveMsg,
+	      image: { url : `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true` },
+              caption: aliveMsg,
               contextInfo: msg2
             };
          const inf =  await conn.sendMessage(from, msg3, {
