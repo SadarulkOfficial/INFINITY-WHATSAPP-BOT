@@ -35,7 +35,9 @@ let msg = `*_INFINITY WA BOT APK DOWNLOADER_* 📥
 ├ 📥 *Size :* ${data.result.size}
 └───────────────────
 
-Reply 1 to download your apk
+_🔢 Reply Below Number :_
+
+1 || Download apk
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
@@ -53,10 +55,9 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
         
 await conn.sendMessage(from,{document: {url: appdlink },mimetype:"application/vnd.android.package-archive",fileName: data.result.name + ".apk",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: mek});
 
-
                         break;
                     default:
-                        reply("*_Invalid number.Please select a valid number._*");
+                        reply("*_Invalid number.Please reply a valid number._*");
                 }
 
             }
