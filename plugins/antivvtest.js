@@ -1,6 +1,7 @@
-const {
-  downloadContentFromMessage
-} = require("@whiskeysockets/baileys");
+const {cmd , commands} = require('../command')
+const {readEnv} = require('../lib/database')
+const { downloadContentFromMessage } = require("@whiskeysockets/baileys")
+
 const _0x450e37 = {
   pattern: 'vv',
   desc: "Anti vv"
