@@ -25,6 +25,11 @@ let aliveMsg = `*_Hello ${pushname} 👋_*
 
 🔗 *Main Movie Group :* https://chat.whatsapp.com/${code}
 
+_🔢 Reply Below Number :_
+
+1 || Check bot speed
+2 || Bot owner
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
 let aliveImg = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true`
@@ -34,22 +39,65 @@ const msg = {
             newsletterName: "INFINITY WA BOT",
             serverMessageId: 999
           };
-          const test1 = {
+          const msg2 = {
             mentionedJid: [m.sender],
             forwardingScore: 999,
             isForwarded: true,
             forwardedNewsletterMessageInfo: msg
           };
 
-const test2 = {
+const msg3 = {
               image: {url: aliveImg },
               caption: aliveMsg,
-              contextInfo: test1
+              contextInfo: msg2
             };
-           await conn.sendMessage(from, test2, {
+         const inf =  await conn.sendMessage(from, msg3, {
               'quoted': mek
             });
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+                    const startTime = Date.now()
+  
+        const response = await conn.sendMessage(from, { text: '*_Pinging Infinity wa bot..._*' }, {quoted : mek})
+  
+        const endTime = Date.now()
+        const ping = endTime - startTime
     
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        await delay(1000)
+    
+        await conn.sendMessage(from, { text: `*Infinity's speed :* _${ping} ms_`, edit: response.key, })
+                        
+                    break;
+                    case '2': 
+
+                    const vcard = 'BEGIN:VCARD\n'
+            + 'VERSION:3.0\n' 
+            + 'FN:Sadaru\n'
+            + 'ORG:Infinity WA Bot Developer;\n'
+            + 'TEL;type=CELL;type=VOICE;waid=94701814946:+94701814946\n'
+            + 'END:VCARD'
+    
+await conn.sendMessage(from,{ contacts: { displayName: 'Sadaru', contacts: [{ vcard }] }}, {quoted: mek})
+                        
+                    break;
+                    default:
+                        reply("*_Invalid number.Please reply a valid number_*");
+                }
+
+            }
+        });
+                        
 }catch(e){
 console.log(e)
 reply(`${e}`)
