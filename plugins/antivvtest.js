@@ -20,16 +20,8 @@ if(!isOwner) return reply('*_This is an owner cmd._*')
       if (a.message.imageMessage) {
         console.log("Quot Entered");
         let b = a.message.imageMessage.caption;
-        let c = await conn.downloadAndSaveMediaMessage(a.message.imageMessage);
-        const d = {
-          url: c
-        };
-        const f = {
-          image: d,
-          caption: b
-        };
-        return conn.sendMessage(from, f);
-        console.log(d)
+        let buffer = await conn.downloadMediaMessage(a.message.imageMessage);
+        console.log(buffer)
       }
     }
 }catch(e){
