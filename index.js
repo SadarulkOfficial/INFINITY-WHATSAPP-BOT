@@ -90,7 +90,6 @@ const msg = {
             serverMessageId: 999
           }
           const msg2 = {
-            mentionedJid: [m.sender],
             forwardingScore: 999,
             isForwarded: true,
             forwardedNewsletterMessageInfo: msg
