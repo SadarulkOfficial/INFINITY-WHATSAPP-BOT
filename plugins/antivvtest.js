@@ -28,7 +28,7 @@ if(m.quoted.viewOnceMessageV2 || m.quoted.viewOnceMessage || m.quoted.viewOnceMe
             }
         )
 
-const mContent = extractMessageContent(msg.message)
+const mContent = extractMessageContent(m.quoted)
 const contentType = getContentType(mContent)
 const media = (mContent![contentType!])
 const mimetype = media!['mimetype']
