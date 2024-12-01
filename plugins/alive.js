@@ -27,8 +27,9 @@ let aliveMsg = `*_Hello ${pushname} 👋_*
 
 _🔢 Reply Below Number :_
 
-1 || Check bot speed
-2 || Bot owner
+1 || Menu
+2 || Bot speed
+3 || Owner
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
@@ -65,6 +66,84 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
                 switch (selectedOption) {
                     case '1':
 
+                    let menu = {
+main: '',
+search: '',
+download: '',
+ai: '',
+owner: '',
+other: '',
+convert: ''
+};
+
+ for (let i = 0; i < commands.length; i++) {
+if (commands[i].pattern && !commands[i].dontAddCommandList) {
+menu[commands[i].category] += `│➤ ${config.PREFIX}${commands[i].pattern}\n`;
+ }
+}   
+
+let madeMenu = `*👋 HELLO _${pushname}_*
+
+「 ɪɴꜰɪɴɪᴛʏ ᴡᴀ ʙᴏᴛ ᴍᴇɴᴜ 」
+
+╭──────────●
+│❯ MAIN COMMANDS ❮
+│   ───────
+${menu.main}╰───────────●
+╭───────────●
+│❯ OWNER COMMANDS ❮
+│   ───────
+${menu.owner}╰───────────●
+╭───────────●
+│❯ AI COMMANDS ❮
+│   ───────
+${menu.ai}╰───────────●
+╭───────────●
+│❯ SEARCH COMMANDS ❮
+│   ───────
+${menu.search}╰───────────●
+╭───────────●
+│❯ DOWNLOAD COMMANDS ❮
+│   ───────
+${menu.download}╰───────────●
+╭───────────●
+│❯ CONVERT COMMANDS ❮
+│   ───────
+${menu.convert}╰───────────●
+╭───────────●
+│❯ OTHER COMMANDS ❮
+│   ───────
+${menu.other}╰───────────●
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+      let menuImg = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true`
+
+
+const msg = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const test1 = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: msg
+          };
+
+const test2 = {
+              image: {url: menuImg },
+              caption: madeMenu,
+              contextInfo: test1
+            };
+           await conn.sendMessage(from, test2, {
+              'quoted': mek
+            });
+                        
+                    break; 
+                    case '2':
+
                     const startTime = Date.now()
   
         const response = await conn.sendMessage(from, { text: '*_Pinging Infinity wa bot..._*' }, {quoted : mek})
@@ -79,7 +158,7 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
         await conn.sendMessage(from, { text: `*Infinity's speed :* _${ping} ms_`, edit: response.key, })
                         
                     break;
-                    case '2': 
+                    case '3': 
 
                     const vcard = 'BEGIN:VCARD\n'
             + 'VERSION:3.0\n' 
