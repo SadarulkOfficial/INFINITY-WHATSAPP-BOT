@@ -82,10 +82,21 @@ require("./plugins/" + plugin);
 console.log('Plugins installed successful ✅')
 console.log('Infinity wa bot connected to whatsapp ✅')
 
-let up = `*_Infinity whatsapp bot connected successful ✅_*\n\n_Prefix :_ ${prefix}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`;
+let up = `*_Infinity whatsapp bot connected successful ✅_*\n\n_Prefix :_ ${prefix}\n\n*Type .menu to get all command list\n\n*> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`;
 
-conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true` }, caption: up })
-
+const msg = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          }
+          const msg2 = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: msg
+          }
+        
+conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true` }, caption: up ,  contextInfo: msg2})
 
 }
 })
