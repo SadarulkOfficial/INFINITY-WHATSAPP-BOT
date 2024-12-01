@@ -18,15 +18,10 @@ if(!isOwner) return reply('*_This is an owner cmd._*')
   
 if(m.quoted.viewOnceMessageV2 || m.quoted.viewOnceMessage || m.quoted.viewOnceMessageV2Extension ) {
 
-        const buffer = await downloadMediaMessage(m.quoted, 'buffer')
+        const buffer = await downloadMediaMessage(m.quoted)
 
+console.log(buffer.id)
 
-console.log(buffer.data.id)
-
-}
-    
-}catch(e){
-console.log(e)
-reply(`${e}`)
+}  
 }
 })
