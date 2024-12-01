@@ -33,8 +33,6 @@ _🔢 Reply Below Number :_
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-let aliveImg = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true`
-
 const msg = {
             newsletterJid: "120363352976453510@newsletter",
             newsletterName: "INFINITY WA BOT",
@@ -44,12 +42,20 @@ const msg = {
             mentionedJid: [m.sender],
             forwardingScore: 999,
             isForwarded: true,
-            forwardedNewsletterMessageInfo: msg
+            forwardedNewsletterMessageInfo: msg,
+            externalAdReply: { 
+		    		title: 'INFINITY WHATSAPP BOT',
+					body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
+					mediaType: 1,
+					sourceUrl: `https://chat.whatsapp.com/${code}` ,
+                	thumbnailUrl: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' ,
+					renderLargerThumbnail: true,
+          			showAdAttribution: true
+	    		}
           };
 
 const msg3 = {
-              image: {url: aliveImg },
-              caption: aliveMsg,
+              text: aliveMsg,
               contextInfo: msg2
             };
          const inf =  await conn.sendMessage(from, msg3, {
@@ -117,9 +123,6 @@ ${menu.other}╰───────────●
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-      let menuImg = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true`
-
-
 const msg = {
             newsletterJid: "120363352976453510@newsletter",
             newsletterName: "INFINITY WA BOT",
@@ -129,12 +132,20 @@ const msg = {
             mentionedJid: [m.sender],
             forwardingScore: 999,
             isForwarded: true,
-            forwardedNewsletterMessageInfo: msg
+            forwardedNewsletterMessageInfo: msg,
+            externalAdReply: { 
+		    		title: 'INFINITY WHATSAPP BOT',
+					body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
+					mediaType: 1,
+					sourceUrl: `https://chat.whatsapp.com/${code}` ,
+                	thumbnailUrl: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' ,
+					renderLargerThumbnail: true,
+          			showAdAttribution: true
+	    		}
           };
 
 const test2 = {
-              image: {url: menuImg },
-              caption: madeMenu,
+              text: madeMenu,
               contextInfo: test1
             };
            await conn.sendMessage(from, test2, {
@@ -182,6 +193,3 @@ console.log(e)
 reply(`${e}`)
 }
 })
-
-
-
