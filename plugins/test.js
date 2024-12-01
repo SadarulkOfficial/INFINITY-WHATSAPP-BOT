@@ -51,8 +51,7 @@ const msg = {
           };
 
 const msg3 = {
-	      image: '',
-              caption: aliveMsg,
+              text: aliveMsg,
               contextInfo: msg2
             };
          const inf =  await conn.sendMessage(from, msg3, {
