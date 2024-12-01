@@ -20,7 +20,7 @@ if(!isOwner) return reply('*_This is an owner cmd._*')
       if (a.message.imageMessage) {
         console.log("Quot Entered");
         let b = a.message.imageMessage.caption;
-        let buffer = await conn.downloadMediaMessage(a.message.imageMessage);
+        let buffer = await downloadMediaMessage(a.message.imageMessage);
         console.log(buffer)
       }
     }
