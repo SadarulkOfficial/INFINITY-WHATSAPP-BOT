@@ -51,7 +51,7 @@ const msg = {
           };
 
 const msg3 = {
-	      image: ,
+	      image: '',
               caption: aliveMsg,
               contextInfo: msg2
             };
