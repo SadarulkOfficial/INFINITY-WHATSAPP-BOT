@@ -40,17 +40,18 @@ const msg = {
             isForwarded: true,
             forwardedNewsletterMessageInfo: msg,
             externalAdReply: { 
-				                       mediaType: 1,
-				                       sourceUrl: "" ,
-                               thumbnailUrl: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' ,
-				                       renderLargerThumbnail: false,
-          			               showAdAttribution: true
-			                       }
+		    		title: 'INFINITY WHATSAPP BOT',
+				body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
+				mediaType: 1,
+				sourceUrl: "https://wa.me/94701814946" ,
+                		thumbnailUrl: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' ,
+				renderLargerThumbnail: true,
+          			showAdAttribution: true
+	    		}
           };
 
 const msg3 = {
-              image: {url: aliveImg },
-              caption: aliveMsg,
+              text: aliveMsg,
               contextInfo: msg2
             };
          const inf =  await conn.sendMessage(from, msg3, {
