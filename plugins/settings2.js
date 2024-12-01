@@ -23,7 +23,7 @@ const as = config.AUTO_STICKER
 const av = config.AUTO_VOICE
 const ar = config.AUTO_REPLY
 
-let settingMsg = "*_Infinity whatsapp bot settings ⚙_*
+let settingMsg = `*_Infinity whatsapp bot settings ⚙_*
 
 ◤ *PREFIX :* ${prefix} ◢
 ◤ *MODE :* ${mode} ◢
@@ -33,7 +33,7 @@ let settingMsg = "*_Infinity whatsapp bot settings ⚙_*
 ◤ *AUTO STICKER :* ${as} ◢
 ◤ *AUTO AI :* ${aai} ◢
 
-`If you want to update your settings, Reply a below number.`
+If you want to update your settings, Reply a below number.
 
 *➤ BOT WORK TYPE*
 
@@ -79,7 +79,7 @@ let settingMsg = "*_Infinity whatsapp bot settings ⚙_*
 ├ 6.2 || _OFF_
 └───────────────────
 
-> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ"
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
         
         const msg2 = await conn.sendMessage(from, {image: { url: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' },caption: settingMsg}, { quoted: mek })
 
