@@ -18,17 +18,7 @@ if(!isOwner) return reply('*_This is an owner cmd._*')
   
 if(m.quoted.viewOnceMessageV2 || m.quoted.viewOnceMessage || m.quoted.viewOnceMessageV2Extension ) {
 
-        const buffer = await downloadMediaMessage(
-            m.quoted,
-            'buffer',
-            { },
-            { 
-                logger,
-                // pass this so that baileys can request a reupload of media
-                // that has been deleted
-                reuploadRequest: conn.updateMediaMessage
-            }
-        )
+        const buffer = await downloadMediaMessage(m.quoted, 'buffer')
 
 const mContent = extractMessageContent(m.quoted)
 const contentType = getContentType(mContent)
