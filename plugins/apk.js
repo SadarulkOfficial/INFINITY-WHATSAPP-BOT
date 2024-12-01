@@ -35,12 +35,33 @@ let msg = `*_INFINITY WA BOT APK DOWNLOADER_* 📥
 ├ 📥 *Size :* ${data.result.size}
 └───────────────────
 
+Reply 1 to download your apk
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
 let send = await conn.sendMessage(from,{image:{url: data.result.image},caption:msg},{quoted:mek})
-        
-await conn.sendMessage(from,{document: {url: appdlink },mimetype:"application/vnd.android.package-archive",fileName: data.result.name + ".apk",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: send})
 
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === send.key.id) {
+                switch (selectedOption) {
+                    case '1':
+        
+await conn.sendMessage(from,{document: {url: appdlink },mimetype:"application/vnd.android.package-archive",fileName: data.result.name + ".apk",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: mek});
+
+
+                        break;
+                    default:
+                        reply("*_Invalid number.Please select a valid number._*");
+                }
+
+            }
+        });
+                        
 }catch(e){
 console.log(e)
 reply(`${e}`)
