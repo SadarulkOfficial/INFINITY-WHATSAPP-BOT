@@ -10,7 +10,7 @@ cmd({
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        if (!isOwner) return reply(*_This is an owner cmd._*)
+        if (!isOwner) return reply("*_This is an owner cmd._*")
 
         const config = await readEnv();
 
