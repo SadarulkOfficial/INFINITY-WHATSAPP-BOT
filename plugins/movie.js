@@ -92,7 +92,7 @@ const array =  info.data.download
         const downloadLinks = array.map((link, index) => {
             return `${index + 1} || ${link.quality} ( ${link.size} )` 
         }).join("\n")
-
+	    
 let msg = `*_INFINITY WA BOT Cinesubz.co DOWNLOADER 📥_*
 
 🍟 *Movie Name :* ${info.data.title}
@@ -153,8 +153,11 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
 
 		    const index = parseInt(selectedOption);
 
-		reply(`Your ${index} result is this`)
+		    let downloadUrl = array[${index - 1}].downloadDetails.DIRECT_LINK
 		    
+	reply(`${downloadUrl}`)	    
+	console.log(downloadUrl)
+    
     }
 })
 	    
