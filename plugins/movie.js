@@ -1,5 +1,4 @@
-const { SinhalaSub }  = require('@sl-code-lords/movie-api')
-const {readEnv} = require('../lib/database')
+const { sinhalaSub } = require('mrnima-moviedl')
 const { cmd, commands } = require('../command')
 const { fetchJson } = require('../lib/functions')
 
@@ -70,9 +69,9 @@ await conn.sendMessage(from, {document: { url: downloadUrl }, mimetype: "video/m
 
 } else if(!q.startsWith("https://")){
 
-let movie = await SinhalaSub.get_list.by_search(q) 
-    
-console.log(movie)
+var movie = await sinhalaSub()
+var result = await movie.search(q)
+console.log(result)
 
     } else {
 
