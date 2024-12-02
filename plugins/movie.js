@@ -3,7 +3,6 @@ const { fetchJson } = require('../lib/functions')
 const { readEnv } = require('../lib/database')
 
 const apilink = 'https://rest-api-dark-shan.vercel.app/'
-const code = await conn.groupInviteCode('120363355439809658@g.us')
 
 cmd({
     pattern: "cinesearch",
@@ -68,7 +67,9 @@ cmd({
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        
+
+let code = await conn.groupInviteCode('120363355439809658@g.us')
+	    
         const config = await readEnv();
         if (config.BLOCK_JID.includes(from)) return
         if (!q) return reply("*_Please give me a movie name._*")
