@@ -18,14 +18,14 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         if (!q) return reply("*_Please give me a movie name._*")
         
         const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
-        let array = search.data
+        const array = search.data
 
         if (array === 'No results found.') {
             return reply("*_Can't find your movie._*")
         }
 
         const movieDetails = array.map((movie, index) => {
-            `${index + 1}. *Movie Name :* ${movie.title}\n*Type :* ${movie.category}\n*Year :* ${movie.year}\n*Link :* ${movie.link}`
+            `${index + 1}. *Movie Name :* ${movie.title}\n*Year :* ${movie.year}\n*Link :* ${movie.link}`
         }).join("\n\n")
 
 let msg = `*_INFINITY WA BOT CINESUBZ.CO SEARCH 🔎_*
@@ -73,7 +73,7 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         if (!q) return reply("*_Please give me a movie name._*")
 
     const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
-    let array = search.data
+    const array = search.data
 
         if (array === 'No results found.') {
             return reply("*_Can't find your movie._*")
