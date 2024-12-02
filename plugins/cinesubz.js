@@ -153,8 +153,12 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
 
 		    const index = parseInt(selectedOption);
 
+		    if (index !== downloadLinks.length) return reply("*_Invalid number.Please reply a valid number._*")
+		    
 		    let downloadUrl = array[index - 1].downloadDetails.DIRECT_LINK
+		    
 if(!downloadUrl) return reply("*_Can't download your movie in this quality.Please try another quality._*")
+		    
 		    let caption = `${info.data.title} ( ${array[index - 1].quality} )
       
       > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
