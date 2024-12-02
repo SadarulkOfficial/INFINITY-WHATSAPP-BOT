@@ -153,10 +153,14 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
 
 		    const index = parseInt(selectedOption);
 
-		    let downloadUrl = array[index - 1].downloadDetails
+		    let downloadUrl = array[index - 1].downloadDetails.DIRECT_LINK
+if(!downloadUrl) return reply("*_Can't download your movie in this quality.Please try another quality._*")
+		    let caption = `${info.data.title} ( ${array[index - 1].quality} )
+      
+      > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 		    
-	console.log(downloadUrl)
-    
+await conn.sendMessage(from, {document: { url: downloadUrl }, mimetype: "video/mp4", fileName: "🎬 INFINITY WA BOT 🎬" + info.data.title + ".mp4", caption: caption}, { quoted: send })
+
     }
 })
 	    
