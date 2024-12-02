@@ -70,52 +70,9 @@ await conn.sendMessage(from, {document: { url: downloadUrl }, mimetype: "video/m
 
 } else if(!q.startsWith("https://")){
 
-let mvs = await SinhalaSub.get_list.by_search(q)
-
-let mv_info2 = await SinhalaSub.movie(mvs.results[0].link)
-
-let msg2 = `*_INFINITY WA BOT MOVIE DOWNLOADER 📥_*
-
-🍟 *Movie Name :* ${mv_info2.result.title}
-
-🧿 *Release Date :* ${mv_info2.result.release_date}
-
-🌍 *Country :* ${mv_info2.result.country}
-
-⏱ *Duration :* ${mv_info2.result.duration}
-
-🎀 *Categories :* ${mv_info2.result.categories}
-
-⭐ *IMDB Rate :* ${mv_info2.result.IMDb_Rating}
-
-🤵‍♂ *Director* : ${mv_info2.result.director.name}
-
-🖇️ *Link* : ${mvs.results[0].link}
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-● ɢʀᴏᴜᴘ ʟɪɴᴋ : https://chat.whatsapp.com/${code}
-
-> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
-
-//==========Movie Downloader==========
-
-const mvsd = await fetchJson(`${apilink}/movie/sinhalasub/movie?url=${mvs.results[0].link}`)
-
-const filteredLinks2 = mvsd.result.data.dl_links.filter((link) => link.quality === 'SD 480p' && link.link.includes("pixeldrain.com"))
-
-const downloadUrl2 = filteredLinks2[0].link.replace('/u/', '/api/file/')
-
-if (filteredLinks2.length === 0) {
-            return reply(`*_Can't download your movie._*`);
-        }
-
-const caption2 = `${mvsd.result.data.title} ( SD 480p )\n\n> ɪɴꜰɪɴɪᴛʏ ᴡᴀ ʙᴏᴛ`
-
-let movieinfo2 = await conn.sendMessage(from,{image:{url: mv_info2.result.images[0]},caption:msg2},{quoted:mek})
-await conn.sendMessage(from, {document: { url: downloadUrl2 }, mimetype: "video/mp4", fileName: mvsd.result.data.title + ".mp4", caption: caption2}, { quoted: movieinfo2 })
-
-//====================================
+let movie = await SinhalaSub.get_list.by_search(q) 
+    
+console.log(movie)
 
     } else {
 
