@@ -43,7 +43,7 @@ if(config.BLOCK_JID.includes(from)) return
             (link) => link.quality === qualityInput
         )
 
- if(!filteredLinks[0].quality === qualityInput) {
+ if(!filteredLinks) {
         return reply(validQuality)    
         }
 
