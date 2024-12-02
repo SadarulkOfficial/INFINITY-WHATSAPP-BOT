@@ -22,7 +22,7 @@ let array = search.data
 
         if(!array) {
             
-console.log("Not found search results")
+return reply("*_Movie not found !_*")
             
         }  else {
 
