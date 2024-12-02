@@ -1,6 +1,6 @@
 const { cmd, commands } = require('../command')
 const { fetchJson } = require('../lib/functions')
-const {readEnv} = require('../lib/database')
+const { readEnv } = require('../lib/database')
 
 const apilink = 'https://rest-api-dark-shan.vercel.app/'
 
@@ -12,25 +12,26 @@ cmd({
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-
-const config = await readEnv();
-if(config.BLOCK_JID.includes(from)) return
-if(!q) return reply("*_Please give me a movie name._*")
+        const config = await readEnv();
+        if (config.BLOCK_JID.includes(from)) return
+        if (!q) return reply("*_Please give me a movie name._*")
         
-const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
+        const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
+        let array = search.data
 
-let array = search.data
-        
-        if(array === 'No results found.') {
+        if (array === 'No results found.') {
             return reply("*_Can't find your movie._*")
-            
         }
 
-        console.log(array)
-        reply("*_I find your movie._*")
+        const movieDetails = array.map(movie => {
+            return `Title: ${movie.title}\nURL: ${movie.link}\n`
+        }).join("\n\n")
+
+        return reply(movieDetails)
         
-}catch(e){
-console.log(e)
-reply(`${e}`)
-}
+    } catch (e) {
+        console.log(e)
+        reply(`${e}`)
+    }
 })
+
