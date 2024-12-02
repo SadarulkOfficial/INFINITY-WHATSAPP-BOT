@@ -38,9 +38,7 @@ if(config.BLOCK_JID.includes(from)) return
         const Quality = mv.data.download
         
         let validQuality = Quality.map((movie, index) => `${index + 1}. *Quality :* ${movie.quality}\n*Size :* ${movie.size}`).join("\n\n")
-        if(!movie.quality === qualityInput) {
-        return reply(validQuality)    
-        }
+       
         const filteredLinks = mv.data.download.filter(
             (link) => link.quality === qualityInput
         )
