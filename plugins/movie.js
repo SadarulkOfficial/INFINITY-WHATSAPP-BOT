@@ -82,8 +82,18 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
     const info = await fetchJson(`${apilink}download/cinesubz-dl?q=${searchResult[0].link}`)
 
 const array =  info.data.download
+const url = array[1].downloadDetails.DIRECT_LINK
+      if (!array || array.length === 0) {
+            return reply("*_No download links available._*")
+        }
 
-        console.log(array)
+        const downloadLinks = array.map((link, index) => {
+            return `${index + 1} || ${link.quality} : ${link.size}` 
+        }).join("\n") 
+
+        return reply(downloadLinks)
+        console.log(url)
+        return reply(url)
         
 }catch(e){
 console.log(e)
