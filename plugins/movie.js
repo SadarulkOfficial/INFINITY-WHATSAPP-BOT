@@ -20,7 +20,7 @@ if(!q) return reply("*_Please give me a movie name._*")
 const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
 
 let array = search.data
-        if(search.length < 0) {
+        if(array === 'No results found.') {
             return reply("Can't find your movie :(")
         } else {
         return reply("I find your movie :)")
