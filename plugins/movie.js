@@ -17,68 +17,9 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-        let code = await conn.groupInviteCode('120363355439809658@g.us')
-
-if(q.startsWith("https://sinhalasub.lk/")) {
-
-let mv_info = await SinhalaSub.movie(q)
-
-let msg = `*_INFINITY WA BOT MOVIE DOWNLOADER 📥_*
-
-🍟 *Movie Name :* ${mv_info.result.title}
-
-🧿 *Release Date :* ${mv_info.result.release_date}
-
-🌍 *Country :* ${mv_info.result.country}
-
-⏱ *Duration :* ${mv_info.result.duration}
-
-🎀 *Categories :* ${mv_info.result.categories}
-
-⭐ *IMDB Rate :* ${mv_info.result.IMDb_Rating}
-
-🤵‍♂ *Director* : ${mv_info.result.director.name}
-
-🖇️ *Link* : ${q}
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-● ɢʀᴏᴜᴘ ʟɪɴᴋ : https://chat.whatsapp.com/${code}
-
-> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
-
-
-
-//==========Movie Downloader==========
-
-const mv = await fetchJson(`${apilink}/movie/sinhalasub/movie?url=${q}`)
-
-const filteredLinks = mv.result.data.dl_links.filter((link) => link.quality === 'SD 480p' && link.link.includes("pixeldrain.com"))
-
-const downloadUrl = filteredLinks[0].link.replace('/u/', '/api/file/')
-
-if (filteredLinks.length === 0) {
-            return reply(`*_Can't download your movie._*`);
-        }
-
-const caption = `${mv.result.data.title} ( SD 480p )\n\n> ɪɴꜰɪɴɪᴛʏ ᴡᴀ ʙᴏᴛ`
-
-let movieinfo = await conn.sendMessage(from,{image:{url: mv_info.result.images[0]},caption:msg},{quoted:mek})
-await conn.sendMessage(from, {document: { url: downloadUrl }, mimetype: "video/mp4", fileName: mv.result.data.title + ".mp4", caption: caption}, { quoted: movieinfo })
-
-//====================================
-
-} else if(!q.startsWith("https://")){
-
-var movie = await sinhalaSub()
-var result = await movie.search(q)
-console.log(result)
-
-    } else {
-
-return reply("*_Please give me a movie name or sinhalasub.lk url._*")
-
-}
+const search = await fetchJson(`${apilink}/movie/sinhalasub/search?text=${q}`)
+const mv = await fetchJson(`${apilink}/movie/sinhalasub/movie?url=${search.result.data[0].link}`)
+console.log(mv)
            
 }catch(e){
 console.log(e)
