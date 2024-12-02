@@ -12,6 +12,7 @@ cmd({
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
+        
         const config = await readEnv();
         if (config.BLOCK_JID.includes(from)) return
         if (!q) return reply("*_Please give me a movie name._*")
@@ -24,14 +25,14 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         }
 
         const movieDetails = array.map(movie => {
-            return `Title: ${movie.title}\nURL: ${movie.link}\n`
+            return `${movie + 1}. Title: ${movie.title}\nURL: ${movie.link}\n`
         }).join("\n\n")
 
         return reply(movieDetails)
         
-    } catch (e) {
-        console.log(e)
-        reply(`${e}`)
-    }
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
 })
 
