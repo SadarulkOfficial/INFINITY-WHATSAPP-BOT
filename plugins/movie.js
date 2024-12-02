@@ -139,7 +139,7 @@ const fdChannel = {
             text: msg,
             contextInfo: contextMsg
           };
-         await conn.sendMessage(from, msgBody, {
+         let send = await conn.sendMessage(from, msgBody, {
             'quoted': mek
           })
 
