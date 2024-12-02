@@ -35,16 +35,14 @@ if(config.BLOCK_JID.includes(from)) return
         const sendJid = inputParts[2]
 
         const mv = await fetchJson(`${apilink}download/cinesubz-dl?q=${movieUrl}`)
-
-        const availableQualities = ['480p', '720p', '1080p']
-        if (!availableQualities.includes(qualityInput)) {
-            return reply(
-                "*Invalid quality input.*\n\n*Available quality inputs:* 480p, 720p, 1080p"
-            )
+        const Quality = mv.data.download
+        
+        let validQuality = Quality.map((movie, index) => `${index + 1}. *Quality :* ${movie.quality}\n*Size :* ${movie.size}`).join("\n\n")
+        if(!movie.quality === qualityInput) {
+        return reply(validQuality)    
         }
-
         const filteredLinks = mv.data.download.filter(
-            (link) => link.quality.includes(qualityInput)
+            (link) => link.quality === qualityInput
         )
 
 if (filteredLinks.length === 0) {
