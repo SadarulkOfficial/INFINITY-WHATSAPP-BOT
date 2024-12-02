@@ -34,30 +34,23 @@ if(config.BLOCK_JID.includes(from)) return
         const qualityInput = inputParts[1]
         const sendJid = inputParts[2]
 
-        const mv = await fetchJson(`${apilink}download/cinesubz-dl?q=${movieUrl}`)
-        const Quality = mv.data.download
-        
-        let validQuality = Quality.map((moviee, indexx) => `${indexx + 1}. *Quality :* ${moviee.quality}\n*Size :* ${moviee.size}`).join("\n\n")
+        const mvv = await fetchJson(`${apilink}download/cinesubz-dl?q=${movieUrl}`)
        
-        const filteredLinks = mv.data.download.filter(
+        const filteredLinks = mvv.data.download.filter(
             (link) => link.quality === qualityInput
         )
 
- if(!filteredLinks) {
-        return reply(validQuality)    
-        }
-
         const downloadUrl = filteredLinks[0].downloadDetails.DIRECT_LINK
 
-               const caption = `${mv.data.title} ( ${filteredLinks[0].quality} )\n\n> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
+               const caption = `${mvv.data.title} ( ${filteredLinks[0].quality} )\n\n> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
 if(!sendJid) {
 
-await conn.sendMessage(id,{document: { url: downloadUrl },mimetype: "video/mp4",fileName: mv.data.title + ".mp4",caption: caption})
+await conn.sendMessage(id,{document: { url: downloadUrl },mimetype: "video/mp4",fileName: mvv.data.title + ".mp4",caption: caption})
     
 } else {
 
-await conn.sendMessage(sendJid,{document: { url: downloadUrl },mimetype: "video/mp4",fileName: mv.data.title + ".mp4",caption: caption})
+await conn.sendMessage(sendJid,{document: { url: downloadUrl },mimetype: "video/mp4",fileName: mvv.data.title + ".mp4",caption: caption})
 
 }
 }catch(e){
