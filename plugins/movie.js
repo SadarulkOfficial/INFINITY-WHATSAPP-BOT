@@ -153,7 +153,7 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
 
 		    const index = parseInt(selectedOption);
 
-		    let downloadUrl = array[${index - 1}].downloadDetails.DIRECT_LINK
+		    let downloadUrl = array[index - 1].downloadDetails.DIRECT_LINK
 		    
 	reply(`${downloadUrl}`)	    
 	console.log(downloadUrl)
