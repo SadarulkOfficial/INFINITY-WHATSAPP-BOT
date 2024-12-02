@@ -59,32 +59,3 @@ reply(`${e}`)
 }
 })
 
-cmd({
-    pattern: "cinedl",
-    desc: "Download movies in Cinesubz.co",
-    category: "download",
-    filename: __filename
-},
-async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
-    try {
-        
-        const config = await readEnv();
-        if (config.BLOCK_JID.includes(from)) return
-        if (!q) return reply("*_Please give me a movie name._*")
-
-    const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
-    const array = search.data
-
-        if (array === 'No results found.') {
-            return reply("*_Can't find your movie._*")
-        }
-        
-    const info = await fetchJson(`${apilink}download/cinesubz-dl?q=${array[0].link}`)
-
-        console.log(info)
-        
-}catch(e){
-console.log(e)
-reply(`${e}`)
-}
-})
