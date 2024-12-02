@@ -45,6 +45,10 @@ if(config.BLOCK_JID.includes(from)) return
             (link) => link.quality === qualityInput
         )
 
+ if(!filterdLinks.quality === qualityInput) {
+        return reply(validQuality)    
+        }
+        
 if (filteredLinks.length === 0) {
             return reply(`*Can't download your movie in this quality.*`)
         }
