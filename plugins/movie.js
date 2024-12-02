@@ -20,15 +20,8 @@ const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
 
 let array = search.data
 
-        if(!array) {
-            
-return reply("*_Movie not found !_*")
-            
-        }  else {
-
-console.log(array)
-            
-        }
+        console.log(array)
+        reply(array)
         
 }catch(e){
 console.log(e)
