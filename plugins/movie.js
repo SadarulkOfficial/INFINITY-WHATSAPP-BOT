@@ -1,9 +1,8 @@
-const { sinhalaSub } = require('mrnima-moviedl')
 const { cmd, commands } = require('../command')
 const { fetchJson } = require('../lib/functions')
 const {readEnv} = require('../lib/database')
 
-const apilink = 'https://www.dark-yasiya-api.site';
+const apilink = 'https://rest-api-dark-shan.vercel.app/'
 
 cmd({
     pattern: "movie",
@@ -17,8 +16,11 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-const search = await fetchJson(`${apilink}/movie/sinhalasub/search?text=${q}`)
+const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
 console.log(search)
+const movieUrl = search.data[0].link
+const mv = await fetchJson(`${apilink}download/cinesubz-dl?q=${movieUrl}`)        
+console.log(mv)
            
 }catch(e){
 console.log(e)
