@@ -81,7 +81,8 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         
     const info = await fetchJson(`${apilink}download/cinesubz-dl?q=${array[0].link}`)
 
-
+        console.log(info)
+        
 }catch(e){
 console.log(e)
 reply(`${e}`)
