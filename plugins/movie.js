@@ -26,7 +26,7 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 
         const movieDetails = array.map((movie, index) => {
             `${index + 1}. *Movie Name :* ${movie.title}\n*Year :* ${movie.year}\n*Link :* ${movie.link}`
-        }).join("\n\n")
+        }).join("\n\n");
 
 let msg = `*_INFINITY WA BOT CINESUBZ.CO SEARCH 🔎_*
 
