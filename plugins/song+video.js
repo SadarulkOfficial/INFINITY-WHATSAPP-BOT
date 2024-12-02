@@ -231,7 +231,7 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
                         break; 
                     case '2':
 
-                        await conn.sendMessage(from,{document: {url: ytdl.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
+                        await conn.sendMessage(from,{document: {url: ytdl.download.url },mimetype:"audio/mpeg",fileName: yts.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
 
                         break;
                     default:
