@@ -130,7 +130,7 @@ const fdChannel = {
 				body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
 				mediaType: 1,
 				sourceUrl: `https://chat.whatsapp.com/${code}` ,
-                		thumbnailUrl:  searchResult[0].link,
+                		thumbnailUrl:  info.data.image,
 				renderLargerThumbnail: true,
           			showAdAttribution: true
 	    		}
@@ -143,6 +143,8 @@ const fdChannel = {
             'quoted': mek
           })
 
+
+	    
 }catch(e){
 console.log(e)
 reply(`${e}`)
