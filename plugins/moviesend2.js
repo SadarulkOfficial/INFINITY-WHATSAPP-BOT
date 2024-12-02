@@ -37,7 +37,7 @@ if(config.BLOCK_JID.includes(from)) return
         const mv = await fetchJson(`${apilink}download/cinesubz-dl?q=${movieUrl}`)
         const Quality = mv.data.download
         
-        let validQuality = Quality.map((movie, index) => `${index + 1}. *Quality :* ${movie.quality}\n*Size :* ${movie.size}`).join("\n\n")
+        let validQuality = Quality.map((moviee, indexx) => `${indexx + 1}. *Quality :* ${moviee.quality}\n*Size :* ${moviee.size}`).join("\n\n")
        
         const filteredLinks = mv.data.download.filter(
             (link) => link.quality === qualityInput
