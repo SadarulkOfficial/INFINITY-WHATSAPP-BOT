@@ -127,12 +127,12 @@ const fdChannel = {
             forwardedNewsletterMessageInfo: fdChannel,
 	        externalAdReply: { 
 		                title: 'INFINITY WHATSAPP BOT',
-				        body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
-				        mediaType: 1,
-				        sourceUrl: `https://chat.whatsapp.com/${code}` ,
-                		thumbnailUrl:  info.data.image,
-				        renderLargerThumbnail: true,
-          			    showAdAttribution: true
+				body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
+				mediaType: 1,
+				sourceUrl: `https://chat.whatsapp.com/${code}` ,
+                		thumbnailUrl:  searchResult[0].link,
+				renderLargerThumbnail: true,
+          			showAdAttribution: true
 	    		}
           };
           const msgBody = {
