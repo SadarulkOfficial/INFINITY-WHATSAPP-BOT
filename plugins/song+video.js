@@ -272,8 +272,7 @@ if(q.startsWith("https://") && q.includes("watch?v=")) {
 const quality = "360p";
 const data = await ytmp4(q, quality);
 
-let desc = `
-*_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
+let desc = `*_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
 
 ┌───────────────────
 ├ ℹ️ *Title:* ${data.result.title}
@@ -284,15 +283,63 @@ let desc = `
 ├ 🖇️ *Link:* ${data.result.url}
 └───────────────────
 
+🔢 Reply Below Number :
+
+1 || Video
+2 || Document
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: data.result.image},caption:desc},{quoted:mek})
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+            image : { url : data.result.image },
+            caption : desc,
+            contextInfo: contextMsg
+          };
+         let inf = await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
 
-//send video+document
+//==========number reply==========
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+                        await conn.sendMessage(from,{video: {url: data.download.url },mimetype:"video/mp4"},{quoted: selectedOption})
+                        
+                        break; 
+                    case '2':
+
+                        await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"video/mp4",fileName:data.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:selectedOption })
+
+                        break;
+                    default:
+                        reply("*_Invalid number.Please reply a valid number._*");
+                }
+
+            }
+        })
+        
+//================================
+
     
-await conn.sendMessage(from,{video: {url: data.download.url },mimetype:"video/mp4"},{quoted:mek})
-await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"video/mp4",fileName:data.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
-
 } else if(q.startsWith("https://") && q.includes("?si=")) {
 
 let a = q.split("?")[0]
@@ -300,8 +347,7 @@ let a = q.split("?")[0]
     const quality = "360p";
 const data = await ytmp4(a, quality);
 
-let desc = `
-*_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
+let desc = `*_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
 
 ┌───────────────────
 ├ ℹ️ *Title:* ${data.result.title}
@@ -330,8 +376,7 @@ const yts = yt.results[0]
 const quality = "360p"
 const ytdl = await ytmp4(yts.url, quality)
 
-let desc = `
-*_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
+let desc = `*_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
 
 ┌───────────────────
 ├ ℹ️ *Title:* ${yts.title}
