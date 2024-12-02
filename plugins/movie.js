@@ -24,8 +24,8 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
             return reply("*_Can't find your movie._*")
         }
 
-        const movieDetails = array.map(movie => {
-            return `${movie + 1}. Title: ${movie.title}\nURL: ${movie.link}\n`
+        const movieDetails = array.map((movie, index) => {
+            return `${index + 1}. Title: ${movie.title}\nURL: ${movie.link}\n`
         }).join("\n\n")
 
         return reply(movieDetails)
