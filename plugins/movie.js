@@ -73,15 +73,17 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         if (!q) return reply("*_Please give me a movie name._*")
 
     const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
-    const array = search.data
+    const searchResult = search.data
 
-        if (array === 'No results found.') {
+        if (searchResult === 'No results found.') {
             return reply("*_Can't find your movie._*")
         }
         
-    const info = await fetchJson(`${apilink}download/cinesubz-dl?q=${array[0].link}`)
+    const info = await fetchJson(`${apilink}download/cinesubz-dl?q=${searchResult[0].link}`)
 
-        console.log(info)
+const array =  info.data.download
+
+        console.log(array)
         
 }catch(e){
 console.log(e)
