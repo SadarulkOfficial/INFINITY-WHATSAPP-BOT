@@ -5,9 +5,9 @@ const { readEnv } = require('../lib/database')
 const apilink = 'https://rest-api-dark-shan.vercel.app/'
 
 cmd({
-    pattern: "movie",
-    desc: "Download movies in sinhalasub.lk",
-    category: "download",
+    pattern: "cinesearch",
+    desc: "Search movies in Cinesubz.co",
+    category: "search",
     filename: __filename
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
@@ -25,10 +25,33 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         }
 
         const movieDetails = array.map((movie, index) => {
-            return `${index + 1}. Title: ${movie.title}\nURL: ${movie.link}\n`
+            return `${index + 1}. *Movie Name :* ${movie.title}\n*Year :* ${movie.link}\n*Link :* ${movie.link}`
         }).join("\n\n")
 
-        return reply(movieDetails)
+let msg = `*_INFINITY WA BOT MOVIE SEARCH 🔎_*
+
+${movieDetails}
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+        
+        const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+            text: msg,
+            contextInfo: contextMsg
+          };
+         await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
         
 }catch(e){
 console.log(e)
