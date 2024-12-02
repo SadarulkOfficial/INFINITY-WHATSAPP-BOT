@@ -25,10 +25,10 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         }
 
         const movieDetails = array.map((movie, index) => {
-            return `${index + 1}. *Movie Name :* ${movie.title}\n*Year :* ${movie.link}\n*Link :* ${movie.link}`
+            `${index + 1}. *Movie Name :* ${movie.title}\n*Type :* ${movie.category}\n*Year :* ${movie.year}\n*Link :* ${movie.link}`
         }).join("\n\n")
 
-let msg = `*_INFINITY WA BOT MOVIE SEARCH 🔎_*
+let msg = `*_INFINITY WA BOT CINESUBZ.CO SEARCH 🔎_*
 
 ${movieDetails}
 
@@ -59,3 +59,31 @@ reply(`${e}`)
 }
 })
 
+cmd({
+    pattern: "cinedl",
+    desc: "Download movies in Cinesubz.co",
+    category: "download",
+    filename: __filename
+},
+async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        
+        const config = await readEnv();
+        if (config.BLOCK_JID.includes(from)) return
+        if (!q) return reply("*_Please give me a movie name._*")
+
+    const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
+    let array = search.data
+
+        if (array === 'No results found.') {
+            return reply("*_Can't find your movie._*")
+        }
+        
+    const info = await fetchJson(`${apilink}download/cinesubz-dl?q=${array[0].link}`)
+
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
