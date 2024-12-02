@@ -19,9 +19,11 @@ if(config.BLOCK_JID.includes(from)) return
 const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
 
 let array = search.data
-        
+        if(array.length < 0) {
+            return reply("Not movie found your input")
+        } else {
         console.log(array)
-       
+        }
 }catch(e){
 console.log(e)
 reply(`${e}`)
