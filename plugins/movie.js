@@ -24,9 +24,13 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
             return reply("*_Can't find your movie._*")
         }
 
+ const movieDetails = array.map((movie, index) => {
+           return `${index + 1}. *Movie Name :* ${movie.title}\n*Type :* ${movie.category}\n*Year :* ${movie.year}\n*Link :* ${movie.link}`
+        }).join("\n\n")
+        
 let msg = `*_INFINITY WA BOT CINESUBZ.CO SEARCH 🔎_*
 
-${array[0].title}
+${movieDetails}
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
         
