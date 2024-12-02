@@ -25,8 +25,7 @@ if(!q) return reply ("*_Please give me a title or url._*")
 
 const data = await ytmp3(q)
 
-let desc = `
-*_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
+let desc = `*_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
 
 ┌───────────────────
 ├ ℹ️ *Title:* ${data.result.title}
@@ -37,15 +36,61 @@ let desc = `
 ├ 🖇️ *Link:* ${data.result.url}
 └───────────────────
 
+🔢 Reply Below Number :
+
+1 || Audio
+2 || Document
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from, { image : { url : data.result.image } , caption : desc } , { quoted : mek })
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+            image : { url : data.result.image },
+            caption : desc,
+            contextInfo: contextMsg
+          };
+         let inf = await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
 
-//send audio+document
-    
-await conn.sendMessage(from,{audio: {url: data.download.url },mimetype:"audio/mpeg"},{quoted:mek})
-await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
-    
+//==========number reply==========
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+                        await conn.sendMessage(from,{audio: {url: data.download.url },mimetype:"audio/mpeg"},{quoted: inf})
+
+                        break; 
+                    case '2':
+
+                        await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
+
+                        break;
+                    default:
+                        reply("*_Invalid number.Please reply a valid number._*");
+                }
+
+            }
+        })
+        
+//================================
         
 } else if(q.startsWith("https://") && q.includes("?si=")) {
 
@@ -54,8 +99,7 @@ let b = a[0]
 
 const data = await ytmp3(b)
 
-let desc = `
-*_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
+let desc = `*_INFINITY WA BOT AUDIO DOWNLOADER_* 📥
 
 ┌───────────────────
 ├ ℹ️ *Title:* ${data.result.title}
@@ -66,15 +110,61 @@ let desc = `
 ├ 🖇️ *Link:* ${data.result.url}
 └───────────────────
 
+🔢 Reply Below Number :
+
+1 || Audio
+2 || Document
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from, { image : { url : data.result.image } , caption : desc } , { quoted : mek })
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+            image : { url : data.result.image },
+            caption : desc,
+            contextInfo: contextMsg
+          };
+         let inf = await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
 
-//send audio+document
-    
-await conn.sendMessage(from,{audio: {url: data.download.url },mimetype:"audio/mpeg"},{quoted:mek})
-await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
-    
+//==========number reply==========
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+                        await conn.sendMessage(from,{audio: {url: data.download.url },mimetype:"audio/mpeg"},{quoted: inf})
+
+                        break; 
+                    case '2':
+
+                        await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
+
+                        break;
+                    default:
+                        reply("*_Invalid number.Please reply a valid number._*");
+                }
+
+            }
+        })
+        
+//================================
 
 } else if(!q.startsWith("https://")){
 
@@ -97,17 +187,63 @@ let desc = `
 ├ 🖇️ *Link:* ${yts.url}
 └───────────────────
 
+🔢 Reply Below Number :
+
+1 || Audio
+2 || Document
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: yts.image },caption:desc},{quoted:mek})
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+            image : { url : yts.image },
+            caption : desc,
+            contextInfo: contextMsg
+          };
+         let inf = await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
 
-//send audio+document
-    
-await conn.sendMessage(from,{audio: {url: ytdl.download.url },mimetype:"audio/mpeg"},{quoted:mek})
-await conn.sendMessage(from,{document: {url: ytdl.download.url },mimetype:"audio/mpeg",fileName:yts.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
-    
+//==========number reply==========
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+                        await conn.sendMessage(from,{audio: {url: ytdl.download.url },mimetype:"audio/mpeg"},{quoted: inf})
+
+                        break; 
+                    case '2':
+
+                        await conn.sendMessage(from,{document: {url: ytdl.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
+
+                        break;
+                    default:
+                        reply("*_Invalid number.Please reply a valid number._*");
+                }
+
+            }
+        })
+        
+//================================       
+        
 }
-
 }catch(e){
 console.log(e)
 reply(`${e}`)
