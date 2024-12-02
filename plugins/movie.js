@@ -3,6 +3,7 @@ const { fetchJson } = require('../lib/functions')
 const { readEnv } = require('../lib/database')
 
 const apilink = 'https://rest-api-dark-shan.vercel.app/'
+const code = await conn.groupInviteCode('120363355439809658@g.us')
 
 cmd({
     pattern: "cinesearch",
@@ -28,7 +29,7 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
            return `${index + 1}. *Movie Name :* ${movie.title}\n*Type :* ${movie.category}\n*Year :* ${movie.year}\n*Link :* ${movie.link}`
         }).join("\n\n")
         
-let msg = `*_INFINITY WA BOT CINESUBZ.CO SEARCH 🔎_*
+let msg = `*_INFINITY WA BOT Cinesubz.co SEARCH 🔎_*
 
 ${movieDetails}
 
@@ -82,19 +83,65 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
     const info = await fetchJson(`${apilink}download/cinesubz-dl?q=${searchResult[0].link}`)
 
 const array =  info.data.download
-const url = array[1].downloadDetails.DIRECT_LINK
+        
       if (!array || array.length === 0) {
             return reply("*_No download links available._*")
         }
 
         const downloadLinks = array.map((link, index) => {
-            return `${index + 1} || ${link.quality} : ${link.size}` 
-        }).join("\n") 
+            return `${index + 1} || ${link.quality} ( ${link.size} )` 
+        }).join("\n")
 
-        return reply(downloadLinks)
-        console.log(url)
-        return reply(url)
-        
+let msg = `*_INFINITY WA BOT Cinesubz.co DOWNLOADER 📥_*
+
+🍟 *Movie Name :* ${info.data.title}
+
+🧿 *Release Date :* ${info.data.date}
+
+🌍 *Country :* ${info.data.country}
+
+⏱ *Duration :* ${info.data.duration}
+
+⭐ *IMDB Rate :* ${info.data.rating}
+
+🖇️ *Link* : ${searchResult[0].link}
+
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+
+_🔢 Reply Below Number :_
+
+${downloadLinks}
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel,
+	        externalAdReply: { 
+		                title: 'INFINITY WHATSAPP BOT',
+				        body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
+				        mediaType: 1,
+				        sourceUrl: `https://chat.whatsapp.com/${code}` ,
+                		thumbnailUrl:  info.data.image,
+				        renderLargerThumbnail: true,
+          			    showAdAttribution: true
+	    		}
+          };
+          const msgBody = {
+            text: msg,
+            contextInfo: contextMsg
+          };
+         await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
+
 }catch(e){
 console.log(e)
 reply(`${e}`)
