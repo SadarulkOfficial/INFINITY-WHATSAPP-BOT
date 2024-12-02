@@ -453,7 +453,7 @@ const fdChannel = {
             forwardedNewsletterMessageInfo: fdChannel
           };
           const msgBody = {
-            image : { url : data.result.image },
+            image : { url : yts.image },
             caption : desc,
             contextInfo: contextMsg
           };
