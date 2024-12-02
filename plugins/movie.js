@@ -153,15 +153,10 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
 
 		    const index = parseInt(selectedOption);
 
-        // Check if the selected option is a valid number
-        if (isNaN(index) || index < 1) {
-            return reply("*_Invalid number. Please reply with a valid number._*");
-        }
-
-        // Handle cases dynamically based on the number selected
-        return reply(`You selected number ${index}. Here's the result for index ${index}.`);
+		reply(`Your ${index} result is this`)
+		    
     }
-});
+})
 	    
 }catch(e){
 console.log(e)
