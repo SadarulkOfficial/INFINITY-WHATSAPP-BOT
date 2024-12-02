@@ -322,12 +322,12 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
                 switch (selectedOption) {
                     case '1':
 
-                        await conn.sendMessage(from,{video: {url: data.download.url },mimetype:"video/mp4"},{quoted: selectedOption})
+                        await conn.sendMessage(from,{video: {url: data.download.url },mimetype:"video/mp4"},{quoted: inf})
                         
                         break; 
                     case '2':
 
-                        await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"video/mp4",fileName:data.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:selectedOption })
+                        await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"video/mp4",fileName:data.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:inf })
 
                         break;
                     default:
@@ -358,15 +358,62 @@ let desc = `*_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
 ├ 🖇️ *Link:* ${data.result.url}
 └───────────────────
 
+🔢 Reply Below Number :
+
+1 || Video
+2 || Document
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: data.result.image},caption:desc},{quoted:mek})
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+            image : { url : data.result.image },
+            caption : desc,
+            contextInfo: contextMsg
+          };
+         let inf = await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
 
-//send video+document
+//==========number reply==========
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+                        await conn.sendMessage(from,{video: {url: data.download.url },mimetype:"video/mp4"},{quoted: inf})
+                        
+                        break; 
+                    case '2':
+
+                        await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"video/mp4",fileName:data.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:inf })
+
+                        break;
+                    default:
+                        reply("*_Invalid number.Please reply a valid number._*");
+                }
+
+            }
+        })
+        
+//================================
     
-await conn.sendMessage(from,{video: {url: data.download.url },mimetype:"video/mp4"},{quoted:mek})
-await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"video/mp4",fileName:data.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
-
 } else if(!q.startsWith("https://")){
 
 const yt = await ytsearch(q)
@@ -387,15 +434,62 @@ let desc = `*_INFINITY WA BOT VIDEO DOWNLOADER_* 📥
 ├ 🖇️ *Link:* ${yts.url}
 └───────────────────
 
+🔢 Reply Below Number :
+
+1 || Video
+2 || Document
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from,{image:{url: yts.image },caption:desc},{quoted:mek})
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+            image : { url : data.result.image },
+            caption : desc,
+            contextInfo: contextMsg
+          };
+         let inf = await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
 
-//send video+document
+//==========number reply==========
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+                        await conn.sendMessage(from,{video: {url: ytdl.download.url },mimetype:"video/mp4"},{quoted: inf})
+                        
+                        break; 
+                    case '2':
+
+                        await conn.sendMessage(from,{document: {url: ytdl.download.url },mimetype:"video/mp4",fileName:yts.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:inf })
+
+                        break;
+                    default:
+                        reply("*_Invalid number.Please reply a valid number._*");
+                }
+
+            }
+        })
+        
+//================================
     
-await conn.sendMessage(from,{video: {url: ytdl.download.url },mimetype:"video/mp4"},{quoted:mek})
-await conn.sendMessage(from,{document: {url: ytdl.download.url },mimetype:"video/mp4",fileName:yts.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:mek})
-
 }
     
 }catch(e){
