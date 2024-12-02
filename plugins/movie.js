@@ -15,11 +15,12 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
-
+if(!q) return reply("*_Please give me a movie name._*")
+        
 const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
 
 let array = search.data
-        if(array.length < 0) {
+        if(search.length < 0) {
             return reply("Can't find your movie :(")
         } else {
         return reply("I find your movie :)")
