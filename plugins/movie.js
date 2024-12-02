@@ -18,8 +18,7 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
 const search = await fetchJson(`${apilink}/movie/sinhalasub/search?text=${q}`)
-const mv = await fetchJson(`${apilink}/movie/sinhalasub/movie?url=${search.result.data[0].link}`)
-console.log(mv)
+console.log(search)
            
 }catch(e){
 console.log(e)
