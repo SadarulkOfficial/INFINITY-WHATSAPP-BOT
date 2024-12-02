@@ -143,7 +143,25 @@ const fdChannel = {
             'quoted': mek
           })
 
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
 
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === send.key.id) {
+
+		    const index = parseInt(selectedOption);
+
+        // Check if the selected option is a valid number
+        if (isNaN(index) || index < 1) {
+            return reply("*_Invalid number. Please reply with a valid number._*");
+        }
+
+        // Handle cases dynamically based on the number selected
+        return reply(`You selected number ${index}. Here's the result for index ${index}.`);
+    }
+});
 	    
 }catch(e){
 console.log(e)
