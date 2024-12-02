@@ -17,11 +17,26 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
 const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
-console.log(search)
+
+let array = search.data
+
+        if(!array) {
+            console.log("Not found search results")
+return reply(`*_Can't find this movie !_*`);
+        }       
+
+let result = array.map((movie, index) => `${index + 1}. *Movie Name :* ${array[index].title}\n*Type :* ${array[index].type}\n*Link :* ${array[index].link}`).join("\n\n");
+
+let dt = `*_INFINITY WA BOT MOVIE SEARCH 🔎_*\n\n`
+let cap = `\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+            
+await conn.sendMessage(from, { text: `${dt} ${result} ${cap}` }, {quoted: mek})
+
+        
 const movieUrl = search.data[0].link
 const mv = await fetchJson(`${apilink}download/cinesubz-dl?q=${movieUrl}`)        
 console.log(mv)
-           
+        
 }catch(e){
 console.log(e)
 reply(`${e}`)
