@@ -89,7 +89,7 @@ let msg = `*_INFINITY WA BOT Cinesubz.co DOWNLOADER 📥_*
 
 ⭐ *IMDB Rate :* ${info.data.rating}
 
-🖇️ *Link* : ${searchResult[0].link}
+🖇️ *Link* : ${array[index-1].link}
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
