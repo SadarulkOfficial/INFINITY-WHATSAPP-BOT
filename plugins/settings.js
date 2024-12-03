@@ -238,7 +238,7 @@ ${prefix}
 ${aaijid}
 
 3 || MOVIE SEND JID
-${mvsijid}
+${mvsjid}
 
 4 || XVIDEO DOWNLOAD JID
 ${xvjid}
