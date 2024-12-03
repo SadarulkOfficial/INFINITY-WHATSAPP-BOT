@@ -35,25 +35,49 @@ const msg = `*Sadaru is developer and owner of INFINITY WhatsApp Bot.He is a sma
   
 if(body === 'Sadaru') {
 
-await conn.sendMessage(
-    from, 
-    { 
-        video: {url: bioUrl}, 
-        caption: msg,
-        gifPlayback: true
-    },{quoted: mek}
-)
-
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+            vide: {url: bioUrl},
+            caption: msg,
+            gifPlayback: true,
+            contextInfo: contextMsg
+          };
+         await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
+    
 } else if(body === 'sadaru') {
 
-await conn.sendMessage(
-    from, 
-    { 
-        video: {url: bioUrl}, 
-        caption: msg,
-        gifPlayback: true
-    },{quoted: mek}
-)
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+            vide: {url: bioUrl},
+            caption: msg,
+            gifPlayback: true,
+            contextInfo: contextMsg
+          };
+         await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
 }
     
 }catch(e){
