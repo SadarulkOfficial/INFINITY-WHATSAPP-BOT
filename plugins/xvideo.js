@@ -73,9 +73,6 @@ let msg = `*_INFINITY WA BOT XVIDEO DOWNLOADER 📥_*
 
 let send = await conn.sendMessage(from,{image:{url: xv.result.image},caption:msg},{quoted:mek})
 
-}
-})
-
 conn.ev.on('messages.upsert', async (msgUpdate) => {
             const msg = msgUpdate.messages[0];
             if (!msg.message || !msg.message.extendedTextMessage) return;
@@ -95,12 +92,13 @@ await conn.sendMessage(from,{document: {url: xvdlink },mimetype:"video/mp4",file
                         
                         break;
                     default:
-                        reply("*_Invalid number.Please reply a valid number._*");
-                }
-
-            }
-        })
-        
+                        reply("*_Invalid number.Please reply a valid number._*")
+				
+}
+}
+})
+}
+})
 //=======================================================================
         
 }catch(e){
