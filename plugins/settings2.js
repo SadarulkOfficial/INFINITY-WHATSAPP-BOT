@@ -128,7 +128,7 @@ If you want to update your settings, Reply a below number.
                         reply('`Settings updated ✅`')
                         break;
                     case '2.2':
-                        await updateEnv(key1, value1_2)
+                        await updateEnv(key1, value1_1)
 			reply('`Settings updated ✅`')
                         break;
                     case '3.1':
