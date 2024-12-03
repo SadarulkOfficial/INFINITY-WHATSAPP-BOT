@@ -47,7 +47,8 @@ ${movieDetails}
             forwardedNewsletterMessageInfo: fdChannel
           };
           const msgBody = {
-            text: searchMsg,
+	    image: { url : `https://raw.githubusercontent.com/Sadarulk/QueenMatheeDB/refs/heads/main/botlogos/cinesubz.co.jpg` },
+            caption: searchMsg,
             contextInfo: contextMsg
           };
          let inf = await conn.sendMessage(from, msgBody, {
