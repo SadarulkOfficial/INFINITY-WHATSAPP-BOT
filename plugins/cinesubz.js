@@ -28,7 +28,7 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
            return `${index + 1}. *Movie Name :* ${movie.title}\n*Type :* ${movie.category}\n*Year :* ${movie.year}\n*Link :* ${movie.link}`
         }).join("\n\n")
         
-let msg = `*_INFINITY WA BOT Cinesubz.co SEARCH 🔎_*
+let msgText = `*_INFINITY WA BOT Cinesubz.co SEARCH 🔎_*
 
 ${movieDetails}
 
@@ -49,10 +49,115 @@ ${movieDetails}
             text: msg,
             contextInfo: contextMsg
           };
-         await conn.sendMessage(from, msgBody, {
+         let inf = await conn.sendMessage(from, msgBody, {
             'quoted': mek
           })
+
+//================================================================================================================
+	    
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            let msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            let selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+
+		    let index = parseInt(selectedOption);
+
+		    let info = await fetchJson(`${apilink}download/cinesubz-dl?q=${array[index-1].link}`)
+		   
+		    let arrays =  info.data.download
         
+      if (!arrays || arrays.length === 0) {
+            return reply("*_No download links available._*")
+        }
+
+        const downloadLinks = arrays.map((link, index) => {
+            return `${index + 1} || ${link.quality} ( ${link.size} )` 
+        }).join("\n")
+	    
+let msg = `*_INFINITY WA BOT Cinesubz.co DOWNLOADER 📥_*
+
+🍟 *Movie Name :* ${info.data.title}
+
+🧿 *Release Date :* ${info.data.date}
+
+🌍 *Country :* ${info.data.country}
+
+⏱ *Duration :* ${info.data.duration}
+
+⭐ *IMDB Rate :* ${info.data.rating}
+
+🖇️ *Link* : ${searchResult[0].link}
+
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+
+_🔢 Reply Below Number :_
+
+${downloadLinks}
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel,
+	        externalAdReply: { 
+		                title: 'INFINITY WHATSAPP BOT',
+				body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
+				mediaType: 1,
+				sourceUrl: `https://chat.whatsapp.com/${code}` ,
+                		thumbnailUrl:  info.data.image,
+				renderLargerThumbnail: true,
+          			showAdAttribution: true
+	    		}
+          };
+          const msgBody = {
+            text: msg,
+            contextInfo: contextMsg
+          };
+         let send = await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            let msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            let selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === send.key.id) {
+
+		    const indexx = parseInt(selectedOption);
+
+		    if (indexx >= downloadLinks.length) {
+			    return reply("*_Invalid number.Please reply a valid number._*")
+		    }
+		   if(arrays[indexx - 1].downloadDetails.error === 'Failed to fetch download links.') return reply("*Direct download server error.Please try again after few hours :(*")
+		    let downloadUrl = array[indexx - 1].downloadDetails.DIRECT_LINK
+if(!downloadUrl) {
+	return reply("*_Can't download your movie in this quality.Please try another quality._*")
+}	    
+		    let caption = `${info.data.title} ( ${arrays[indexx - 1].quality} )
+      
+> ɪɴꜰɪɴɪᴛʏ ᴡᴀ ʙᴏᴛ ᴍᴏᴠɪᴇ ᴅʟ`
+		    
+await conn.sendMessage(from, {document: { url: downloadUrl }, mimetype: "video/mp4", fileName: "🎬 INFINITY WA BOT 🎬" + info.data.title + ".mp4", caption: caption}, { quoted: send })
+
+}
+})		    
+}
+})
+
+//===============================================================================================================
+	    
 }catch(e){
 console.log(e)
 reply(`${e}`)
