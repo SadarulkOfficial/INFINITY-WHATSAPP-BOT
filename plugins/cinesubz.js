@@ -137,13 +137,9 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
             if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === send.key.id) {
 
 		    const indexx = parseInt(selectedOption);
-console.log(downloadLinks.length)
-		    if (indexx >= downloadLinks.length) {
-			    return reply("*_Invalid number.Please reply a valid number._*")
-		    }
+
 		   if(arrays[indexx - 1].downloadDetails.error === 'Failed to fetch download links.') return reply("*Direct download server error.Please try again after few hours :(*")
 		    let downloadUrl = arrays[indexx - 1].downloadDetails.DIRECT_LINK
-		    console.log(downloadUrl)
 if(!downloadUrl) {
 	return reply("*_Can't download your movie in this quality.Please try another quality._*")
 }	    
@@ -260,9 +256,6 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
 
 		    const index = parseInt(selectedOption);
 
-		    if (index >= downloadLinks.length) {
-			    return reply("*_Invalid number.Please reply a valid number._*")
-		    }
 		   if(array[index - 1].downloadDetails.error === 'Failed to fetch download links.') return reply("*Direct download server error.Please try again after few hours :(*")
 		    let downloadUrl = array[index - 1].downloadDetails.DIRECT_LINK
 if(!downloadUrl) {
