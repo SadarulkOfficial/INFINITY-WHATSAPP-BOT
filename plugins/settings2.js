@@ -191,7 +191,101 @@ If you want to update your settings, Reply a below number.
                         reply("*_Invalid number.Please reply a valid number_*");
                 }
             }
-        });
+        })
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
+
+
+cmd({
+    pattern: "apply",
+    desc: "Change bot settings",
+    category: "owner",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+	    
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+if(!isOwner) return reply("*_This is an owner cmd._*")
+if(!q) return reply("*_Please give me a value to apply._*")
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
+const prefix = config.PREFIX
+const aaijid = config.AUTO_AI_JID
+const mvsjid = config.MV_SEND_JID
+const bjid = config.BLOCK_JID
+const xvjid = config.XVDL_JID
+
+const key1 = `PREFIX`
+const key2 = `AUTO_AI_JID`
+const key3 = `MV_SEND_JID`
+const key4 = `XVDL_JID`
+const key5 = `BLOCK_JID`
+const value = q
+
+let settingMsg = `*_Infinity whatsapp bot settings apply ⚙_*
+
+1 || PREFIX
+${prefix}
+
+2 || AUTO AI ALLOW JID
+${aaijid}
+
+3 || MOVIE SEND JID
+${mvsijid}
+
+4 || XVIDEO DOWNLOAD JID
+${xvjid}
+
+5 || BLOCK JID
+${bjid}
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+const msg2 = await conn.sendMessage(from, {image: { url: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' },caption: settingMsg}, { quoted: mek })
+
+        conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === msg2.key.id) {
+                switch (selectedOption) {
+                case '1':
+                        await updateEnv(key1, value)
+                        reply(`*Your value applieded ✅*\n\n*${key1}* ➠ ${value}`)
+			await delay(2000)
+			reply("*_Infinity whatsapp bot is restarting..._*")
+			await sleep(1500)
+			exec("pm2 restart all")
+                        break;
+		case '2':
+                        await updateEnv(key2, value)
+                        reply(`*Your value applieded ✅*\n\n*${key2}* ➠ ${value}`)
+                        break;
+		case '3':
+                        await updateEnv(key3, value)
+                        reply(`*Your value applieded ✅*\n\n*${key3}* ➠ ${value}`)
+        		break;
+		case '4':
+                        await updateEnv(key4, value)
+                        reply(`*Your value applieded ✅*\n\n*${key4}* ➠ ${value}`)
+                        break;
+		case '5':
+                        await updateEnv(key5, value)
+                        reply(`*Your value applieded ✅*\n\n*${key5}* ➠ ${value}`)
+                        break;
+		default:
+                        reply("*_Invalid number.Please reply a valid number_*");
+                }
+            }
+        })
 
 }catch(e){
 console.log(e)
