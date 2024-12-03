@@ -27,10 +27,8 @@ reply(`*_Successfully joined ✅_*`)
 }catch(e){
 console.log(e)
 reply(`${e}`)
-
 }
 })
-
 
 cmd({
     pattern: "left",
@@ -49,10 +47,8 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 }catch(e){
 console.log(e)
 reply(`${e}`)
-
 }
 })
-
 
 cmd({
     pattern: "link",
@@ -76,11 +72,8 @@ if(config.BLOCK_JID.includes(from)) return
 }catch(e){
 console.log(e)
 reply(`${e}`)
-
 }
 })
-
-
 
 cmd({
     pattern: "mute",
@@ -102,7 +95,6 @@ reply("*Group chat muted 🔒*")
 }catch(e){
 console.log(e)
 reply(`${e}`)
-
 }
 })
 
@@ -126,7 +118,31 @@ reply("*Group chat unmuted 🔓*")
 }catch(e){
 console.log(e)
 reply(`${e}`)
+}
+})
 
+cmd({
+    pattern: "add",
+    desc: "Adds a user to the group.",
+    category: "owner",
+    filename: __filename
+},           
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+
+        if(!isOwner) return reply(`*_This is an owner cmd._*`)
+        if(!isGroup) return
+        if(!isBotAdmins) return reply("*_Please give bot admin._*")
+        
+        const userToAdd = `${q}@s.whatsapp.net`
+        
+        await conn.groupParticipantsUpdate(from, [userToAdd], "add")
+      
+        reply(`*_Participant added successful ✅_*`)
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
 }
 })
 
@@ -142,33 +158,31 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         if(!isOwner) return reply(`*_This is an owner cmd._*`)
         if(!isGroup) return
         if(!isBotAdmins) return reply("*_Please give bot admin._*")
-        if(m.quoted.senderNumber === botNumber) return
+        if(m.quoted.senderNumber === botNumber) return reply("*_Can't remove bot number._*")
 
-        if(!q) {
-        await conn.groupParticipantsUpdate(
-    from, m.quoted.sender,
-    "remove"
-)
+        if(!q && m.quoted) {
+        
+await conn.groupParticipantsUpdate(from, [m.quoted.sender], "remove")
+            
         } else {
-            let Number = `${q}@s.whatsapp.net`
-   await conn.groupParticipantsUpdate(
-    from, Number,
-    "remove"
-)
+
+const userToAdd = `${q}@s.whatsapp.net`
+        
+await conn.groupParticipantsUpdate(from, [userToAdd], "remove")
+            
         }
         
-reply("*Successfully kicked ✅*")
+reply(`*_Participant removed successful ✅_*`)
 
 }catch(e){
 console.log(e)
 reply(`${e}`)
-
 }
 })
 
 cmd({
-    pattern: "add",
-    desc: "add member in group",
+    pattern: "promote",
+    desc: "promote member in group",
     category: "owner",
     filename: __filename
 },
@@ -178,21 +192,57 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         if(!isOwner) return reply(`*_This is an owner cmd._*`)
         if(!isGroup) return
         if(!isBotAdmins) return reply("*_Please give bot admin._*")
-        if(!q) return reply("*_Please give a number for add to group._*")
-        if(q.startsWith("+")) return reply("*_Invalid format.Give me number like this 9470xxxxxxx_*")
+
+        if(!q && m.quoted) {
         
-       let Number = `${q}@s.whatsapp.net`
+await conn.groupParticipantsUpdate(from, [m.quoted.sender], "promote")
+            
+        } else {
+
+const userToAdd = `${q}@s.whatsapp.net`
         
-   await conn.groupParticipantsUpdate(
-    from, Number,
-    "add"
-)
+await conn.groupParticipantsUpdate(from, [userToAdd], "promote")
+            
+        }
         
-reply("*Successfully added ✅*")
+reply(`*_Participant promoted successful ✅_*`)
 
 }catch(e){
 console.log(e)
 reply(`${e}`)
+}
+})
 
+cmd({
+    pattern: "demote",
+    desc: "demote member in group",
+    category: "owner",
+    filename: __filename
+},
+async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        
+        if(!isOwner) return reply(`*_This is an owner cmd._*`)
+        if(!isGroup) return
+        if(!isBotAdmins) return reply("*_Please give bot admin._*")
+        if(m.quoted.senderNumber === botNumber) return reply("*_Can't demote bot number._*")
+
+        if(!q && m.quoted) {
+        
+await conn.groupParticipantsUpdate(from, [m.quoted.sender], "demote")
+            
+        } else {
+
+const userToAdd = `${q}@s.whatsapp.net`
+        
+await conn.groupParticipantsUpdate(from, [userToAdd], "demote")
+            
+        }
+        
+reply(`*_Participant demoted successful ✅_*`)
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
 }
 })
