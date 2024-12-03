@@ -23,21 +23,21 @@ const as = config.AUTO_STICKER
 const av = config.AUTO_VOICE
 const ar = config.AUTO_REPLY
 
-const key1 = AUTO_READ_STATUS
-const value1 = true
-const value1_1 = false
-const key2 = AUTO_REPLY
-const value2 = true
-const value2_1 = false
-const key3 = AUTO_VOICE
-const value3 = true
-const value3_1 = false
-const key4 = AUTO_STICKER
-const value4 = true
-const value4_1 = false
-const key5 = AUTO_AI
-const value5 = true
-const value5_1 = false
+const key1 = `AUTO_READ_STATUS`
+const value1 = `true`
+const value1_1 = `false`
+const key2 = `AUTO_REPLY`
+const value2 = `true`
+const value2_1 = `false`
+const key3 = `AUTO_VOICE`
+const value3 = `true`
+const value3_1 = `false`
+const key4 = `AUTO_STICKER`
+const value4 = `true`
+const value4_1 = `false`
+const key5 = `AUTO_AI`
+const value5 = `true`
+const value5_1 = `false`
 
 let settingMsg = `*_Infinity whatsapp bot settings ⚙_*
 
