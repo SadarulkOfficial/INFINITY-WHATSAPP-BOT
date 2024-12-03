@@ -163,7 +163,7 @@ if(!downloadUrl) {
 }	    
 		    let caption = `${info.data.title} ( ${array[index - 1].quality} )
       
-      > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+> ɪɴꜰɪɴɪᴛʏ ᴡᴀ ʙᴏᴛ ᴍᴏᴠɪᴇ ᴅʟ`
 		    
 await conn.sendMessage(from, {document: { url: downloadUrl }, mimetype: "video/mp4", fileName: "🎬 INFINITY WA BOT 🎬" + info.data.title + ".mp4", caption: caption}, { quoted: send })
 
