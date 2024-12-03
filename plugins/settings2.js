@@ -5,7 +5,8 @@ const {sleep} = require('../lib/functions')
 const {exec} = require("child_process")
 
 cmd({
-    pattern: "settings2",
+    pattern: "settings",
+    alias: ["setting"],
     desc: "Change bot settings",
     category: "owner",
     filename: __filename
