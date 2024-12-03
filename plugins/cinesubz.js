@@ -28,7 +28,7 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
            return `${index + 1}. *Movie Name :* ${movie.title}\n*Type :* ${movie.category}\n*Year :* ${movie.year}\n*Link :* ${movie.link}`
         }).join("\n\n")
         
-let msgText = `*_INFINITY WA BOT Cinesubz.co SEARCH 🔎_*
+let searchMsg = `*_INFINITY WA BOT Cinesubz.co SEARCH 🔎_*
 
 ${movieDetails}
 
@@ -46,7 +46,7 @@ ${movieDetails}
             forwardedNewsletterMessageInfo: fdChannel
           };
           const msgBody = {
-            text: msg,
+            text: searchMsg,
             contextInfo: contextMsg
           };
          let inf = await conn.sendMessage(from, msgBody, {
