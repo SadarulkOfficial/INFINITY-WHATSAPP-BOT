@@ -5,6 +5,7 @@ const translatte = require('translatte')
 cmd({
     pattern: "tr",
     desc: "Translator",
+    alias: ["trt", "translate"],
     category: "convert",
     filename: __filename
 },
@@ -17,19 +18,17 @@ let a = q.split(" # ")
 let b = a[0]
 let c = a[1]
 let d = a[2]
-let x = d.replace('> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ', '')
+
 
 if(!m.quoted && b && c && d) {
     
-translatte(x, {from: b ,to: c}).then(res => {
+translatte(d, {from: b ,to: c}).then(res => {
     reply(res.text);
 })
 
 } else if(m.quoted && b && c && !d) {
 
-    let text = m.quoted.msg
-
-let y = text.replace('> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ', '')
+let y = m.quoted.msg
     
 translatte(y, {from: b ,to: c}).then(res => {
     reply(res.text);
