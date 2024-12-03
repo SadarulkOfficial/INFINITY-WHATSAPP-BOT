@@ -42,10 +42,10 @@ const key5 = `AUTO_AI`
 const value5 = `true`
 const value5_1 = `false`
 const key6 = `MODE`
-const key6_1 = `public`
-const key6_2 = `private`
-const key6_3 = `only_groups`
-const key6_4 = `inbox`
+const value6_1 = `public`
+const value6_2 = `private`
+const value6_3 = `only_groups`
+const value6_4 = `inbox`
 
 let settingMsg = `*_Infinity whatsapp bot settings ⚙_*
 
