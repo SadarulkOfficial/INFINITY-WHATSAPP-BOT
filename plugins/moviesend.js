@@ -5,8 +5,9 @@ const {readEnv} = require('../lib/database');
 const apilink = 'https://www.dark-yasiya-api.site';
 
 cmd({
-    pattern: "mvsend",
+    pattern: "sinsend",
     desc: "movie send to grp jid",
+    category: "owner",
     filename: __filename
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
@@ -177,6 +178,42 @@ if(!isOwner) return reply("*_This is an owner cmd._*")
 
 await conn.sendMessage(from ,{document: {url: q },mimetype:"video/mp4",fileName: "🎬 INFINITY WA BOT 🎬" + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"})
   
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
+
+cmd({
+    pattern: "sinsearch",
+    desc: "search movies in sinhalasub.lk",
+    category: "search",
+    filename: __filename
+},
+async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+        
+const mv = await fetchJson(`${apilink}/movie/sinhalasub/search?text=${q}`)
+
+let array = mv.result.data
+
+        if(array.length === 0) {
+return reply(`*_Can't find this movie !_*`);
+        }       
+
+let result = array.map((movie, index) => `${index + 1}. *Movie Name :* ${array[index].title}\n*Type :* ${array[index].type}\n*Year :* ${array[index].year}\n*Link :* ${array[index].link}`).join("\n\n");
+
+let msg = `*_INFINITY WA BOT Sinhalasub.lk SEARCH 🔎_*
+
+${result}
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+            
+await conn.sendMessage(from, { image : { url : array[0].image } , caption : msg }, {quoted: mek})
+
 }catch(e){
 console.log(e)
 reply(`${e}`)
