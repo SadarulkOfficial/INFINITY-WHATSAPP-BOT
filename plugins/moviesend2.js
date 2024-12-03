@@ -5,8 +5,9 @@ const { cmd, commands } = require('../command')
 const apilink = 'https://rest-api-dark-shan.vercel.app/'
 
 cmd({
-    pattern: "mvsend2",
+    pattern: "cinesend",
     desc: "movie send to grp jid",
+    category: "owner",
     filename: __filename
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
@@ -23,36 +24,150 @@ if(config.BLOCK_JID.includes(from)) return
             )
         }
         
-        if (!q || !q.startsWith("https://cinesubz.co/")) {
+        if (!q) {
             return reply(
-                "*_Please provide a valid cinesubz.co url_*"
+                "*_Please give me a movie name and send jid._*\n\n*Ex :- .cinesend <movie name> & <jid>*"
             )
         }
 
         const inputParts = q.split(" & ")
-        const movieUrl = inputParts[0]
-        const qualityInput = inputParts[1]
-        const sendJid = inputParts[2]
+        const movieName = inputParts[0]
+        const sendJid = inputParts[1]
+        
+//========================= Movie Search =================================
 
-        const mvv = await fetchJson(`${apilink}download/cinesubz-dl?q=${movieUrl}`)
-       
-        const filteredLinks = mvv.data.download.filter(
-            (link) => link.quality === qualityInput
-        )
+const search = await fetchJson(`${apilink}download/cinesubz-search?q=${movieName}`)
+        const array = search.data
 
-        const downloadUrl = filteredLinks[0].downloadDetails.DIRECT_LINK
+        if (array === 'No results found.') {
+            return reply("*_Can't find your movie._*")
+        }
 
-               const caption = `${mvv.data.title} ( ${filteredLinks[0].quality} )\n\n> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
+ const movieDetails = array.map((movie, index) => {
+           return `${index + 1}. *Movie Name :* ${movie.title}\n*Type :* ${movie.category}\n*Year :* ${movie.year}\n*Link :* ${movie.link}`
+        }).join("\n\n")
+        
+let searchMsg = `*_INFINITY WA BOT Cinesubz.co SEND 🔎_*
 
-if(!sendJid) {
+*Send jid :* ${sendJid}
 
-await conn.sendMessage(id,{document: { url: downloadUrl },mimetype: "video/mp4",fileName: mvv.data.title + ".mp4",caption: caption})
-    
-} else {
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-await conn.sendMessage(sendJid,{document: { url: downloadUrl },mimetype: "video/mp4",fileName: mvv.data.title + ".mp4",caption: caption})
+${movieDetails}
 
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+//======================================================
+
+let inf = await conn.sendMessage(from, {text : searchMsg}, {quoted : mek})
+        
+//======================= Get info by serch reuslt ===================================
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            let msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            let selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+
+		    let index = parseInt(selectedOption);
+
+		    const info = await fetchJson(`${apilink}download/cinesubz-dl?q=${array[index-1].link}`)
+
+            let arrays =  info.data.download
+        
+      if (!arrays || arrays.length === 0) {
+            return reply("*_No download links available._*")
+        }
+
+        const downloadLinks = arrays.map((link, index) => {
+            return `${index + 1} || ${link.quality} ( ${link.size} )` 
+        }).join("\n")
+
+let msg = `*_INFINITY WA BOT Cinesubz.co SENDER 📥_*
+
+*Movie Name :* ${info.data.title}
+
+*Release Date :* ${info.data.date}
+
+*Country :* ${info.data.country}
+
+*Duration :* ${info.data.duration}
+
+*IMDB Rate :* ${info.data.rating}
+
+*Link* : ${array[index-1].link}
+
+🔢 Reply Below Number :
+
+0 || Send movie info
+
+${downloadLinks}
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+//==========================================================
+
+let send = await conn.sendMessage(from, { iamge : { url : info.data.image }, caption : msg}, { quoted : mek})
+                
+//====================== Send info and movie =================
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            let msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            let selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === send.key.id) {
+
+		    const indexx = parseInt(selectedOption);
+
+		   if(arrays[indexx - 1].downloadDetails.error === 'Failed to fetch download links.') return reply("*Direct download server error.Please try again after few hours :(*")
+		    let downloadUrl = arrays[indexx - 1].downloadDetails.DIRECT_LINK
+if(!downloadUrl) {
+	return reply("*_Can't send your movie in this quality.Please try another quality._*")
+}	    
+
+//================ info send =========================
+                if(indexx === '0') {
+                let sendInfomsg = `🍟 *${info.data.title}*
+
+🧿 *Release Date :* ${info.data.date}
+
+🌍 *Country :* ${info.data.country}
+
+⏱ *Duration :* ${info.data.duration}
+
+⭐ *IMDB Rate :* ${info.data.rating}
+
+🖇️ *Link* : ${array[index-1].link}
+
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+
+● ɢʀᴏᴜᴘ ʟɪɴᴋ : https://chat.whatsapp.com/${code}
+
+> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
+
+await conn.sendMessage(sendJid ,{image:{url: mvInfo.data.image},caption: sendInfomsg})
+                } else {
+
+//=====================================================
+                
+		    let caption = `${info.data.title} ( ${arrays[indexx - 1].quality} )
+      
+> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
+		    
+await conn.sendMessage(sendJid, {document: { url: downloadUrl }, mimetype: "video/mp4", fileName: info.data.title + ".mp4", caption: caption})
+
+                }
+                    
 }
+})		    
+}
+})
+                
+//============================================================
+                
 }catch(e){
 console.log(e)
 reply(`${e}`)
