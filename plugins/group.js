@@ -1,7 +1,6 @@
 const { cmd, commands } = require('../command')
 const {readEnv} = require('../lib/database')
 
-
 cmd({
     pattern: "join",
     desc: "join groups",
@@ -123,6 +122,73 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         await conn.groupSettingUpdate(from, 'not_announcement')
 
 reply("*Group chat unmuted 🔓*")
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+
+}
+})
+
+cmd({
+    pattern: "kick",
+    desc: "Kick member in group",
+    category: "owner",
+    filename: __filename
+},
+async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        
+        if(!isOwner) return reply(`*_This is an owner cmd._*`)
+        if(!isGroup) return
+        if(!isBotAdmins) return reply("*_Please give bot admin._*")
+        if(m.quoted.senderNumber === botNumber) return
+
+        if(!q) {
+        await conn.groupParticipantsUpdate(
+    from, m.quoted.sender,
+    "remove"
+)
+        } else {
+            let Number = `${q}@s.whatsapp.net`
+   await conn.groupParticipantsUpdate(
+    from, Number,
+    "remove"
+)
+        }
+        
+reply("*Successfully kicked ✅*")
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+
+}
+})
+
+cmd({
+    pattern: "add",
+    desc: "add member in group",
+    category: "owner",
+    filename: __filename
+},
+async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        
+        if(!isOwner) return reply(`*_This is an owner cmd._*`)
+        if(!isGroup) return
+        if(!isBotAdmins) return reply("*_Please give bot admin._*")
+        if(!q) return reply("*_Please give a number for add to group._*")
+        if(q.startsWith("+")) return reply("*_Invalid format.Give me number like this 9470xxxxxxx_*")
+        
+       let Number = `${q}@s.whatsapp.net`
+        
+   await conn.groupParticipantsUpdate(
+    from, Number,
+    "add"
+)
+        
+reply("*Successfully added ✅*")
 
 }catch(e){
 console.log(e)
