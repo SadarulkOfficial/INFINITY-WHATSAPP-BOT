@@ -25,7 +25,6 @@ if(!q) return reply("*_Please give me a text._*")
 
 const xv = await fetchJson(`${apilink}/search/xvideo?text=${q}`)
 
-
 const array = xv.result;
         
 if (!array || array.length === 0) {
@@ -34,12 +33,79 @@ if (!array || array.length === 0) {
 
 const result = array.map((xvideo, index) => `${index + 1}. *Title :* ${array[index].title}\n*Duration :* ${array[index].duration}\n*Link :* ${array[index].url}`).join("\n\n");
 
-await conn.sendMessage(from, { text: `${dt} ${result} ${cap}` }, {quoted: mek})
+let inf = await conn.sendMessage(from, { text: `${dt} ${result} ${cap}` }, {quoted: mek})
 
+//=======================================================================
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            let msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            let selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+
+		    let index = parseInt(selectedOption)
+
+        let xv = await fetchJson(`${apilink}/download/xvideo?url=${array[index - 1].url}`)
+
+let xvdlink = xv.result.dl_link
+
+        if (!xvdlink) {
+            return reply("*_Can't download your video._*");
+        }
+
+let msg = `*_INFINITY WA BOT XVIDEO DOWNLOADER 📥_*
+
+┌───────────────────
+├ ℹ️ *Title:* ${xv.result.title}
+├ 👁️‍🗨️ *Views:* ${xv.result.views}
+├ 👍 *Likes:* ${xv.result.like}
+├ 🖇️ *Url:* ${q}
+└───────────────────
+
+🔢 Reply Below Number :
+
+1 || Video
+2 || Document
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+let send = await conn.sendMessage(from,{image:{url: xv.result.image},caption:msg},{quoted:mek})
+
+}
+})
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === send.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+await conn.sendMessage(from,{video: {url: xvdlink },mimetype:"video/mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: send})
+
+                        break; 
+                    case '2':
+
+await conn.sendMessage(from,{document: {url: xvdlink },mimetype:"video/mp4",fileName: xv.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: send})
+                        
+                        break;
+                    default:
+                        reply("*_Invalid number.Please reply a valid number._*");
+                }
+
+            }
+        })
+        
+//=======================================================================
+        
 }catch(e){
 console.log(e)
 reply(`${e}`)
-
 }
 })
 
@@ -77,11 +143,39 @@ let msg = `*_INFINITY WA BOT XVIDEO DOWNLOADER 📥_*
 ├ 🖇️ *Url:* ${q}
 └───────────────────
 
+🔢 Reply Below Number :
+
+1 || Video
+2 || Document
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
 let send = await conn.sendMessage(from,{image:{url: xv.result.image},caption:msg},{quoted:mek})
         
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === send.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+await conn.sendMessage(from,{video: {url: xvdlink },mimetype:"video/mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: send})
+
+                        break; 
+                    case '2':
+
 await conn.sendMessage(from,{document: {url: xvdlink },mimetype:"video/mp4",fileName: xv.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: send})
+                        
+                        break;
+                    default:
+                        reply("*_Invalid number.Please reply a valid number._*");
+                }
+
+            }
+        })
 
 } else if (!q.startsWith("https://")) {
 
@@ -110,11 +204,39 @@ let msg = `*_INFINITY WA BOT XVIDEO DOWNLOADER 📥_*
 ├ 🖇️ *Url:* ${xvUrl}
 └───────────────────
 
+🔢 Reply Below Number :
+
+1 || Video
+2 || Document
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
 let sendd = await conn.sendMessage(from,{image:{url: xv.result.image},caption:msg},{quoted:mek})
         
-await conn.sendMessage(from,{document: {url: xvdlink },mimetype:"video/mp4",fileName: xv.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted:sendd})
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === sendd.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+await conn.sendMessage(from,{video: {url: xvdlink },mimetype:"video/mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: sendd})
+
+                        break; 
+                    case '2':
+
+await conn.sendMessage(from,{document: {url: xvdlink },mimetype:"video/mp4",fileName: xv.result.title + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: sendd})
+                        
+                        break;
+                    default:
+                        reply("*_Invalid number.Please reply a valid number._*");
+                }
+
+            }
+        })
 
 } else if(!q){
 return reply("*_Please give me a text or xvideos.com url._*")
