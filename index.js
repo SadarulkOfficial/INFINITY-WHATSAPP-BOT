@@ -82,7 +82,7 @@ require("./plugins/" + plugin);
 console.log('Plugins installed successful ✅')
 console.log('Infinity wa bot connected to whatsapp ✅')
 
-let up = `*_Infinity whatsapp bot connected successful ✅_*\n\n_Prefix :_ ${prefix}\n\n*Type .menu to get all command list*\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`;
+let up = `*_Infinity whatsapp bot connected successful ✅_*\n\n_Prefix :_ ${prefix}\n\n*Type ${prefix}alive for more info.*\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`;
 
 const msg = {
             newsletterJid: "120363352976453510@newsletter",
