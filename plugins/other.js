@@ -2,7 +2,7 @@ const {cmd , commands} = require('../command')
 const {readEnv} = require('../lib/database')
 const { fetchJson } = require('../lib/functions')
 
-const apilink = 'https://dark-yasiya-api-new.vercel.app'
+const apilink = 'https://www.dark-yasiya-api.site'
 
 cmd({
     pattern: "lyrics",
@@ -19,11 +19,7 @@ if(config.BLOCK_JID.includes(from)) return
 if(!q) return reply("*_Please give me a song name_*")
 
 const data = await fetchJson(`${apilink}/other/lyrics?text=${q}`)
-
-        if (!data || data.result.length === 0) {
-            return reply("*_Can't find anything._*");
-        }
-
+	    
 const msg = `*_INFINITY WA BOT SONG LYRICS_*
 
 *Song :* ${data.result.album}
@@ -69,15 +65,11 @@ if(config.BLOCK_JID.includes(from)) return
 if(!q) return reply("*_Please give me a text._*")
 
 const data = await fetchJson(`${apilink}/other/font?text=${q}`)
-
-if (!data || data.result.length === 0) {
-            return reply("*_Can't find anything._*");
-        }
-
+	    
 const array = data.result
       
 const fancyStyle = array.map((fancy, index) => {
-            return `${index + 1} || ${fancy.result}` 
+            return `${index + 1} || ${array[index].result}` 
         }).join("\n\n")
       
 let msg = `*_INFINITY WA BOT TEXT STYLES_*
@@ -118,7 +110,9 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
 		    let index = parseInt(selectedOption)
 
     reply(`${array[index-1].result}`)
-
+	    
+}
+})
 }catch(e){
 console.log(e)
 reply(`${e}`)
