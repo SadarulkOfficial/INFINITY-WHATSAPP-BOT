@@ -1,6 +1,8 @@
-const { updateEnv, readEnv } = require('../lib/database');
-const { cmd, commands } = require('../command');
-const EnvVar = require('../lib/mongodbenv');
+const { updateEnv, readEnv } = require('../lib/database')
+const { cmd, commands } = require('../command')
+const EnvVar = require('../lib/mongodbenv')
+const {sleep} = require('../lib/functions')
+const {exec} = require("child_process")
 
 cmd({
     pattern: "settings2",
@@ -10,10 +12,11 @@ cmd({
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        
+	    
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
 const prefix = config.PREFIX
 const ars = config.AUTO_READ_STATUS
@@ -38,16 +41,21 @@ const value4_1 = `false`
 const key5 = `AUTO_AI`
 const value5 = `true`
 const value5_1 = `false`
+const key6 = `MODE`
+const key6_1 = `public`
+const key6_2 = `private`
+const key6_3 = `only_groups`
+const key6_4 = `inbox`
 
 let settingMsg = `*_Infinity whatsapp bot settings ⚙_*
 
-◤ *PREFIX :* ${prefix} ◢
-◤ *MODE :* ${mode} ◢
-◤ *AUTO READ STATUS :* ${ars} ◢
-◤ *AUTO REPLY :* ${ar} ◢
-◤ *AUTO VOICE :* ${av} ◢
-◤ *AUTO STICKER :* ${as} ◢
-◤ *AUTO AI :* ${aai} ◢
+*PREFIX :* ${prefix}
+*MODE :* ${mode}
+*AUTO READ STATUS :* ${ars}
+*AUTO REPLY :* ${ar}
+*AUTO VOICE :* ${av}
+*AUTO STICKER :* ${as}
+*AUTO AI :* ${aai}
 
 If you want to update your settings, Reply a below number.
 
@@ -108,52 +116,76 @@ If you want to update your settings, Reply a below number.
             if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === msg2.key.id) {
                 switch (selectedOption) {
                     case '1.1':
-                        reply('.update MODE:public');
-                        reply('.restart');
+                        await updateEnv(key6, value6_1)
+                        reply(`*Settings updated ✅*\n\n*${key6}* ➠ ${value6_1}`)
+			await delay(2000)
+			reply("*_Infinity whatsapp bot is restarting..._*")
+			await sleep(1500)
+			exec("pm2 restart all")
                         break;
                     case '1.2':
-                        reply('.update MODE:private');
-                        reply('.restart');
+                       await updateEnv(key6, value6_2)
+                        reply(`*Settings updated ✅*\n\n*${key6}* ➠ ${value6_2}`)
+			await delay(2000)
+			reply("*_Infinity whatsapp bot is restarting..._*")
+			await sleep(1500)
+			exec("pm2 restart all")
                         break;
                     case '1.3':
-                        reply('.update MODE:only_groups');
-                        reply('.restart');
+                       await updateEnv(key6, value6_3)
+                        reply(`*Settings updated ✅*\n\n*${key6}* ➠ ${value6_3}`)
+			await delay(2000)
+			reply("*_Infinity whatsapp bot is restarting..._*")
+			await sleep(1500)
+			exec("pm2 restart all")
                         break;
                     case '1.4':
-                        reply('.update MODE:inbox');
-                        reply('.restart');
+                        await updateEnv(key6, value6_4)
+                        reply(`*Settings updated ✅*\n\n*${key6}* ➠ ${value6_4}`)
+			await delay(2000)
+			reply("*_Infinity whatsapp bot is restarting..._*")
+			await sleep(1500)
+			exec("pm2 restart all")
                         break;
                     case '2.1':
                         await updateEnv(key1, value1)
-                        reply('`Settings updated ✅`')
+                        reply(`*Settings updated ✅*\n\n*${key1}* ➠ ${value1}`)
                         break;
                     case '2.2':
                         await updateEnv(key1, value1_1)
-			reply('`Settings updated ✅`')
+			reply(`*Settings updated ✅*\n\n*${key1}* ➠ ${value1_1}`)
                         break;
                     case '3.1':
-                        reply('.update AUTO_REPLY:true');
+                        await updateEnv(key2, value2)
+                        reply(`*Settings updated ✅*\n\n*${key2}* ➠ ${value2}`)
                         break;
                     case '3.2':
-                        reply('.update AUTO_REPLY:false');
+                        await updateEnv(key2, value2_1)
+                        reply(`*Settings updated ✅*\n\n*${key2}* ➠ ${value2_1}`)
                         break;
                     case '4.1':
-                        reply('.update AUTO_VOICE:true');
+                        await updateEnv(key3, value3)
+                        reply(`*Settings updated ✅*\n\n*${key3}* ➠ ${value3}`)
                         break;
                     case '4.2':
-                        reply('..update AUTO_VOICE:false');
+                        await updateEnv(key3, value3_1)
+                        reply(`*Settings updated ✅*\n\n*${key3}* ➠ ${value3_1}`)
                         break;
                     case '5.1':
-                        reply('.update AUTO_STICKER:true');
+                        await updateEnv(key4, value4)
+                        reply(`*Settings updated ✅*\n\n*${key4}* ➠ ${value4}`)
                         break;
                     case '5.2':
-                        reply('.update AUTO_STICKER:false');
+                        await updateEnv(key4, value4_1)
+                        reply(`*Settings updated ✅*\n\n*${key4}* ➠ ${value4_1}`)
                         break;
                     case '6.1':
-                        reply('.update AUTO_AI:true');
+                        await updateEnv(key5, value5)
+                        reply(`*Settings updated ✅*\n\n*${key5}* ➠ ${value5}`)
                         break;
                     case '6.2':
-                        reply('.update AUTO_AI:false');
+                        await updateEnv(key5, value5_1)
+                        reply(`*Settings updated ✅*\n\n*${key5}* ➠ ${value5_1}`)
                         break;
                     default:
                         reply("*_Invalid number.Please reply a valid number_*");
