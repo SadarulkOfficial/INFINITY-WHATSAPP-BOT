@@ -78,6 +78,7 @@ search: '',
 download: '',
 ai: '',
 owner: '',
+group: '',
 other: '',
 convert: ''
 };
@@ -100,6 +101,10 @@ ${menu.main}╰───────────●
 │❯ OWNER COMMANDS ❮
 │   ───────
 ${menu.owner}╰───────────●
+╭───────────●
+│❯ GROUP COMMANDS ❮
+│   ───────
+${menu.group}╰───────────●
 ╭───────────●
 │❯ AI COMMANDS ❮
 │   ───────
