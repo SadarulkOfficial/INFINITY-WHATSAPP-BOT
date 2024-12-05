@@ -395,7 +395,7 @@ ${downloadLinks}
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 //==========================================================
 
-let send = await conn.sendMessage(from, { image : { url : info.data.image }, caption : msg}, { quoted : mek})
+let send = await conn.sendMessage(from, { image : { url : info.data.image }, caption : msg}, { quoted : inf})
                 
 //====================== Send info and movie =================
 
