@@ -3,7 +3,7 @@ const {cmd , commands} = require('../command')
 const { fetchJson } = require('../lib/functions')
 
 cmd({
-    pattern: "ai",
+    pattern: "gpt",
     desc: "AI chat feature",
     category: "ai",
     filename: __filename
@@ -21,7 +21,71 @@ return reply(`${data.result}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙ�
 }catch(e){
 console.log(e)
 reply(`${e}`)
-
 }
 })
 
+cmd({
+    pattern: "toolbot",
+    desc: "AI chat feature",
+    category: "ai",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+
+let data = await fetchJson(`https://www.dark-yasiya-api.site/ai/toolbotai?q=${q}`)
+
+return reply(`${data.data.result}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
+
+cmd({
+    pattern: "lepton",
+    desc: "AI chat feature",
+    category: "ai",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+
+let data = await fetchJson(`https://www.dark-yasiya-api.site/ai/leptonai?q=${q}`)
+
+return reply(`${data.result}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
+
+cmd({
+    pattern: "goody",
+    desc: "AI chat feature",
+    category: "ai",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+
+let data = await fetchJson(`https://www.dark-yasiya-api.site/ai/goodyai?q=${q}`)
+
+return reply(`${data.result}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
