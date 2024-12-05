@@ -28,8 +28,6 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 if(!q) return reply("*_Please give me a text._*")
-  
-let data = await fetchJson(`${apilink}/api/logo?url=${logo1}&name=${q}`)
 
 let logoMsg = `*_INFINITY WA BOT LOGO MAKER_*
 
@@ -81,62 +79,62 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
                 switch (selectedOption) {
                     case '1':
         
-let data = await fetchJson(`${apilink}/api/logo?url=${logo1}&name=${q}`)
-await conn.sendMessage(from, { image :{url : `${data.result.download_url}`}, caption : `${caption}`},{quoted : mek})
+let data1 = await fetchJson(`${apilink}/api/logo?url=${logo1}&name=${q}`)
+await conn.sendMessage(from, { image :{url : `${data1.result.download_url}`}, caption : `${caption}`},{quoted : mek})
 
                         break;
                     case '2':
 
-let data = await fetchJson(`${apilink}/api/logo?url=${logo2}&name=${q}`)
-await conn.sendMessage(from, { image :{url : `${data.result.download_url}`}, caption : `${caption}`},{quoted : mek})
+let data2 = await fetchJson(`${apilink}/api/logo?url=${logo2}&name=${q}`)
+await conn.sendMessage(from, { image :{url : `${data2.result.download_url}`}, caption : `${caption}`},{quoted : mek})
                     
                     break;
                     case '3':
 
-let data = await fetchJson(`${apilink}/api/logo?url=${logo3}&name=${q}`)
-await conn.sendMessage(from, { image :{url : `${data.result.download_url}`}, caption : `${caption}`},{quoted : mek})
+let data3 = await fetchJson(`${apilink}/api/logo?url=${logo3}&name=${q}`)
+await conn.sendMessage(from, { image :{url : `${data3.result.download_url}`}, caption : `${caption}`},{quoted : mek})
                     
                     break;
                     case '4':
 
-let data = await fetchJson(`${apilink}/api/logo?url=${logo4}&name=${q}`)
-await conn.sendMessage(from, { image :{url : `${data.result.download_url}`}, caption : `${caption}`},{quoted : mek})
+let data4 = await fetchJson(`${apilink}/api/logo?url=${logo4}&name=${q}`)
+await conn.sendMessage(from, { image :{url : `${data4.result.download_url}`}, caption : `${caption}`},{quoted : mek})
                     
                     break;
                     case '5':
 
-let data = await fetchJson(`${apilink}/api/logo?url=${logo5}&name=${q}`)
-await conn.sendMessage(from, { image :{url : `${data.result.download_url}`}, caption : `${caption}`},{quoted : mek})
+let data5 = await fetchJson(`${apilink}/api/logo?url=${logo5}&name=${q}`)
+await conn.sendMessage(from, { image :{url : `${data5.result.download_url}`}, caption : `${caption}`},{quoted : mek})
                     
                     break;
                     case '6':
 
-let data = await fetchJson(`${apilink}/api/logo?url=${logo6}&name=${q}`)
-await conn.sendMessage(from, { image :{url : `${data.result.download_url}`}, caption : `${caption}`},{quoted : mek})
+let data6 = await fetchJson(`${apilink}/api/logo?url=${logo6}&name=${q}`)
+await conn.sendMessage(from, { image :{url : `${data6.result.download_url}`}, caption : `${caption}`},{quoted : mek})
                     
                     break;
                     case '7':
 
-let data = await fetchJson(`${apilink}/api/logo?url=${logo7}&name=${q}`)
-await conn.sendMessage(from, { image :{url : `${data.result.download_url}`}, caption : `${caption}`},{quoted : mek})
+let data7 = await fetchJson(`${apilink}/api/logo?url=${logo7}&name=${q}`)
+await conn.sendMessage(from, { image :{url : `${data7.result.download_url}`}, caption : `${caption}`},{quoted : mek})
                     
                     break;
                     case '8':
 
-let data = await fetchJson(`${apilink}/api/logo?url=${logo8}&name=${q}`)
-await conn.sendMessage(from, { image :{url : `${data.result.download_url}`}, caption : `${caption}`},{quoted : mek})
+let data8 = await fetchJson(`${apilink}/api/logo?url=${logo8}&name=${q}`)
+await conn.sendMessage(from, { image :{url : `${data8.result.download_url}`}, caption : `${caption}`},{quoted : mek})
                     
                     break;
                     case '9':
 
-let data = await fetchJson(`${apilink}/api/logo?url=${logo9}&name=${q}`)
-await conn.sendMessage(from, { image :{url : `${data.result.download_url}`}, caption : `${caption}`},{quoted : mek})
+let data9 = await fetchJson(`${apilink}/api/logo?url=${logo9}&name=${q}`)
+await conn.sendMessage(from, { image :{url : `${data9.result.download_url}`}, caption : `${caption}`},{quoted : mek})
                     
                     break;
                     case '10':
 
-let data = await fetchJson(`${apilink}/api/logo?url=${logo10}&name=${q}`)
-await conn.sendMessage(from, { image :{url : `${data.result.download_url}`}, caption : `${caption}`},{quoted : mek})
+let data10 = await fetchJson(`${apilink}/api/logo?url=${logo10}&name=${q}`)
+await conn.sendMessage(from, { image :{url : `${data10.result.download_url}`}, caption : `${caption}`},{quoted : mek})
                     
                     break;
                     default:
