@@ -95,7 +95,7 @@ let msg = `*_INFINITY WA BOT Cinesubz.co DOWNLOADER 📥_*
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-_🔢 Reply Below Number :_
+🔢 Reply Below Number :
 
 ${downloadLinks}
 
@@ -213,7 +213,7 @@ let msg = `*_INFINITY WA BOT Cinesubz.co DOWNLOADER 📥_*
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-_🔢 Reply Below Number :_
+🔢 Reply Below Number :
 
 ${downloadLinks}
 
