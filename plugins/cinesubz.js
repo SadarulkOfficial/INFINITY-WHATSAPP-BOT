@@ -16,6 +16,8 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 	let code = await conn.groupInviteCode('120363355439809658@g.us')
         const config = await readEnv();
         if (config.BLOCK_JID.includes(from)) return
+	let premNb = await fetchJson(`https://github.com/Sadarulk/QueenMatheeDB/raw/refs/heads/main/database/premium.json`)
+	if(!senderNumber.includes(premNb)) return reply("*_You are not premium user._*")
         if (!q) return reply("*_Please give me a movie name._*")
         
         const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
@@ -176,6 +178,8 @@ let code = await conn.groupInviteCode('120363355439809658@g.us')
 	    
         const config = await readEnv();
         if (config.BLOCK_JID.includes(from)) return
+	let premNb = await fetchJson(`https://github.com/Sadarulk/QueenMatheeDB/raw/refs/heads/main/database/premium.json`)
+	if(!senderNumber.includes(premNb)) return reply("*_You are not premium user._*")
         if (!q) return reply("*_Please give me a movie name._*")
 
     const search = await fetchJson(`${apilink}download/cinesubz-search?q=${q}`)
