@@ -2,7 +2,7 @@ const {cmd , commands} = require('../command')
 const {readEnv} = require('../lib/database')
 
 cmd({
-    pattern: "send",
+    pattern: "textsend",
     desc: "text send to jid",
     category: "owner",
     filename: __filename
