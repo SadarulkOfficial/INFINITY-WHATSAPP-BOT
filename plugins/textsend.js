@@ -18,6 +18,8 @@ if(!q) return reply("*_Please give me a jid to send this text._*")
 
 await conn.sendMessage(q, { text : m.quoted.msg })
     
+reply("*_Text send successful ✅_*")
+    
 }catch(e){
 console.log(e)
 reply(`${e}`)
