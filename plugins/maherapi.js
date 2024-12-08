@@ -16,11 +16,7 @@ if(config.BLOCK_JID.includes(from)) return
 
 if(!q && !q.startsWith('https://drive')) return reply("*_Please give me a gdrive url._*")
 
-let data = await fetchJson(`https://api.nexoracle.com/downloader/gdrive?apikey=d2d02440c70a98a415&url=${q}`)
-
-if(!data.result.startsWith('https://')) {
-            return reply("*_API limit is over.Try again after 24h._*");
-        }
+let data = await fetchJson(`https://api.fgmods.xyz/api/downloader/gdrive?url=${q}&apikey=nRHt2lt5`)
 
 let dl_link = data.result.downloadUrl
 
