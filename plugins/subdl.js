@@ -46,7 +46,7 @@ let msg = `*_INFINITY WA BOT SUBTITLE DOWNLOADER_* 📥
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-let send = await conn.sendMessage(from,{image:{url: data.result.image},caption:msg},{quoted:mek})
+let send = await conn.sendMessage(from,{text:msg},{quoted:mek})
 
 conn.ev.on('messages.upsert', async (msgUpdate) => {
             const msg = msgUpdate.messages[0];
