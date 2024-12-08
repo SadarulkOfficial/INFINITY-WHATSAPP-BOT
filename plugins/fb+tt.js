@@ -27,8 +27,15 @@ let desc = `*_INFINITY WA BOT FACEBOOK DOWNLOADER_* 📥
 
 🔢 Reply Below Number :
 
-1 || HD Quality
-2 || SD Quality
+_HD QUALITY_
+
+1.1 || Video
+1.2 || Document
+
+_SD QUALITY_
+
+2.1 || Video
+2.2 || Document
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
@@ -62,14 +69,24 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
 
             if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
                 switch (selectedOption) {
-                    case '1':
+                    case '1.1':
 
                         await conn.sendMessage(from,{video: {url:data.result.hd},mimetype:"video/mp4",caption: `*HD Quality*\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ` },{quoted: mek})
                         
+                        break;
+                         case '1.2':
+
+                        await conn.sendMessage(from,{document: {url: data.result.hd },mimetype:"video/mp4",fileName:"INFINITY WA BOT FB DL.mp4",caption:"*HD Quality*\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: mek })
+                        
                         break; 
-                    case '2':
+                    case '2.1':
 
                         await conn.sendMessage(from,{video: {url:data.result.sd},mimetype:"video/mp4",caption: `*SD Quality*\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ` },{quoted: mek})
+
+                        break;
+                        case '2.2':
+
+                        await conn.sendMessage(from,{document: {url: data.result.sd },mimetype:"video/mp4",fileName:"INFINITY WA BOT FB DL.mp4",caption:"*SD Quality*\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: mek })
 
                         break;
                     default:
