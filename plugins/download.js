@@ -1,5 +1,5 @@
 const { fetchJson } = require('../lib/functions')
-const config = require('../config')
+const {readEnv} = require('../lib/database')
 const { cmd, commands } = require('../command')
 
 cmd({
@@ -115,7 +115,7 @@ cmd({
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
 
-        const config = await readEnv();
+const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
         
         if (!q && !q.startsWith("https://")) return reply("*_Please give me a tiktok url._*")
@@ -204,6 +204,7 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
 
 cmd({
     pattern: "gdrive",
+    alias: ["googledrive", "drive"],
     desc: "Download google drive file",
     category: "download",
     filename: __filename
@@ -214,7 +215,7 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 
-if(!q && !q.startsWith('https://drive')) return reply("*_Please give me a gdrive url._*")
+if(!q && !q.startsWith('https://drive')) return reply("*_Please give me a google drive url._*")
 
 let data = await fetchJson(`https://api.fgmods.xyz/api/downloader/gdrive?url=${q}&apikey=nRHt2lt5`)
 
@@ -223,12 +224,93 @@ let dl_link = data.result.downloadUrl
         if(!dl_link) {
             return reply("*_Can't download your file._*");
         }
-        
+
 await conn.sendMessage(from,{document: {url: dl_link },mimetype: data.result.mimetype ,fileName: data.result.fileName ,caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ"},{quoted: mek});
     
 }catch(e){
 console.log(e)
 reply(`${e}`)
+}
+})
 
+cmd({
+    pattern: "mfire",
+    alias: ["mediafire", "mfdl"],
+    desc: "Download mediafire file",
+    category: "download",
+    filename: __filename
+},
+async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+
+if(!q && !q.startsWith('https://www.mediafire.com')) return reply("*_Please give me a mediafire url._*")
+
+let data = await fetchJson(`https://www.dark-yasiya-api.site/download/mfire?url=${q}`)
+
+let downloadUrl = data.result.dl_link
+
+        if(!downloadUrl) {
+            return reply("*_Can't download your file._*");
+        }
+
+let desc = `*_INFINITY WA BOT MEDIAFIRE DOWNLOADER_* 📥
+
+*File name :* ${data.result.fileName}
+
+*Size :* ${data.result.size}
+
+🔢 Reply Below Number :
+
+1 || Download file
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+            text : desc,
+            contextInfo: contextMsg
+          };
+         let inf = await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
+
+//==========number reply==========
+
+conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === inf.key.id) {
+                switch (selectedOption) {
+                    case '1':
+
+                       await conn.sendMessage(from,{document: {url: downloadUrl },mimetype: data.result.fileType ,fileName: downloadUrl ,caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: mek})
+                        
+                        break; 
+                    default:
+                        reply("*_Invalid number.Please reply a valid number._*");
+                }
+
+            }
+        })
+        
+}catch(e){
+console.log(e)
+reply(`${e}`)
 }
 })
