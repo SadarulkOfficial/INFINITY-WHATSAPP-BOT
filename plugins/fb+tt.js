@@ -12,9 +12,11 @@ cmd({
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
 
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+        
         if (!q && !q.startsWith("https://")) return reply("*_Please give me a facebook url._*")
 
-        
         let data = await fetchJson(`https://www.dark-yasiya-api.site/download/fbdl1?url=${q}`)
 
          if (!data.result) {
@@ -113,6 +115,9 @@ cmd({
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
 
+        const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+        
         if (!q && !q.startsWith("https://")) return reply("*_Please give me a tiktok url._*")
 
         let data = await fetchJson(`https://www.dark-yasiya-api.site/download/tiktok?url=${q}`)
@@ -195,4 +200,35 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
       console.log(e)
       reply(`${e}`)
     }
+})
+
+cmd({
+    pattern: "gdrive",
+    desc: "Download google drive file",
+    category: "download",
+    filename: __filename
+},
+async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+
+const config = await readEnv();
+if(config.BLOCK_JID.includes(from)) return
+
+if(!q && !q.startsWith('https://drive')) return reply("*_Please give me a gdrive url._*")
+
+let data = await fetchJson(`https://api.fgmods.xyz/api/downloader/gdrive?url=${q}&apikey=nRHt2lt5`)
+
+let dl_link = data.result.downloadUrl
+
+        if(!dl_link) {
+            return reply("*_Can't download your file._*");
+        }
+        
+await conn.sendMessage(from,{document: {url: dl_link },mimetype: data.result.mimetype ,fileName: data.result.fileName ,caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ"},{quoted: mek});
+    
+}catch(e){
+console.log(e)
+reply(`${e}`)
+
+}
 })
