@@ -361,12 +361,42 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
         let data = participants.filter(nb => nb.id !== "94771709545@s.whatsapp.net" && nb.id !== "94701814946@s.whatsapp.net" && nb.id.startsWith(q))
 
-        data.forEach(nb => {
-            conn.groupParticipantsUpdate(from, [`${nb.id}`], "remove")
-        })
-
+ for (let participant of data) {
+            conn.groupParticipantsUpdate(from, [participant.id], "remove");
+  }
+        
 }catch(e){
 console.log(e)
 reply(`${e}`)
 }
+})
+
+cmd({
+pattern: "delete",
+alias: ["del"],
+desc: "delete message",
+category: "group",
+filename: __filename
+},
+async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants,  isItzcp, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+if(!isOwner) return reply("*_This is an owner cmd._*")
+if(!isBotAdmins) return reply("*_First give me admin._*")
+if(!m.quoted) return reply("*_Please reply a msg._*")
+if(m.quoted.senderNumber === '94701814946') return
+    
+const key = {
+            remoteJid: from,
+            fromMe: false,
+            id: m.quoted.id,
+            participant: m.quoted.sender
+        }
+    
+        await conn.sendMessage(from, { delete: key })
+    
+}catch(e){
+console.log(e);
+reply(`${e}`)
+} 
 })
