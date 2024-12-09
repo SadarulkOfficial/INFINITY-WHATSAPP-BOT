@@ -16,10 +16,6 @@ if(config.BLOCK_JID.includes(from)) return
 
 let data = await fetchJson(`https://api.nexoracle.com/misc/temp-mail-gen?apikey=d2d02440c70a98a415`)
 
-if(!data.result.startsWith('https://')) {
-            return reply("*_API limit is over.Try again after 24h._*");
-        }
-
 if(!data.result.email) return reply("*_Can't genarate tempmail in this time._*")
 
 let inbox = await fetchJson(`https://api.nexoracle.com/misc/temp-mail-inbox?apikey=d2d02440c70a98a415&id=${data.result.email_id}`)
