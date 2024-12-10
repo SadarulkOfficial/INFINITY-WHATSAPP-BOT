@@ -20,14 +20,17 @@ let msg = `*👋 HELLO _${pushname}_*
 
 ╭──────────●
 │❯ MOVIE COMMANDS ❮
-│   ───────
-│► .movie
-│► .mvsearch
-│► .downlink
-│► .mvsend
-│► .infosend
-│► .dirsend
+│─────────
+│► .cinesend
+│► .cineinfosend
+│► .cinesearch
+│► .cineinfo
+│► .cinedl
+│► .sinsend
+│► .sinsearch
 │► .dirdl
+│► .dirsend
+│► .downlink
 ╰───────────●
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
