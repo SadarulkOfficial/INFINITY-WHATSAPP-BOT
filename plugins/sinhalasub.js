@@ -35,6 +35,10 @@ if (!sendJid) {
 const search = await fetchJson(`${apilink}/movie/sinhalasub/search?text=${q}`)
 const array = search.result.data
 
+if(!array) {
+	return reply(`No results to show with *${q}*`)
+}
+	    
 const movieDetails = array.map((movie, index) => {
            return `${index + 1}. *Movie Name :* ${movie.title}\n*Type :* ${movie.type}\n*Year :* ${movie.year}\n*Link :* ${movie.link}`
         }).join("\n\n")
