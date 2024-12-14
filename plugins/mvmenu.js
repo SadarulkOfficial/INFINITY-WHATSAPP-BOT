@@ -35,7 +35,7 @@ let msg = `*👋 HELLO _${pushname}_*
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-let menuImg = `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true`
+let menuImg = `https://github.com/SadarulkOfficial/INFINITY-DATABASE/blob/main/Bot%20Logos/infinitylogo.png?raw=true`
 
 await conn.sendMessage(from,{image:{url: menuImg },caption:msg},{quoted:mek})
 
