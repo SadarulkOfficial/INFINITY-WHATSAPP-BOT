@@ -58,7 +58,7 @@ ${movieDetails}
             forwardedNewsletterMessageInfo: fdChannel
           };
           const msgBody = {
-	    image: { url : `https://raw.githubusercontent.com/Sadarulk/QueenMatheeDB/refs/heads/main/botlogos/cinesubz.co.jpg` },
+	    image: { url : `https://github.com/SadarulkOfficial/INFINITY-DATABASE/blob/main/Bot%20Logos/cinesubz.co.jpg?raw=true` },
             caption: searchMsg,
             contextInfo: contextMsg
           };
