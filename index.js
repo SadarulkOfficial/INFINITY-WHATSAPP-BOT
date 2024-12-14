@@ -95,7 +95,7 @@ const msg = {
             forwardedNewsletterMessageInfo: msg
           }
         
-conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true` }, caption: up ,  contextInfo: msg2})
+conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://github.com/SadarulkOfficial/INFINITY-DATABASE/blob/main/Bot%20Logos/infinitylogo.png?raw=true` }, caption: up ,  contextInfo: msg2})
 
 }
 })
