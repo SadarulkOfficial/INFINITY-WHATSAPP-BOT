@@ -51,7 +51,7 @@ const bioMsg = `*Sadaru is developer and owner of INFINITY WhatsApp Bot.He is a 
 				body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
 				mediaType: 1,
 				sourceUrl: `https://chat.whatsapp.com/${code}` ,
-                		thumbnailUrl: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' ,
+                		thumbnailUrl: 'https://github.com/SadarulkOfficial/INFINITY-DATABASE/blob/main/Bot%20Logos/infinitylogo.png?raw=true' ,
 				renderLargerThumbnail: true,
           			showAdAttribution: true
 	    		}
@@ -102,7 +102,7 @@ const bioMsg = `*Sadaru is developer and owner of INFINITY WhatsApp Bot.He is a 
 				body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ',
 				mediaType: 1,
 				sourceUrl: `https://chat.whatsapp.com/${code}` ,
-                		thumbnailUrl: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' ,
+                		thumbnailUrl: 'https://github.com/SadarulkOfficial/INFINITY-DATABASE/blob/main/Bot%20Logos/infinitylogo.png?raw=true' ,
 				renderLargerThumbnail: true,
           			showAdAttribution: true
 	    		}
