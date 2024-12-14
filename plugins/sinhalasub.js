@@ -51,7 +51,7 @@ ${movieDetails}
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-let inf = await conn.sendMessage(from, {image: {url: `https://raw.githubusercontent.com/Sadarulk/QueenMatheeDB/refs/heads/main/botlogos/sinhalasub.png`},caption:searchMsg}, {quoted: mek})
+let inf = await conn.sendMessage(from, {image: {url: `https://github.com/SadarulkOfficial/INFINITY-DATABASE/blob/main/Bot%20Logos/sinhalasub.png?raw=true`},caption:searchMsg}, {quoted: mek})
 
 conn.ev.on('messages.upsert', async (msgUpdate) => {
             let msg = msgUpdate.messages[0]
@@ -210,7 +210,7 @@ ${result}
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
             
-await conn.sendMessage(from, { text : msg }, {quoted: mek})
+await conn.sendMessage(from, { image : {url: `https://github.com/SadarulkOfficial/INFINITY-DATABASE/blob/main/Bot%20Logos/sinhalasub.png?raw=true`},caption:msg }, {quoted: mek})
 
 }catch(e){
 console.log(e)
