@@ -106,7 +106,7 @@ If you want to update your settings, Reply a below number.
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
         
-        const msg2 = await conn.sendMessage(from, {image: { url: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' },caption: settingMsg}, { quoted: mek })
+        const msg2 = await conn.sendMessage(from, {image: { url: 'https://github.com/SadarulkOfficial/INFINITY-DATABASE/blob/main/Bot%20Logos/infinitylogo.png?raw=true' },caption: settingMsg}, { quoted: mek })
 
         conn.ev.on('messages.upsert', async (msgUpdate) => {
             const msg = msgUpdate.messages[0];
@@ -248,7 +248,7 @@ ${bjid}
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-const msg2 = await conn.sendMessage(from, {image: { url: 'https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true' },caption: settingMsg}, { quoted: mek })
+const msg2 = await conn.sendMessage(from, {image: { url: 'https://github.com/SadarulkOfficial/INFINITY-DATABASE/blob/main/Bot%20Logos/infinitylogo.png?raw=true' },caption: settingMsg}, { quoted: mek })
 
         conn.ev.on('messages.upsert', async (msgUpdate) => {
             const msg = msgUpdate.messages[0];
