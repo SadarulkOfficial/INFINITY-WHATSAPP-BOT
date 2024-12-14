@@ -154,25 +154,26 @@ let sendInfomsg = `🍟 *${info.result.data.title}*
 
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
-          const msg2 = {
+const msg = {
             externalAdReply: { 
+		    		title: 'Infinity Movie World',
 				mediaType: 1,
-				sourceUrl: `https://chat.whatsapp.com/${code}` ,
-                		thumbnailUrl: `${info.result.data.images[0]}` ,
+				sourceUrl: `https://chat.whatsapp.com/${code}`,
+                		thumbnailUrl: `${info.result.data.images[0]}`,
 				renderLargerThumbnail: true,
           			showAdAttribution: true
 	    		}
           }
 
-const msg3 = {
+const msg2 = {
               text: sendInfomsg,
-              contextInfo: msg2
+              contextInfo: msg
             }
 			
 if(!sendJid) {
-await conn.sendMessage(id, msg3)
+await conn.sendMessage(id, msg2)
 			} else {
-await conn.sendMessage(sendJid, msg3)
+await conn.sendMessage(sendJid, msg2)
 			}
 			
 }
