@@ -400,3 +400,56 @@ console.log(e);
 reply(`${e}`)
 } 
 })
+
+cmd({
+pattern: "hidetag",
+alias: ["htag"],
+desc: "Send tag msg",
+category: "group",
+filename: __filename
+},
+async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+if(!isGroup) return
+if(!isOwner) return reply("*_This is an owner cmd._*")
+if(!isBotAdmins) return reply("*_First give me admin._*")
+if(!q) return reply("*_Please give me a msg._*")
+    
+await conn.sendMessage(from, { text : q , mentions: participants.map(a => a.id)})
+    
+}catch(e){
+console.log(e)
+reply(`${e}`)
+} 
+})
+
+cmd({
+pattern: "grphidetag",
+alias: ['ghtag', 'grphtag'],
+desc: "Send tag msg",
+category: "group",
+filename: __filename
+},
+async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupName, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+if(!isOwner) return reply("*_This is an owner cmd._*")
+if(!q && !q.includes(' & ')) return reply("*_Please give me a text msg & jid._*")
+
+let x = q.split(" & ")
+let b = x[0]
+let c = x[1]
+
+if(!c && !c.endsWith('@g.us')) return reply("*_Please give me a group jid._*")
+
+let newgroupMetadata = await conn.groupMetadata(c)
+let newparticipants = await newgroupMetadata.participants
+    
+await conn.sendMessage(c, { text : b , mentions: newparticipants.map(a => a.id)})
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+} 
+})
