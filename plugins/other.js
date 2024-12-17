@@ -261,3 +261,69 @@ console.log(e)
 reply(`${e}`)
 }
 })
+
+cmd({
+    pattern: "npm",
+    desc: "Get npm info",
+    category: "other",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+const config = await readEnv()
+if(config.BLOCK_JID.includes(from)) return
+let emptyMsg = `*_Please give me a npm package name._*
+
+.npm axios
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+if(!q) return reply(emptyMsg)
+    
+let response = await axios.get(`https://www.npmjs.com/package/${q}`)
+let $ = cheerio.load(response.data)
+
+const name = $('#top > div.w-100.ph0-l.ph3.ph4-m > h2 > span').text().trim()
+const version = $('#top > div.w-100.ph0-l.ph3.ph4-m > span:nth-child(2)').text().trim()
+const date = $('#top > div.w-100.ph0-l.ph3.ph4-m > span:nth-child(4) > time').text().trim()
+const ghlink = $('#repository-link').text().trim()
+const img = `https://static-production.npmjs.com/58a19602036db1daee0d7863c94673a4.png`
+    
+let msg = `*_INFINITY WA BOT NPM INFO_*
+
+*➤ Package :* ${name}
+
+*➤ Version :* ${version}
+
+*➤ Published :* ${date}
+
+*➤ Repository :* ${ghlink}
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+	    image: {url: img},
+            caption: msg,
+            contextInfo: contextMsg
+          };
+         await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
+
+let errrMsg = `*_Cant't find your npm package._*`
+	
+}catch(e){
+console.log(e)
+reply(`${errrMsg}`)
+}
+})
