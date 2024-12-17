@@ -51,7 +51,6 @@ reply(`${e}`)
 }
 })
 
-
 cmd({
     pattern: "font",
     alias: ["fancytext", "fancy"],
