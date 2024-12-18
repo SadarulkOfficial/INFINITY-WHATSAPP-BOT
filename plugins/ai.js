@@ -1,9 +1,11 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
 const { fetchJson } = require('../lib/functions')
+const { GoogleGenerativeAI } = require("@google/generative-ai")
 
 cmd({
-    pattern: "gpt",
+    pattern: "ai",
+    alias: ["gemini"],
     desc: "AI chat feature",
     category: "ai",
     filename: __filename
