@@ -1,6 +1,7 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
 const { fetchJson } = require('../lib/functions')
+const { GoogleGenerativeAI } = require("@google/generative-ai")
 
 cmd({
     on: "body"
@@ -20,20 +21,27 @@ if(body === 'Sadaru') return
 
 if(config.AUTO_AI === 'true') {
     
-let data = await fetchJson(`https://www.dark-yasiya-api.site/ai/chatgpt?q=${body}`)
+const genAI = new GoogleGenerativeAI("AIzaSyBZGOjoskOx_fbOLkRuqQBQcfAx5SMM4as");
+
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+const prompt = body;
+
+const result = await model.generateContent(prompt);
     
-    await conn.sendPresenceUpdate('composing', from)
+let data = result.response.text();
+    
+await conn.sendPresenceUpdate('composing', from)
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 await delay(2000)
-    
-    return reply(`${data.result}`)
 
-} 
+return reply(`${data}\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
     
+} 
+   
 }catch(e){
 console.log(e)
 reply(`${e}`)
-
 }
 })
