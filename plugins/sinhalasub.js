@@ -122,16 +122,15 @@ if(!downloadUrl) {
 	return reply("*_Can't send your movie in this quality.Please try another quality._*")
 }	    
 
+let caption = `${info.result.data.title} ( ${filteredLinks[number-1].quality} )
+      
+> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
+
 			if(!sendJid) {
+
 const msg2 = {
             
             externalAdReply: { 
-		    		title: info.result.data.title,
-				body: filteredLinks[number-1].quality,
-				mediaType: 1,
-				sourceUrl: array[index-1].link ,
-                		thumbnailUrl: info.result.data.image,
-				renderLargerThumbnail: false,
           			showAdAttribution: true
 	    		}
           }
@@ -140,7 +139,7 @@ const msg3 = {
 		document: {url: downloadUrl },
 		mimetype: "video/mp4",
 		fileName: info.result.data.title + ".mp4",
-		caption:"> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ",
+		caption: caption,
 		contextInfo: msg2
             }
          await conn.sendMessage(id, msg3)
@@ -150,12 +149,6 @@ const msg3 = {
 const msg4 = {
             
             externalAdReply: { 
-		    		title: info.result.data.title,
-				body: filteredLinks[number-1].quality,
-				mediaType: 1,
-				sourceUrl: array[index-1].link ,
-                		thumbnailUrl: info.result.data.image,
-				renderLargerThumbnail: false,
           			showAdAttribution: true
 	    		}
           }
@@ -164,7 +157,7 @@ const msg5 = {
 		document: {url: downloadUrl },
 		mimetype: "video/mp4",
 		fileName: info.result.data.title + ".mp4",
-		caption:"> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ",
+		caption: caption,
 		contextInfo: msg4
             }
          await conn.sendMessage(sendJid, msg5)
@@ -192,26 +185,22 @@ let sendInfomsg = `🍟 *${info.result.data.title}*
 
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
-const msg = {
+const msg6 = {
             externalAdReply: { 
-		    		title: 'Infinity Movie World',
-				mediaType: 1,
-				sourceUrl: `https://chat.whatsapp.com/${code}`,
-                		thumbnailUrl: `${info.result.data.images[0]}`,
-				renderLargerThumbnail: true,
           			showAdAttribution: true
 	    		}
           }
 
-const msg2 = {
-              text: sendInfomsg,
-              contextInfo: msg
+const msg7 = {
+		image: {url: info.result.data.images[0]},
+        	caption: sendInfomsg,
+        	contextInfo: msg6
             }
 			
 if(!sendJid) {
-await conn.sendMessage(id, msg2)
+await conn.sendMessage(id, msg7)
 			} else {
-await conn.sendMessage(sendJid, msg2)
+await conn.sendMessage(sendJid, msg7)
 			}
 			
 }
